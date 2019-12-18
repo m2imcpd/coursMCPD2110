@@ -1,4 +1,5 @@
-﻿using System;
+﻿using coursCSharp.Classes;
+using System;
 
 namespace coursCSharp
 {
@@ -6,7 +7,15 @@ namespace coursCSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Etudiant e1 = new Etudiant();
+            e1.Nom = "toto";
+            e1.Prenom = "tata";
+            e1.Afficher();
+            Etudiant e2 = new Etudiant("titi", "minet");
+            e2.Afficher();
+            Etudiant e3 = new Etudiant("tt", "aa", 1);
+
+            Console.ReadLine();
         }
     }
 }
