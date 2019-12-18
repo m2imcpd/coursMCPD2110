@@ -4,7 +4,7 @@ using System.Text;
 
 namespace coursCSharp.Classes
 {
-    public class Etudiant : Personne
+    public sealed class Etudiant : Personne
     {
         private int niveau;
 
@@ -28,6 +28,11 @@ namespace coursCSharp.Classes
         public void EditPropsProtected(string p)
         {
             propsProtected = p;
+        }
+
+        public void AfficherEtudiant()
+        {
+            Console.WriteLine("Je suis un etudiant"); 
         }
     }
 }

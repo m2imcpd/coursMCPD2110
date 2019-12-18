@@ -4,7 +4,7 @@ using System.Text;
 
 namespace coursCSharp.Classes
 {
-    public class Personne
+    public abstract class Personne
     {
         private string nom;
         private string prenom;
