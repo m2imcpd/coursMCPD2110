@@ -1,5 +1,6 @@
 ﻿using coursCSharp.Classes;
 using System;
+using System.Text;
 
 namespace coursCSharp
 {
@@ -57,11 +58,21 @@ namespace coursCSharp
             //    }
             //}
             //Correction Exercice 2
+            //Console.OutputEncoding = Encoding.UTF8;
+            //Maison m = new Maison("tourcoing", 3);
+            //Batiment b = new Batiment("tourcoing");
+            //Console.WriteLine(m.ToString());
+            //Console.WriteLine(b.ToString());
 
-            Maison m = new Maison("tourcoing", 3);
-            Batiment b = new Batiment("tourcoing");
-            Console.WriteLine(m.ToString());
-            Console.WriteLine(b.ToString());
+            //Etudiant e = new Etudiant();
+            //e.Marcher();
+            //Salarie s = new Salarie();
+            //s.Marcher();
+            Personne e = new Etudiant();
+            e.Marcher();
+            Personne s = new Salarie();
+            s.Marcher();
+            DateTime date = new DateTime(1987, 09, 11);
             Console.ReadLine();
         }
     }

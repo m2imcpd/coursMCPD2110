@@ -28,5 +28,10 @@ namespace coursCSharp.Classes
         {
             Console.WriteLine("Nom : " + Nom + " Prénom : " + Prenom);
         }
+
+        public virtual void Marcher()
+        {
+            Console.WriteLine("Une personne qui marche");
+        }
     }
 }

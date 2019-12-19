@@ -20,5 +20,10 @@ namespace coursCSharp.Classes
         {
             Console.WriteLine("Je suis un salarie");
         }
+
+        public new void Marcher()
+        {
+            Console.WriteLine("Un salarié qui marche");
+        }
     }
 }

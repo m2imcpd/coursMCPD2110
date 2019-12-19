@@ -34,5 +34,11 @@ namespace coursCSharp.Classes
         {
             Console.WriteLine("Je suis un etudiant"); 
         }
+
+        public override void Marcher()
+        {
+            //base.Marcher();
+            Console.WriteLine("Un etudiant qui marche");
+        }
     }
 }
