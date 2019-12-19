@@ -38,25 +38,17 @@ namespace coursCSharp
 
             //Correction ex1
 
-            //Vehicule v = new Voiture(2000, 1000);
-            //Vehicule c = new Camion(1999, 2000);
-            //Vehicule[] tabVehicule = new Vehicule[2];
-            //tabVehicule[0] = v;
-            //tabVehicule[1] = c;
-            //foreach(Vehicule ve in tabVehicule)
-            //{
-            //    Console.WriteLine(ve.ToString());
-            //    if(ve.GetType() == typeof(Voiture))
-            //    {
-            //        (ve as Voiture).Demarrer();
-            //        (ve as Voiture).Accelerer();
-            //    }
-            //    if (ve.GetType() == typeof(Camion))
-            //    {
-            //        (ve as Camion).Demarrer();
-            //        (ve as Camion).Accelerer();
-            //    }
-            //}
+            Vehicule v = new Voiture(2000, 1000);
+            Vehicule c = new Camion(1999, 2000);
+            Vehicule[] tabVehicule = new Vehicule[2];
+            tabVehicule[0] = v;
+            tabVehicule[1] = c;
+            foreach (Vehicule ve in tabVehicule)
+            {
+                Console.WriteLine(ve);
+                ve.Demarrer();
+                ve.Accelerer();
+            }
             //Correction Exercice 2
             //Console.OutputEncoding = Encoding.UTF8;
             //Maison m = new Maison("tourcoing", 3);
@@ -68,11 +60,11 @@ namespace coursCSharp
             //e.Marcher();
             //Salarie s = new Salarie();
             //s.Marcher();
-            Personne e = new Etudiant();
-            e.Marcher();
-            Personne s = new Salarie();
-            s.Marcher();
-            DateTime date = new DateTime(1987, 09, 11);
+            //Personne e = new Etudiant();
+            //e.Marcher();
+            //Personne s = new Salarie();
+            //s.Marcher();
+            //DateTime date = new DateTime(1987, 09, 11);
             Console.ReadLine();
         }
     }

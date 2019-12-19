@@ -26,11 +26,11 @@ namespace coursCSharp.Classes
             Annee = a;
             Prix = p;
         }
-        public string ToString()
+        public override string ToString()
         {
             return "Matricule : " + Matricule + " Annee : " + Annee + " Prix : " + Prix;
         }
-        //public abstract void Demarrer();
-        //public abstract void Accelerer();
+        public abstract void Demarrer();
+        public abstract void Accelerer();
     }
 }

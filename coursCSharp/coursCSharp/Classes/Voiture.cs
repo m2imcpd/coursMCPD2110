@@ -16,12 +16,12 @@ namespace coursCSharp.Classes
 
         }
 
-        public void Demarrer()
+        public override void Demarrer()
         {
             Console.WriteLine("Voiture qui demarre");
         }
 
-        public void Accelerer()
+        public override void Accelerer()
         {
             Console.WriteLine("Voiture qui accelere");
         }
