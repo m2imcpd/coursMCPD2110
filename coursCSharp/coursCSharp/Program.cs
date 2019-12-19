@@ -37,26 +37,31 @@ namespace coursCSharp
 
             //Correction ex1
 
-            Vehicule v = new Voiture(2000, 1000);
-            Vehicule c = new Camion(1999, 2000);
-            Vehicule[] tabVehicule = new Vehicule[2];
-            tabVehicule[0] = v;
-            tabVehicule[1] = c;
-            foreach(Vehicule ve in tabVehicule)
-            {
-                Console.WriteLine(ve.ToString());
-                if(ve.GetType() == typeof(Voiture))
-                {
-                    (ve as Voiture).Demarrer();
-                    (ve as Voiture).Accelerer();
-                }
-                if (ve.GetType() == typeof(Camion))
-                {
-                    (ve as Camion).Demarrer();
-                    (ve as Camion).Accelerer();
-                }
-            }
+            //Vehicule v = new Voiture(2000, 1000);
+            //Vehicule c = new Camion(1999, 2000);
+            //Vehicule[] tabVehicule = new Vehicule[2];
+            //tabVehicule[0] = v;
+            //tabVehicule[1] = c;
+            //foreach(Vehicule ve in tabVehicule)
+            //{
+            //    Console.WriteLine(ve.ToString());
+            //    if(ve.GetType() == typeof(Voiture))
+            //    {
+            //        (ve as Voiture).Demarrer();
+            //        (ve as Voiture).Accelerer();
+            //    }
+            //    if (ve.GetType() == typeof(Camion))
+            //    {
+            //        (ve as Camion).Demarrer();
+            //        (ve as Camion).Accelerer();
+            //    }
+            //}
+            //Correction Exercice 2
 
+            Maison m = new Maison("tourcoing", 3);
+            Batiment b = new Batiment("tourcoing");
+            Console.WriteLine(m.ToString());
+            Console.WriteLine(b.ToString());
             Console.ReadLine();
         }
     }
