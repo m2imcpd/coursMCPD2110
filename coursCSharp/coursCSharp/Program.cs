@@ -38,19 +38,19 @@ namespace coursCSharp
 
             //Correction ex1
 
-            Vehicule v = new Voiture(2000, 1000);
-            Vehicule c = new Camion(1999, 2000);
-            Vehicule[] tabVehicule = new Vehicule[2];
-            tabVehicule[0] = v;
-            tabVehicule[1] = c;
-            foreach (Vehicule ve in tabVehicule)
-            {
-                Console.WriteLine(ve);
-                ve.Demarrer();
-                ve.Accelerer();
-            }
+            //Vehicule v = new Voiture(2000, 1000);
+            //Vehicule c = new Camion(1999, 2000);
+            //Vehicule[] tabVehicule = new Vehicule[2];
+            //tabVehicule[0] = v;
+            //tabVehicule[1] = c;
+            //foreach (Vehicule ve in tabVehicule)
+            //{
+            //    Console.WriteLine(ve);
+            //    ve.Demarrer();
+            //    ve.Accelerer();
+            //}
             //Correction Exercice 2
-            //Console.OutputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
             //Maison m = new Maison("tourcoing", 3);
             //Batiment b = new Batiment("tourcoing");
             //Console.WriteLine(m.ToString());
@@ -65,6 +65,22 @@ namespace coursCSharp
             //Personne s = new Salarie();
             //s.Marcher();
             //DateTime date = new DateTime(1987, 09, 11);
+
+            //Correction ex3
+            
+            Personne[] tab = new Personne[8];
+            tab[0] = new Employe("en1", "ep1", new DateTime(1900, 01, 01), 1000);
+            tab[1] = new Employe("en2", "ep2", new DateTime(1900, 01, 02), 1001);
+            tab[2] = new Employe("en3", "ep3", new DateTime(1900, 01, 03), 1002);
+            tab[3] = new Employe("en4", "ep4", new DateTime(1900, 01, 04), 1003);
+            tab[4] = new Employe("en5", "ep5", new DateTime(1900, 01, 05), 1004);
+            tab[5] = new Chef("cn1", "cp1", new DateTime(1800, 01, 01), 10000, "informatique");
+            tab[6] = new Chef("cn2", "cp2", new DateTime(1800, 01, 02), 10001, "RH");
+            tab[7] = new Directeur("dn1", "dp1", new DateTime(1700, 01, 01), 100000, "directeur", "M2I");
+            foreach(Personne p in tab)
+            {
+                p.Afficher();
+            }
             Console.ReadLine();
         }
     }
