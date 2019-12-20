@@ -89,6 +89,9 @@ namespace coursCSharp.Classes
                     case "2":
                         c = new ComptePayant(client, depot);
                             break;
+                    case "3":
+                        c = new CompteEpargne(client, depot);
+                        break;
 
                 }
                 
@@ -143,8 +146,12 @@ namespace coursCSharp.Classes
             Compte compte = RechercherCompte();
             if (compte != null)
             {
+                if(compte.GetType() == typeof(CompteEpargne))
+                {
+                    (compte as CompteEpargne).MiseAjourSolde();
+                }
                 Console.WriteLine(compte);
-                foreach(Operation o in compte.Operations)
+                foreach (Operation o in compte.Operations)
                 {
                     if(o != null)
                     {
