@@ -6,12 +6,12 @@ namespace coursCSharp.Classes
 {
     public class Compte
     {
-        private static int compteur = 0;
+        protected static int compteur = 0;
         private int numero;
         private Client client;
         private Operation[] operations;
-        private decimal solde;
-        private static int cle = 0;
+        protected decimal solde;
+        protected static int cle = 0;
 
         public int Numero { get => numero; set => numero = value; }
         public Client Client { get => client; set => client = value; }
@@ -35,7 +35,7 @@ namespace coursCSharp.Classes
 
         }
 
-        public void Deposer(decimal montant)
+        public virtual void Deposer(decimal montant)
         {
             Operation o = new Operation(montant, DateTime.Now);
             Operations[cle] = o;
@@ -43,7 +43,7 @@ namespace coursCSharp.Classes
             solde += montant;
         }
 
-        public bool Retirer(decimal montant)
+        public virtual bool Retirer(decimal montant)
         {
             bool result = false;
             if(solde >= montant)

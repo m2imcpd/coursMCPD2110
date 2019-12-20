@@ -78,7 +78,20 @@ namespace coursCSharp.Classes
                 Client client = new Client(nom, prenom, telephone);
                 Console.Write("Dépot initial : ");
                 decimal depot = Convert.ToDecimal(Console.ReadLine());
-                Compte c = new Compte(client, depot);
+                Compte c = null;
+                MenuOuvertureComptes();
+                string choixOuverture = Console.ReadLine();
+                switch(choixOuverture)
+                {
+                    case "1":
+                        c = new Compte(client, depot);
+                        break;
+                    case "2":
+                        c = new ComptePayant(client, depot);
+                            break;
+
+                }
+                
                 comptes[cle] = c;
                 cle++;
                 Console.WriteLine("Compte crée avec comme numero : " + c.Numero);
@@ -164,6 +177,13 @@ namespace coursCSharp.Classes
             }
 
             return compte;
+        }
+
+        public void MenuOuvertureComptes()
+        {
+            Console.WriteLine("1---Compte standard");
+            Console.WriteLine("2---Compte payant");
+            Console.WriteLine("3---Compte epargne");
         }
     }
 }
