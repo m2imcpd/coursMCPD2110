@@ -36,7 +36,24 @@ namespace coursCSharp.Classes
 
         public void StartModerateur()
         {
+            Console.Write("Votre nom ? ");
+            string nom = Console.ReadLine();
+            if(forum.Moderateur.Nom == nom)
+            {
+                string choix;
+                do
+                {
+                    MenuModerateur();
+                    choix = Console.ReadLine();
+                    ActionAbonne(choix, forum.Moderateur);
+                    ActionModerateur(choix);
+                } while (choix != "0");
 
+            }
+            else
+            {
+                Console.WriteLine("Erreur moderateur");
+            }
         }
 
         public void StartAbonne()
@@ -54,22 +71,29 @@ namespace coursCSharp.Classes
                 {
                     MenuAbonne();
                     choix = Console.ReadLine();
-                    switch (choix)
-                    {
-                        case "1":
-                            AjouterNouvelle(abonne);
-                            break;
-                        case "2":
-                            AfficherNouvelles();
-                            RepondreNouvelle(abonne);
-                            break;
-                        case "3":
-                            AfficherNouvelles();
-                            break;
-                    }
+                    ActionAbonne(choix, abonne);
+                    
+                    
                 }while (choix != "0");
             }
 
+        }
+
+        public void ActionAbonne(string choix, Abonne abonne)
+        {
+            switch (choix)
+            {
+                case "1":
+                    AjouterNouvelle(abonne);
+                    break;
+                case "2":
+                    AfficherNouvelles();
+                    RepondreNouvelle(abonne);
+                    break;
+                case "3":
+                    AfficherNouvelles();
+                    break;
+            }
         }
 
         public void MenuAbonne()
@@ -77,6 +101,78 @@ namespace coursCSharp.Classes
             Console.WriteLine("1----Ajouter une nouvelle");
             Console.WriteLine("2----Répondre à une nouvelle");
             Console.WriteLine("3----Afficher les nouvelles");
+        }
+
+        public void MenuModerateur()
+        {
+            MenuAbonne();
+            Console.WriteLine("4----Supprimer une nouvelle");
+            Console.WriteLine("5----Ajouter un abonné");
+            Console.WriteLine("6----Afficher les abonnés");
+            Console.WriteLine("7----Supprimer un abonné");
+        }
+
+        public void ActionModerateur(string choix)
+        {
+            switch(choix)
+            {
+                case "4":
+                    SupprimerUneNouvelle();
+                    break;
+                case "5":
+                    AjouterAbonne();
+                    break;
+                case "6":
+                    AfficherAbonnes();
+                    break;
+                case "7":
+                    SupprimerAbonne();
+                    break;
+            }
+        }
+
+        public void SupprimerUneNouvelle()
+        {
+            AfficherNouvelles();
+            Console.Write("La clé de l'abonné à supprimer :");
+            int cle = Convert.ToInt32(Console.ReadLine());
+            forum.Nouvelles.RemoveAt(cle);
+        }
+        public void AjouterAbonne()
+        {
+            Console.Write("Le nom de l'abonné : ");
+            string nom = Console.ReadLine();
+            Abonne abonne = forum.SearchAbonne(nom);
+            if(abonne == null)
+            {
+                Console.Write("Le prénom de l'abonné : ");
+                string prenom = Console.ReadLine();
+                Console.Write("L'age de l'abonné : ");
+                int age = Convert.ToInt32(Console.ReadLine());
+                Abonne a = new Abonne(forum) { Nom = nom, Prenom = prenom, Age = age };
+                forum.Abonnes.Add(a);
+                Console.WriteLine("Abonné correctement ajouté");
+            }
+            else
+            {
+                Console.WriteLine("Abonne existe deja");
+            }
+        }
+
+        public void AfficherAbonnes()
+        {
+            for(int i = 0; i < forum.Abonnes.Count; i++)
+            {
+                Console.WriteLine("Cle : " + i + " Abonne : " + forum.Abonnes[i]);
+            }
+        }
+
+        public void SupprimerAbonne()
+        {
+            AfficherAbonnes();
+            Console.Write("La clé de l'abonné à supprimer :");
+            int cle = Convert.ToInt32(Console.ReadLine());
+            forum.Abonnes.RemoveAt(cle);
         }
 
         public void AjouterNouvelle(Abonne abonne)

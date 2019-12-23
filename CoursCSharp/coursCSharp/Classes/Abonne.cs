@@ -25,6 +25,11 @@ namespace coursCSharp.Classes
             forum.Nouvelles.Add(n);
         }
 
-        
+        public override string ToString()
+        {
+            return "Nom : " + Nom + " Prénom : " + Prenom + " Age : " + Age;
+        }
+
+
     }
 }
