@@ -145,8 +145,16 @@ namespace coursCSharp
 
             //Correction Forum
             Console.OutputEncoding = Encoding.UTF8;
-            IHMForum iForum = new IHMForum();
-            iForum.Start();
+            //IHMForum iForum = new IHMForum();
+            //iForum.Start();
+            Pile<string> pile = new Pile<string>(3);
+            Console.WriteLine(pile.Empiler("toto"));
+            Console.WriteLine(pile.Empiler("tata"));
+            Console.WriteLine(pile.Empiler("titi"));
+            Console.WriteLine(pile.Empiler("minet"));
+            Console.WriteLine(pile.Depiler());
+            Console.WriteLine(pile.Empiler("minet"));
+            Console.WriteLine(pile.GetElement(2));
             Console.ReadLine();
         }
     }
