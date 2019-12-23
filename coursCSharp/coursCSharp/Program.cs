@@ -35,7 +35,7 @@ namespace coursCSharp
             //    Console.WriteLine(p.GetType());
             //}
             #endregion
-
+            #region Correction exercices
             //Correction ex1
 
             //Vehicule v = new Voiture(2000, 1000);
@@ -50,7 +50,7 @@ namespace coursCSharp
             //    ve.Accelerer();
             //}
             //Correction Exercice 2
-            Console.OutputEncoding = Encoding.UTF8;
+            //Console.OutputEncoding = Encoding.UTF8;
             //Maison m = new Maison("tourcoing", 3);
             //Batiment b = new Batiment("tourcoing");
             //Console.WriteLine(m.ToString());
@@ -84,8 +84,19 @@ namespace coursCSharp
 
             //Correction compte bancaire version 1
 
-            IHMCompte ihmCompte = new IHMCompte();
-            ihmCompte.Start();
+            //IHMCompte ihmCompte = new IHMCompte();
+            //ihmCompte.Start();
+            #endregion
+
+            //int d;
+            //Calcule.UpdateVariable(out d);
+            //Console.WriteLine(d);
+            //string[] tab = new string[] { "abadi" };
+            //Calcule.UpdateString(tab);
+            //Console.WriteLine(tab[0]);
+            Console.WriteLine(Calcule.Addition("message1", 10, 20, 30));
+            Console.WriteLine(Calcule.Addition("message2", 10, 20));
+            Console.WriteLine(Calcule.Addition("message3", 20));
             Console.ReadLine();
         }
     }
