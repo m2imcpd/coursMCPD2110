@@ -1,5 +1,6 @@
 ﻿using coursCSharp.Classes;
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace coursCSharp
@@ -94,9 +95,52 @@ namespace coursCSharp
             //string[] tab = new string[] { "abadi" };
             //Calcule.UpdateString(tab);
             //Console.WriteLine(tab[0]);
-            Console.WriteLine(Calcule.Addition("message1", 10, 20, 30));
-            Console.WriteLine(Calcule.Addition("message2", 10, 20));
-            Console.WriteLine(Calcule.Addition("message3", 20));
+            //Console.WriteLine(Calcule.Addition("message1", 10, 20, 30));
+            //Console.WriteLine(Calcule.Addition("message2", 10, 20));
+            //Console.WriteLine(Calcule.Addition("message3", 20));
+            //Console.WriteLine(Calcule.Addition("message4"));
+            //Generic<int> gInt = new Generic<int>();
+            //gInt.tab[0] = 10;
+            //gInt.tab[1] = 20;
+            //gInt.AfficherElement();
+
+            //Generic<string> gString = new Generic<string>();
+            //gString.tab[0] = "toto";
+            //gString.tab[1] = "titi";
+            //gString.AfficherElement();
+
+            //List 
+            //List<string> liste = new List<string>();
+            ////ajouter dans une liste
+            //string nom = "abadi";
+            //liste.Add("tata");
+            //liste.Add("toto");
+            //liste.Add(nom);
+            ////Parcourir une liste
+            //foreach(string s in liste)
+            //{
+            //    Console.WriteLine(s);
+            //}
+            ////supprimer d'une liste
+            //liste.Remove(nom);
+            //liste.RemoveAt(0);
+            //foreach (string s in liste)
+            //{
+            //    Console.WriteLine(s);
+            //}
+            //Dictionary
+            Dictionary<string, Personne> personnes = new Dictionary<string, Personne>();
+            personnes.Add("p1", new Employe("toto", "tata", DateTime.Now, 2000));
+            personnes.Add("p2", new Employe("titi", "minet", DateTime.Now, 2000));
+            foreach(string s in personnes.Keys)
+            {
+                Console.WriteLine("Cle : "+ s + " value : "+personnes[s].Nom);
+            }
+
+            foreach(Personne p in personnes.Values)
+            {
+                Console.WriteLine(p.Nom);
+            }
             Console.ReadLine();
         }
     }
