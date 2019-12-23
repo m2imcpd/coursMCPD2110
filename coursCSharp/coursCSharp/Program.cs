@@ -88,7 +88,7 @@ namespace coursCSharp
             //IHMCompte ihmCompte = new IHMCompte();
             //ihmCompte.Start();
             #endregion
-
+            #region cours Générique, passage paramètre, list et dictionaty
             //int d;
             //Calcule.UpdateVariable(out d);
             //Console.WriteLine(d);
@@ -129,18 +129,24 @@ namespace coursCSharp
             //    Console.WriteLine(s);
             //}
             //Dictionary
-            Dictionary<string, Personne> personnes = new Dictionary<string, Personne>();
-            personnes.Add("p1", new Employe("toto", "tata", DateTime.Now, 2000));
-            personnes.Add("p2", new Employe("titi", "minet", DateTime.Now, 2000));
-            foreach(string s in personnes.Keys)
-            {
-                Console.WriteLine("Cle : "+ s + " value : "+personnes[s].Nom);
-            }
+            //Dictionary<string, Personne> personnes = new Dictionary<string, Personne>();
+            //personnes.Add("p1", new Employe("toto", "tata", DateTime.Now, 2000));
+            //personnes.Add("p2", new Employe("titi", "minet", DateTime.Now, 2000));
+            //foreach(string s in personnes.Keys)
+            //{
+            //    Console.WriteLine("Cle : "+ s + " value : "+personnes[s].Nom);
+            //}
 
-            foreach(Personne p in personnes.Values)
-            {
-                Console.WriteLine(p.Nom);
-            }
+            //foreach(Personne p in personnes.Values)
+            //{
+            //    Console.WriteLine(p.Nom);
+            //}
+            #endregion
+
+            //Correction Forum
+            Console.OutputEncoding = Encoding.UTF8;
+            IHMForum iForum = new IHMForum();
+            iForum.Start();
             Console.ReadLine();
         }
     }
