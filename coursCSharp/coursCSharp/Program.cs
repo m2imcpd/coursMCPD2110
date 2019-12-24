@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace coursCSharp
 {
@@ -142,19 +144,56 @@ namespace coursCSharp
             //    Console.WriteLine(p.Nom);
             //}
             #endregion
-
+            #region correction forum
             //Correction Forum
-            Console.OutputEncoding = Encoding.UTF8;
+            //Console.OutputEncoding = Encoding.UTF8;
             //IHMForum iForum = new IHMForum();
             //iForum.Start();
-            Pile<string> pile = new Pile<string>(3);
-            Console.WriteLine(pile.Empiler("toto"));
-            Console.WriteLine(pile.Empiler("tata"));
-            Console.WriteLine(pile.Empiler("titi"));
-            Console.WriteLine(pile.Empiler("minet"));
-            Console.WriteLine(pile.Depiler());
-            Console.WriteLine(pile.Empiler("minet"));
-            Console.WriteLine(pile.GetElement(2));
+            //Convertir en json
+            //string json = JsonConvert.SerializeObject(iForum);
+            //Console.WriteLine(json);
+            //Pile<string> pile = new Pile<string>(3);
+            //Console.WriteLine(pile.Empiler("toto"));
+            //Console.WriteLine(pile.Empiler("tata"));
+            //Console.WriteLine(pile.Empiler("titi"));
+            //Console.WriteLine(pile.Empiler("minet"));
+            //Console.WriteLine(pile.Depiler());
+            //Console.WriteLine(pile.Empiler("minet"));
+            //Console.WriteLine(pile.GetElement(2));
+            #endregion
+            //Utilisation des fichiers en c#
+            //Stream s = File.Open(@"C:\Users\Administrateur\file.txt", FileMode.Create);
+            //StreamWriter writer = new StreamWriter(s);
+            //writer.WriteLine("Bonjour tout le monde");
+            //writer.Dispose();
+            // s = File.Open(@"C:\Users\Administrateur\file.txt", FileMode.Open);
+            //StreamReader reader = new StreamReader(s);
+            //Console.WriteLine(reader.ReadToEnd());
+            //reader.Dispose();
+            //Console.Write("Merci de saisir votre texte : ");
+            //StreamWriter writer = new StreamWriter(File.Open("contenu.txt", FileMode.Create));
+            //string ligne;
+            //do
+            //{
+            //    ligne = Console.ReadLine();
+            //    if(ligne != "0")
+            //        writer.WriteLine(ligne);
+            //} while (ligne != "0");
+            //writer.Dispose();
+            //serialization d'un objet en json
+            //Personne p = new Salarie("toto", "tata");
+            //List<Personne> liste = new List<Personne>();
+            //liste.Add(p);
+            //liste.Add(p);
+            //string json = JsonConvert.SerializeObject(liste);
+            //StreamWriter writer = new StreamWriter(File.Open("personne.json", FileMode.Create));
+            //writer.WriteLine(json);
+            //writer.Dispose();
+            //deserialization d'un objet json
+            StreamReader reader = new StreamReader(File.Open("personne.json", FileMode.Open));
+            string json = reader.ReadToEnd();
+            reader.Dispose();
+            List<Salarie> maliste = JsonConvert.DeserializeObject<List<Salarie>>(json);
             Console.ReadLine();
         }
     }
