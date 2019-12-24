@@ -161,6 +161,7 @@ namespace coursCSharp
             //Console.WriteLine(pile.Empiler("minet"));
             //Console.WriteLine(pile.GetElement(2));
             #endregion
+            #region cours stream and json
             //Utilisation des fichiers en c#
             //Stream s = File.Open(@"C:\Users\Administrateur\file.txt", FileMode.Create);
             //StreamWriter writer = new StreamWriter(s);
@@ -190,10 +191,16 @@ namespace coursCSharp
             //writer.WriteLine(json);
             //writer.Dispose();
             //deserialization d'un objet json
-            StreamReader reader = new StreamReader(File.Open("personne.json", FileMode.Open));
-            string json = reader.ReadToEnd();
-            reader.Dispose();
-            List<Salarie> maliste = JsonConvert.DeserializeObject<List<Salarie>>(json);
+            //StreamReader reader = new StreamReader(File.Open("personne.json", FileMode.Open));
+            //string json = reader.ReadToEnd();
+            //reader.Dispose();
+            //List<Salarie> maliste = JsonConvert.DeserializeObject<List<Salarie>>(json);
+            #endregion
+
+            //Correction Hotel
+            Console.OutputEncoding = Encoding.UTF8;
+            IHMHotel ih = new IHMHotel();
+            ih.Start();
             Console.ReadLine();
         }
     }

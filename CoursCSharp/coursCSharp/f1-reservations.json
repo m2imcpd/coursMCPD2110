@@ -1,0 +1,1 @@
+[{"Numero":0,"Chambre":{"Numero":2,"Prix":25.0,"Status":"Occupée"},"Client":{"Numero":8,"Nom":"titi","Prenom":"minet","Telephone":"0606060606"},"Status":"valide"},{"Numero":0,"Chambre":{"Numero":1,"Prix":15.0,"Status":"Libre"},"Client":{"Numero":1,"Nom":"abadi","Prenom":"ihab","Telephone":"0606060606"},"Status":"valide"}]

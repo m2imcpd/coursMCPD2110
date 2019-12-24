@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace coursCSharp.Classes
@@ -14,7 +15,7 @@ namespace coursCSharp.Classes
 
         private string telephone;
 
-        private static int compteur = 0;
+        //private static int compteur = 0;
 
         public int Numero { get => numero; set => numero = value; }
         public string Nom { get => nom; set => nom = value; }
@@ -23,12 +24,25 @@ namespace coursCSharp.Classes
 
         public Client()
         {
-            compteur++;
-            Numero = compteur;
+            //compteur++;
+            //Numero = compteur;
+            
         }
 
-        public Client(string n, string p, string t) : this()
+        public Client(string n, string p, string t)
         {
+            int compteur = 0;
+            if (File.Exists("client.txt"))
+            {
+                StreamReader reader = new StreamReader(File.Open("client.txt", FileMode.Open));
+                compteur = Convert.ToInt32(reader.ReadToEnd());
+                reader.Dispose();
+            }
+            compteur++;
+            Numero = compteur;
+            StreamWriter writer = new StreamWriter(File.Open("client.txt", FileMode.Create));
+            writer.WriteLine(compteur);
+            writer.Dispose();
             Nom = n;
             Prenom = p;
             Telephone = t;
