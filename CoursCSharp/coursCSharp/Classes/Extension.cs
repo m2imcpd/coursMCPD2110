@@ -17,5 +17,13 @@ namespace coursCSharp.Classes
                 liste[i] = tmp;
             }
         }
+
+        public static void AddToAll(this List<int> liste, int nombre)
+        {
+            for(int i=0; i < liste.Count; i++)
+            {
+                liste[i] = liste[i] + nombre;
+            }
+        }
     }
 }

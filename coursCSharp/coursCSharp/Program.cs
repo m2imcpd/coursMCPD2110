@@ -254,6 +254,7 @@ namespace coursCSharp
             #endregion
             List<int> liste = new List<int>() { 10, 34, 44, 55 };
             liste.Shuffle();
+            liste.AddToAll(30);
             List<string> listeString = new List<string>() { "toto", "tata", "titi", "minet" };
             listeString.Shuffle();
             Console.ReadLine();
