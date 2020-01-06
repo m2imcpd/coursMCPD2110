@@ -202,7 +202,7 @@ namespace coursCSharp
             //IHMHotel ih = new IHMHotel();
             //ih.Start();
             #endregion
-
+            #region cours syntaxe c# et indexeur
             //Syntaxe avancée c#
             //int a;
             //rendre a nullable
@@ -237,20 +237,25 @@ namespace coursCSharp
             //{
 
             //}
-            EmployeCollection collection = new EmployeCollection();
-            //List<Employe> liste = collection[DateTime.Now];
-            collection.ListeEmploye.Add(new Employe { Nom = "tata", Prenom = "toto", DateNaissance = new DateTime(1980, 1, 1) });
-            collection.ListeEmploye.Add(new Employe { Nom = "titi", Prenom = "to", DateNaissance = new DateTime(1980, 1, 2) });
-            collection.ListeEmploye.Add(new Employe { Nom = "zer", Prenom = "tozé", DateNaissance = new DateTime(1980, 1, 2) });
-            
-            List<Employe> l2 = new List<Employe>();
-            l2.Add(new Employe { Nom = "abadi", Prenom = "ihab", DateNaissance = new DateTime(1987, 09, 11) });
-            l2.Add(new Employe { Nom = "qdqsdqsd", Prenom = "qsdsq", DateNaissance = new DateTime(1987, 09, 11) });
-            collection[new DateTime(1987, 09, 11)] = l2;
-            foreach (Employe e in collection[new DateTime(1987, 09, 11)])
-            {
-                Console.WriteLine(e.Nom);
-            }
+            //EmployeCollection collection = new EmployeCollection();
+            ////List<Employe> liste = collection[DateTime.Now];
+            //collection.ListeEmploye.Add(new Employe { Nom = "tata", Prenom = "toto", DateNaissance = new DateTime(1980, 1, 1) });
+            //collection.ListeEmploye.Add(new Employe { Nom = "titi", Prenom = "to", DateNaissance = new DateTime(1980, 1, 2) });
+            //collection.ListeEmploye.Add(new Employe { Nom = "zer", Prenom = "tozé", DateNaissance = new DateTime(1980, 1, 2) });
+
+            //List<Employe> l2 = new List<Employe>();
+            //l2.Add(new Employe { Nom = "abadi", Prenom = "ihab", DateNaissance = new DateTime(1987, 09, 11) });
+            //l2.Add(new Employe { Nom = "qdqsdqsd", Prenom = "qsdsq", DateNaissance = new DateTime(1987, 09, 11) });
+            //collection[new DateTime(1987, 09, 11)] = l2;
+            //foreach (Employe e in collection[new DateTime(1987, 09, 11)])
+            //{
+            //    Console.WriteLine(e.Nom);
+            //}
+            #endregion
+            List<int> liste = new List<int>() { 10, 34, 44, 55 };
+            liste.Shuffle();
+            List<string> listeString = new List<string>() { "toto", "tata", "titi", "minet" };
+            listeString.Shuffle();
             Console.ReadLine();
         }
     }
