@@ -230,12 +230,26 @@ namespace coursCSharp
             ////{
             ////    nom = null;
             ////}
-            Point p1 = new Point { X = 10, Y = 20 };
-            Point p2 = new Point { X = 30, Y = 40 };
-            Point p = p1 + p2;
-            if(p1 == p2)
-            {
+            //Point p1 = new Point { X = 10, Y = 20 };
+            //Point p2 = new Point { X = 30, Y = 40 };
+            //Point p = p1 + p2;
+            //if(p1 == p2)
+            //{
 
+            //}
+            EmployeCollection collection = new EmployeCollection();
+            //List<Employe> liste = collection[DateTime.Now];
+            collection.ListeEmploye.Add(new Employe { Nom = "tata", Prenom = "toto", DateNaissance = new DateTime(1980, 1, 1) });
+            collection.ListeEmploye.Add(new Employe { Nom = "titi", Prenom = "to", DateNaissance = new DateTime(1980, 1, 2) });
+            collection.ListeEmploye.Add(new Employe { Nom = "zer", Prenom = "tozé", DateNaissance = new DateTime(1980, 1, 2) });
+            
+            List<Employe> l2 = new List<Employe>();
+            l2.Add(new Employe { Nom = "abadi", Prenom = "ihab", DateNaissance = new DateTime(1987, 09, 11) });
+            l2.Add(new Employe { Nom = "qdqsdqsd", Prenom = "qsdsq", DateNaissance = new DateTime(1987, 09, 11) });
+            collection[new DateTime(1987, 09, 11)] = l2;
+            foreach (Employe e in collection[new DateTime(1987, 09, 11)])
+            {
+                Console.WriteLine(e.Nom);
             }
             Console.ReadLine();
         }
