@@ -4,7 +4,7 @@ using System.Text;
 
 namespace coursCSharp.Classes
 {
-    public class Calcule
+    public class Calcule : ICalcule
     {
         //public static void UpdateVariable(ref int a)
         //{
@@ -34,13 +34,24 @@ namespace coursCSharp.Classes
         //    return a + b + c;
         //}
 
-        public static double Addition(string message, params int[] parametre)
+        public double Addition(string message, params int[] parametre)
         {
             Console.WriteLine(message);
             double s = 0;
             foreach(int a in parametre)
             {
                 s += a;
+            }
+            return s;
+        }
+
+        public double Soustraction(string message, params int[] parametre)
+        {
+            Console.WriteLine(message);
+            double s = (parametre.Length > 0) ? parametre[0] : 0;
+            for(int i = 1; i < parametre.Length; i++)
+            {
+                s -= parametre[i];
             }
             return s;
         }
