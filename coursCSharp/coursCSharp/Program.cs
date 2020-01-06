@@ -196,11 +196,47 @@ namespace coursCSharp
             //reader.Dispose();
             //List<Salarie> maliste = JsonConvert.DeserializeObject<List<Salarie>>(json);
             #endregion
-
+            #region correction hotel
             //Correction Hotel
-            Console.OutputEncoding = Encoding.UTF8;
-            IHMHotel ih = new IHMHotel();
-            ih.Start();
+            //Console.OutputEncoding = Encoding.UTF8;
+            //IHMHotel ih = new IHMHotel();
+            //ih.Start();
+            #endregion
+
+            //Syntaxe avancée c#
+            //int a;
+            //rendre a nullable
+            //int? a = null;
+            //////int b;
+            //////if(a == null)
+            //////{
+            //////    b = 10;
+            //////}
+            //////else
+            //////{
+            //////    b = (int)a;
+            //////}
+
+            ////int b = a ?? 10;
+            ////Employe e = new Employe { Nom = "toto", Prenom = "tata" };
+            //Employe e = null;
+            //string nom;
+            //nom = e?.Nom;
+            ////if (e != null)
+            ////{
+            ////    nom = e.Nom;
+            ////}
+            ////else
+            ////{
+            ////    nom = null;
+            ////}
+            Point p1 = new Point { X = 10, Y = 20 };
+            Point p2 = new Point { X = 30, Y = 40 };
+            Point p = p1 + p2;
+            if(p1 == p2)
+            {
+
+            }
             Console.ReadLine();
         }
     }

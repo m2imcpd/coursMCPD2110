@@ -47,9 +47,11 @@ namespace coursCSharp.Classes
             Prenom = p;
             Telephone = t;
         }
-        public override string ToString()
-        {
-            return "Numero : " + Numero + " Nom : " + Nom + " Prénom : " + Prenom + " Téléphone : " + Telephone;
-        }
+        //public override string ToString()
+        //{
+        //    return "Numero : " + Numero + " Nom : " + Nom + " Prénom : " + Prenom + " Téléphone : " + Telephone;
+        //}
+        //public override string ToString() => "Numero : " + Numero + " Nom : " + Nom + " Prénom : " + Prenom + " Téléphone : " + Telephone;
+        public override string ToString() => $"Numero : {Numero}  Nom : {Nom} Prénom :  {Prenom}  Téléphone :  {Telephone}";
     }
 }
