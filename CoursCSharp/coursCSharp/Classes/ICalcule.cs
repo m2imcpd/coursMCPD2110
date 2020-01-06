@@ -4,9 +4,9 @@ using System.Text;
 
 namespace coursCSharp.Classes
 {
-    public interface ICalcule
+    public interface ICalcule<T> where T : IComparable
     {
-        double Addition(string message, params int[] parametre);
-        double Soustraction(string message, params int[] parametre);
+        T Addition(string message, params int[] parametre);
+        T Soustraction(string message, params int[] parametre);
     }
 }

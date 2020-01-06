@@ -6,7 +6,7 @@ namespace coursCSharp.Classes
 {
     public class IHMCalcule
     {
-        public static void Start(ICalcule calcule)
+        public static void Start(ICalcule<double> calcule)
         {
            Console.WriteLine(calcule.Addition("coucou", 10, 30));
         }

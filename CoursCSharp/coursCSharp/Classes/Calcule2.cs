@@ -4,7 +4,7 @@ using System.Text;
 
 namespace coursCSharp.Classes
 {
-    public class Calcule2 : ICalcule
+    public class Calcule2 : ICalcule<double>
     {
         public double Addition(string message, params int[] parametre)
         {

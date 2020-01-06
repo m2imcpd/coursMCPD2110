@@ -4,7 +4,7 @@ using System.Text;
 
 namespace coursCSharp.Classes
 {
-    public class Calcule : ICalcule
+    public class Calcule : ICalcule<double>
     {
         //public static void UpdateVariable(ref int a)
         //{

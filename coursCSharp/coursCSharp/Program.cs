@@ -257,8 +257,9 @@ namespace coursCSharp
             //liste.AddToAll(30);
             //List<string> listeString = new List<string>() { "toto", "tata", "titi", "minet" };
             //listeString.Shuffle();
-
-            ICalcule monCalcule = new Calcule2();
+            //double a = 10;
+            //Double aBis = new Double()
+            ICalcule<double> monCalcule = new Calcule2();
 
             IHMCalcule.Start(monCalcule);
             
