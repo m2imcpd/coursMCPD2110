@@ -10,6 +10,9 @@ namespace coursCSharp.Classes
         private int taille;
         private int compteur;
 
+        public event Action PilePleine;
+
+
         public Pile(int t)
         {
             taille = t;
@@ -27,6 +30,7 @@ namespace coursCSharp.Classes
             }
             else
             {
+                PilePleine?.Invoke();
                 return false;
             }
             
@@ -55,5 +59,7 @@ namespace coursCSharp.Classes
                 return default(T);
             }
         }
+
+        
     }
 }

@@ -293,42 +293,49 @@ namespace coursCSharp
             //calcule.MonOperation -= Calcule.Addition;
             ////calcule.MonOperation = null;
             //calcule.Calculatrice(100, 300);
-            Voiture v = new Voiture { Prix = 10000, Annee = 2010 };
-            v.Promotion += (p) =>
-            {
-                Console.WriteLine("Sms promotion : " + p);
-            };
-            v.Promotion += MailPromotion;
-            string choix;
-            do
-            {
-                Console.WriteLine("Promotion ? : ");
-                choix = Console.ReadLine();
-                if(choix == "oui")
-                {
-                    Console.WriteLine("Nouveau prix : ");
-                    decimal prix = Convert.ToDecimal(Console.ReadLine());
-                    v.ChangerPrix(prix);
-                }
-            }
-            while (choix != "0");
+            //    Voiture v = new Voiture { Prix = 10000, Annee = 2010 };
+            //    v.Promotion += (p) =>
+            //    {
+            //        Console.WriteLine("Sms promotion : " + p);
+            //    };
+            //    v.Promotion += MailPromotion;
+            //    string choix;
+            //    do
+            //    {
+            //        Console.WriteLine("Promotion ? : ");
+            //        choix = Console.ReadLine();
+            //        if(choix == "oui")
+            //        {
+            //            Console.WriteLine("Nouveau prix : ");
+            //            decimal prix = Convert.ToDecimal(Console.ReadLine());
+            //            v.ChangerPrix(prix);
+            //        }
+            //    }
+            //    while (choix != "0");
+            Pile<int> maPile = new Pile<int>(3);
+            maPile.PilePleine += () => { Console.WriteLine("Pile Pleine"); };
+            maPile.Empiler(10);
+            maPile.Empiler(20);
+            maPile.Empiler(30);
+            maPile.Empiler(40);
+
             Console.ReadLine();
         }
 
 
-        public static void MailPromotion(decimal p)
-        {
-            Console.WriteLine("Mail promotion : " + p);
-        }
-        public static void Afficher(string message,Action<string> methodeAffichage)
-        {
-            methodeAffichage(message);
-        }
+        //public static void MailPromotion(decimal p)
+        //{
+        //    Console.WriteLine("Mail promotion : " + p);
+        //}
+        //public static void Afficher(string message,Action<string> methodeAffichage)
+        //{
+        //    methodeAffichage(message);
+        //}
 
-        public static double Multiplication(double a, double b)
-        {
-            Console.WriteLine(a * b);
-            return a * b;
-        }
+        //public static double Multiplication(double a, double b)
+        //{
+        //    Console.WriteLine(a * b);
+        //    return a * b;
+        //}
     }
 }
