@@ -34,6 +34,10 @@ namespace coursCSharp.Classes
         //    return a + b + c;
         //}
         public delegate double Operation(double a, double b);
+        private Operation monOperation;
+
+        public Operation MonOperation { get => monOperation; set => monOperation = value; }
+
         public double Addition(string message, params int[] parametre)
         {
             Console.WriteLine(message);
@@ -57,6 +61,7 @@ namespace coursCSharp.Classes
         }
         public static double Addition(double a, double b)
         {
+            Console.WriteLine(a + b);
             return a + b;
         }
 
@@ -66,7 +71,13 @@ namespace coursCSharp.Classes
         }
         public static double Calculatrice(double a, double b, Func<double, double, double> operation)
         {
-            return operation(a,b);
+            return operation(a, b);
         }
+
+        public void Calculatrice(double a, double b)
+        {
+            Console.WriteLine(MonOperation(a, b)); 
+        }
+
     }
 }

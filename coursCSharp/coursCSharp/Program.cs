@@ -279,12 +279,20 @@ namespace coursCSharp
 
             //Cours delegate
 
-            Console.WriteLine(Calcule.Calculatrice(10, 30, Calcule.Addition));
-            Console.WriteLine(Calcule.Calculatrice(10, 30, Calcule.Souctraction));
-            Console.WriteLine(Calcule.Calculatrice(10, 30, Multiplication));
-            Console.WriteLine(Calcule.Calculatrice(10, 30, (a, b) => { return a / b; }));
-            Afficher("Mon message", (m) => { Console.WriteLine("Methode 1 " + m); });
-            Afficher("Mon message", (m) => { Console.WriteLine("Methode 2 " + m); });
+            //Console.WriteLine(Calcule.Calculatrice(10, 30, Calcule.Addition));
+            //Console.WriteLine(Calcule.Calculatrice(10, 30, Calcule.Souctraction));
+            //Console.WriteLine(Calcule.Calculatrice(10, 30, Multiplication));
+            //Console.WriteLine(Calcule.Calculatrice(10, 30, (a, b) => { return a / b; }));
+            //Afficher("Mon message", (m) => { Console.WriteLine("Methode 1 " + m); });
+            //Afficher("Mon message", (m) => { Console.WriteLine("Methode 2 " + m); });
+            Calcule calcule = new Calcule();
+            calcule.MonOperation = Multiplication;
+            calcule.MonOperation += Calcule.Addition;
+            calcule.MonOperation += (a, b) => { return a / b; };
+            calcule.Calculatrice(10, 30);
+            calcule.MonOperation -= Calcule.Addition;
+            //calcule.MonOperation = null;
+            calcule.Calculatrice(100, 300);
             Console.ReadLine();
         }
 
@@ -295,6 +303,7 @@ namespace coursCSharp
 
         public static double Multiplication(double a, double b)
         {
+            Console.WriteLine(a * b);
             return a * b;
         }
     }
