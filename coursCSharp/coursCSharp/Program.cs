@@ -263,19 +263,39 @@ namespace coursCSharp
 
             //IHMCalcule.Start(monCalcule);
             #endregion
-
+            #region correction exercice interface
             //Correction Ex 1 Interface 
-            List<IAnimal> liste = new List<IAnimal>();
-            liste.Add(new Chien { Nom = "c1" });
-            liste.Add(new Chien { Nom = "c2" });
-            liste.Add(new Chat { Nom = "chat1" });
-            liste.Add(new Lapin { Nom = "lapin1" });
-            foreach(IAnimal a in liste)
-            {
-                Console.WriteLine(a.GetType());
-                a.Crier();
-            }
+            //List<IAnimal> liste = new List<IAnimal>();
+            //liste.Add(new Chien { Nom = "c1" });
+            //liste.Add(new Chien { Nom = "c2" });
+            //liste.Add(new Chat { Nom = "chat1" });
+            //liste.Add(new Lapin { Nom = "lapin1" });
+            //foreach(IAnimal a in liste)
+            //{
+            //    Console.WriteLine(a.GetType());
+            //    a.Crier();
+            //}
+            #endregion
+
+            //Cours delegate
+
+            Console.WriteLine(Calcule.Calculatrice(10, 30, Calcule.Addition));
+            Console.WriteLine(Calcule.Calculatrice(10, 30, Calcule.Souctraction));
+            Console.WriteLine(Calcule.Calculatrice(10, 30, Multiplication));
+            Console.WriteLine(Calcule.Calculatrice(10, 30, (a, b) => { return a / b; }));
+            Afficher("Mon message", (m) => { Console.WriteLine("Methode 1 " + m); });
+            Afficher("Mon message", (m) => { Console.WriteLine("Methode 2 " + m); });
             Console.ReadLine();
+        }
+
+        public static void Afficher(string message,Action<string> methodeAffichage)
+        {
+            methodeAffichage(message);
+        }
+
+        public static double Multiplication(double a, double b)
+        {
+            return a * b;
         }
     }
 }
