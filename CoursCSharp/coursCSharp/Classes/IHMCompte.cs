@@ -130,10 +130,10 @@ namespace coursCSharp.Classes
                 {
                     Console.WriteLine(compte);
                 }
-                else
-                {
-                    Console.WriteLine("Error solde");
-                }
+                //else
+                //{
+                //    Console.WriteLine("Error solde");
+                //}
                 
             }
             else
@@ -182,7 +182,7 @@ namespace coursCSharp.Classes
                     }
                 }
             }
-
+            compte.SoldeInsuffisant += (c) => { Console.WriteLine($"Solde insuffisant numero compte {c.Numero} Solde : {c.Solde}"); };
             return compte;
         }
 

@@ -312,12 +312,20 @@ namespace coursCSharp
             //        }
             //    }
             //    while (choix != "0");
-            Pile<int> maPile = new Pile<int>(3);
-            maPile.PilePleine += () => { Console.WriteLine("Pile Pleine"); };
-            maPile.Empiler(10);
-            maPile.Empiler(20);
-            maPile.Empiler(30);
-            maPile.Empiler(40);
+            //Pile<int> maPile = new Pile<int>(3);
+            //maPile.PilePleine += () => { Console.WriteLine("Pile Pleine"); };
+            //maPile.Empiler(10);
+            //maPile.Empiler(20);
+            //maPile.Empiler(30);
+            //maPile.Empiler(40);
+            //List<int> liste = new List<int>() { 10,20, 35};
+            //int a = liste.Find(x => x == 10);
+            List<Personne> liste = new List<Personne>();
+            liste.Add(new Employe { Nom = "tata" });
+            liste.Add(new Employe { Nom = "titi" });
+
+            Personne p = liste.Find(x => x.Nom == "tata");
+            List<Personne> lp = liste.FindAll(x => x.Nom == "tata");
 
             Console.ReadLine();
         }

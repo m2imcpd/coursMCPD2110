@@ -12,7 +12,8 @@ namespace coursCSharp.Classes
         private Operation[] operations;
         protected decimal solde;
         protected static int cle = 0;
-
+        public event Action<Compte> SoldeInsuffisant;
+        public decimal Solde { get => solde; }
         public int Numero { get => numero; set => numero = value; }
         public Client Client { get => client; set => client = value; }
         public Operation[] Operations { get => operations; set => operations = value; }
@@ -53,6 +54,9 @@ namespace coursCSharp.Classes
                 cle++;
                 solde -= montant;
                 result = true;
+            }else
+            {
+                SoldeInsuffisant?.Invoke(this);
             }
             return result;
         }
