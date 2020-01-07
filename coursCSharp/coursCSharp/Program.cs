@@ -285,17 +285,41 @@ namespace coursCSharp
             //Console.WriteLine(Calcule.Calculatrice(10, 30, (a, b) => { return a / b; }));
             //Afficher("Mon message", (m) => { Console.WriteLine("Methode 1 " + m); });
             //Afficher("Mon message", (m) => { Console.WriteLine("Methode 2 " + m); });
-            Calcule calcule = new Calcule();
-            calcule.MonOperation = Multiplication;
-            calcule.MonOperation += Calcule.Addition;
-            calcule.MonOperation += (a, b) => { return a / b; };
-            calcule.Calculatrice(10, 30);
-            calcule.MonOperation -= Calcule.Addition;
-            //calcule.MonOperation = null;
-            calcule.Calculatrice(100, 300);
+            //Calcule calcule = new Calcule();
+            //calcule.MonOperation = Multiplication;
+            //calcule.MonOperation += Calcule.Addition;
+            //calcule.MonOperation += (a, b) => { return a / b; };
+            //calcule.Calculatrice(10, 30);
+            //calcule.MonOperation -= Calcule.Addition;
+            ////calcule.MonOperation = null;
+            //calcule.Calculatrice(100, 300);
+            Voiture v = new Voiture { Prix = 10000, Annee = 2010 };
+            v.Promotion += (p) =>
+            {
+                Console.WriteLine("Sms promotion : " + p);
+            };
+            v.Promotion += MailPromotion;
+            string choix;
+            do
+            {
+                Console.WriteLine("Promotion ? : ");
+                choix = Console.ReadLine();
+                if(choix == "oui")
+                {
+                    Console.WriteLine("Nouveau prix : ");
+                    decimal prix = Convert.ToDecimal(Console.ReadLine());
+                    v.ChangerPrix(prix);
+                }
+            }
+            while (choix != "0");
             Console.ReadLine();
         }
 
+
+        public static void MailPromotion(decimal p)
+        {
+            Console.WriteLine("Mail promotion : " + p);
+        }
         public static void Afficher(string message,Action<string> methodeAffichage)
         {
             methodeAffichage(message);

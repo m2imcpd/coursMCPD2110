@@ -6,6 +6,8 @@ namespace coursCSharp.Classes
 {
     public class Voiture : Vehicule
     {
+        public event Action<decimal> Promotion;
+
         public Voiture() : base()
         {
 
@@ -24,6 +26,16 @@ namespace coursCSharp.Classes
         public override void Accelerer()
         {
             Console.WriteLine("Voiture qui accelere");
+        }
+
+        public void ChangerPrix(decimal newPrice)
+        {
+            if(newPrice < Prix)
+            {
+                Promotion?.Invoke(newPrice);
+            }
+            Prix = newPrice;
+
         }
     }
 }
