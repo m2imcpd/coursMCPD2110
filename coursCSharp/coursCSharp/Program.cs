@@ -202,7 +202,7 @@ namespace coursCSharp
             //IHMHotel ih = new IHMHotel();
             //ih.Start();
             #endregion
-            #region cours syntaxe c# et indexeur
+            #region cours syntaxe c#, indexeur et extension méthodes
             //Syntaxe avancée c#
             //int a;
             //rendre a nullable
@@ -251,7 +251,7 @@ namespace coursCSharp
             //{
             //    Console.WriteLine(e.Nom);
             //}
-            #endregion
+
             //List<int> liste = new List<int>() { 10, 34, 44, 55 };
             //liste.Shuffle();
             //liste.AddToAll(30);
@@ -259,10 +259,22 @@ namespace coursCSharp
             //listeString.Shuffle();
             //double a = 10;
             //Double aBis = new Double()
-            ICalcule<double> monCalcule = new Calcule2();
+            //ICalcule<double> monCalcule = new Calcule2();
 
-            IHMCalcule.Start(monCalcule);
-            
+            //IHMCalcule.Start(monCalcule);
+            #endregion
+
+            //Correction Ex 1 Interface 
+            List<IAnimal> liste = new List<IAnimal>();
+            liste.Add(new Chien { Nom = "c1" });
+            liste.Add(new Chien { Nom = "c2" });
+            liste.Add(new Chat { Nom = "chat1" });
+            liste.Add(new Lapin { Nom = "lapin1" });
+            foreach(IAnimal a in liste)
+            {
+                Console.WriteLine(a.GetType());
+                a.Crier();
+            }
             Console.ReadLine();
         }
     }
