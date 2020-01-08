@@ -8,7 +8,14 @@ namespace coursCSharp.Classes
     {
         private decimal salaire;
 
-        public decimal Salaire { get => salaire; set => salaire = value; }
+        public decimal Salaire { get => salaire; set
+            {
+                if (value >= 0)
+                    salaire = value;
+                else
+                    throw new SalaireException();
+            }
+        }
 
         public Employe()
         {

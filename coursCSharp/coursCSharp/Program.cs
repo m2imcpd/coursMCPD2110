@@ -276,7 +276,7 @@ namespace coursCSharp
             //    a.Crier();
             //}
             #endregion
-
+            #region cours delegate, expression lambda, event
             //Cours delegate
 
             //Console.WriteLine(Calcule.Calculatrice(10, 30, Calcule.Addition));
@@ -320,12 +320,52 @@ namespace coursCSharp
             //maPile.Empiler(40);
             //List<int> liste = new List<int>() { 10,20, 35};
             //int a = liste.Find(x => x == 10);
-            List<Personne> liste = new List<Personne>();
-            liste.Add(new Employe { Nom = "tata" });
-            liste.Add(new Employe { Nom = "titi" });
+            //List<Personne> liste = new List<Personne>();
+            //liste.Add(new Employe { Nom = "tata" });
+            //liste.Add(new Employe { Nom = "titi" });
 
-            Personne p = liste.Find(x => x.Nom == "tata");
-            List<Personne> lp = liste.FindAll(x => x.Nom == "tata");
+            //Personne p = liste.Find(x => x.Nom == "tata");
+            //List<Personne> lp = liste.FindAll(x => x.Nom == "tata");
+
+            #endregion
+            //cours Gestion des exceptions
+
+            //Console.WriteLine("Saisir un nombre : ");
+            //try
+            //{
+            //    int a = Convert.ToInt32(Console.ReadLine());
+            //    Console.WriteLine(a);
+            //}
+            //catch(FormatException e)
+            //{
+
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine($"Erreur de saisie {e.Message}");
+            //    Console.WriteLine($"Erreur de saisie {e.GetType()}");
+            //    //if(e.GetType() == typeof(FormatException))
+            //    //{
+            //    //    Console.WriteLine("Merci de saisir un nombre");
+            //    //}
+            //}finally
+            //{
+            //    Console.WriteLine("toujours executé");
+            //}
+
+            //Employe e = new Employe();
+            //try
+            //{
+            //    e.Salaire = -30;
+            //}catch(Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+            Console.WriteLine("Saisir un nombre");
+            int a;
+            Int32.TryParse(Console.ReadLine(), out a);
+            Console.WriteLine(a);
 
             Console.ReadLine();
         }
