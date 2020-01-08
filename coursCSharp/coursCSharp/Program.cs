@@ -368,18 +368,27 @@ namespace coursCSharp
             //Int32.TryParse(Console.ReadLine(), out a);
             //Console.WriteLine(a);
 
-            string chaine = "06 06 06 06 00";
+            string chaine = "ihab@utopios.net toto@tata.fr bonjour tout le monde";
             //string pattern = @"^t";
             //string pattern = @"^[a-zA-Z]{4,}$";
             //string pattern = @"^0[1-9]{1}((-[0-9]{2}){4}|(\.[0-9]{2}){4})$";
-            string pattern = @"^0\d{1}((-\d{2}){4}|(\.\d{2}){4}|(\s\d{2}){4})$";
+            //string pattern = @"^0\d{1}((-\d{2}){4}|(\.\d{2}){4}|(\s\d{2}){4})$";
+            string pattern = @"[\w_.-]+@[a-zA-Z0-9_-]+\.[a-z]{2,4}";
+
             //[0-9] => \d
             //[^0-9] => tout sauf 0 à 9 => \D
             //[a-zA-Z0-9] => \w
             //[^a-zA-Z0-9] => \W
             //\s => espace
-            bool match = Regex.IsMatch(chaine, pattern);
-
+            //bool match = Regex.IsMatch(chaine, pattern);
+            string[] emails = Regex.Split(chaine, @"\s");
+            //Regex.replace
+            //Console.WriteLine(Regex.Replace(chaine, pattern, "***"));
+            MatchCollection ocs = Regex.Matches(chaine, pattern);
+            foreach(Match m in ocs)
+            {
+                Console.WriteLine(m.Value);
+            }
             Console.ReadLine();
         }
 
