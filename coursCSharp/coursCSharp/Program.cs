@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace coursCSharp
 {
@@ -362,10 +363,22 @@ namespace coursCSharp
             //    Console.WriteLine(ex.Message);
             //}
 
-            Console.WriteLine("Saisir un nombre");
-            int a;
-            Int32.TryParse(Console.ReadLine(), out a);
-            Console.WriteLine(a);
+            //Console.WriteLine("Saisir un nombre");
+            //int a;
+            //Int32.TryParse(Console.ReadLine(), out a);
+            //Console.WriteLine(a);
+
+            string chaine = "06 06 06 06 00";
+            //string pattern = @"^t";
+            //string pattern = @"^[a-zA-Z]{4,}$";
+            //string pattern = @"^0[1-9]{1}((-[0-9]{2}){4}|(\.[0-9]{2}){4})$";
+            string pattern = @"^0\d{1}((-\d{2}){4}|(\.\d{2}){4}|(\s\d{2}){4})$";
+            //[0-9] => \d
+            //[^0-9] => tout sauf 0 à 9 => \D
+            //[a-zA-Z0-9] => \w
+            //[^a-zA-Z0-9] => \W
+            //\s => espace
+            bool match = Regex.IsMatch(chaine, pattern);
 
             Console.ReadLine();
         }
