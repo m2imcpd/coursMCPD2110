@@ -5,6 +5,8 @@ using System.Text;
 using System.IO;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace coursCSharp
 {
@@ -329,6 +331,7 @@ namespace coursCSharp
             //List<Personne> lp = liste.FindAll(x => x.Nom == "tata");
 
             #endregion
+            #region cours gestion des exceptions et Regex
             //cours Gestion des exceptions
 
             //Console.WriteLine("Saisir un nombre : ");
@@ -368,12 +371,12 @@ namespace coursCSharp
             //Int32.TryParse(Console.ReadLine(), out a);
             //Console.WriteLine(a);
 
-            string chaine = "ihab@utopios.net toto@tata.fr bonjour tout le monde";
+            //string chaine = "ihab@utopios.net toto@tata.fr bonjour tout le monde";
             //string pattern = @"^t";
             //string pattern = @"^[a-zA-Z]{4,}$";
             //string pattern = @"^0[1-9]{1}((-[0-9]{2}){4}|(\.[0-9]{2}){4})$";
             //string pattern = @"^0\d{1}((-\d{2}){4}|(\.\d{2}){4}|(\s\d{2}){4})$";
-            string pattern = @"[\w_.-]+@[a-zA-Z0-9_-]+\.[a-z]{2,4}";
+            //string pattern = @"[\w_.-]+@[a-zA-Z0-9_-]+\.[a-z]{2,4}";
 
             //[0-9] => \d
             //[^0-9] => tout sauf 0 à 9 => \D
@@ -381,17 +384,61 @@ namespace coursCSharp
             //[^a-zA-Z0-9] => \W
             //\s => espace
             //bool match = Regex.IsMatch(chaine, pattern);
-            string[] emails = Regex.Split(chaine, @"\s");
+            //string[] emails = Regex.Split(chaine, @"\s");
             //Regex.replace
             //Console.WriteLine(Regex.Replace(chaine, pattern, "***"));
-            MatchCollection ocs = Regex.Matches(chaine, pattern);
-            foreach(Match m in ocs)
-            {
-                Console.WriteLine(m.Value);
-            }
+            //MatchCollection ocs = Regex.Matches(chaine, pattern);
+            //foreach(Match m in ocs)
+            //{
+            //    Console.WriteLine(m.Value);
+            //}
+            #endregion
+
+            //Cours multithreading
+
+            //Création d'un thread
+
+            //Thread t1 = new Thread(() => {
+            //    for(int i=1; i< 1000; i++)
+            //        Console.WriteLine("Thread 1");
+            //});
+            //Thread t2 = new Thread(() => {
+            //    for (int i = 1; i < 1000; i++)
+            //        Console.WriteLine("Thread 2");
+            //});
+            //t1.Start();
+            //t2.Start();
+
+            //Thread t1 = new Thread(Work);
+            //t1.Start("A");
+            //Thread t2 = new Thread(Work);
+            //t2.Start("B");
+
+            //Task t1 = new Task(() => Work("A"));
+            //Task t2 = new Task(() => Work("B"));
+            //t1.Start();
+            //t2.Start();
+            Task<string> tString = new Task<string>(() => { return WorkString(); });
+            //Fin de l'execution de la task
+            tString.Start();
+            tString.Wait();
+            //Si la task a reussi son execution
+            if(tString.Status == TaskStatus.RanToCompletion)
+                Console.WriteLine(tString.Result);
             Console.ReadLine();
         }
 
+        public static string WorkString()
+        {
+            return "Bonjour tout le monde";
+        }
+        public static void Work(object p)
+        {
+            for(int i=1; i < 1000; i++)
+            {
+                Console.WriteLine((string)p);
+            }
+        }
 
         //public static void MailPromotion(decimal p)
         //{
