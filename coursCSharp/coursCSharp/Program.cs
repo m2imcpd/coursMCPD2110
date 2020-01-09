@@ -12,6 +12,9 @@ namespace coursCSharp
 {
     class Program
     {
+        static object _lock = new object();
+        static Mutex mutex1 = new Mutex();
+        static SemaphoreSlim semaphore = new SemaphoreSlim(3);
         static void Main(string[] args)
         {
             #region cours héritage
@@ -418,26 +421,82 @@ namespace coursCSharp
             //Task t2 = new Task(() => Work("B"));
             //t1.Start();
             //t2.Start();
-            Task<string> tString = new Task<string>(() => { return WorkString(); });
-            //Fin de l'execution de la task
-            tString.Start();
-            tString.Wait();
-            //Si la task a reussi son execution
-            if(tString.Status == TaskStatus.RanToCompletion)
-                Console.WriteLine(tString.Result);
+
+            //Task<string> tString = new Task<string>(() => { return WorkString(); });
+            ////Fin de l'execution de la task
+            //tString.Start();
+            //tString.Wait();
+            ////Si la task a reussi son execution
+            //if(tString.Status == TaskStatus.RanToCompletion)
+            //    Console.WriteLine(tString.Result);
+
+            //Exemple de deallock
+
+            //object lock1 = new object();
+            //object lock2 = new object();
+            //Thread t = new Thread(() =>
+            //{
+            //    lock(lock1)
+            //    {
+            //        Thread.Sleep(3000);
+            //        lock (lock2) {
+            //            Console.WriteLine("T lock 2");
+            //        }
+            //    }
+            //});
+            //t.Start();
+            //lock(lock2)
+            //{
+            //    Thread.Sleep(3000);
+            //    lock(lock1)
+            //    {
+            //        Console.WriteLine("TInitial lock 1");
+            //    }
+            //}
+
+            //Exemple semaphore;
+            Console.OutputEncoding = Encoding.UTF8;
+            for(int i = 1; i <= 10; i++)
+            {
+                Thread t = new Thread(WorkingWithSemaphore);
+                t.Start(i.ToString());
+            }
             Console.ReadLine();
         }
-
+        public static void WorkingWithSemaphore(object o)
+        {
+            semaphore.Wait();
+            Console.WriteLine("Thread N° " + (string)o + " Start");
+            Console.WriteLine("Thread N° " + (string)o + " Working");
+            Thread.Sleep(3000);
+            Console.WriteLine("Thread N° " + (string)o + " End");
+            semaphore.Release();
+        }
         public static string WorkString()
         {
             return "Bonjour tout le monde";
         }
+        //public static void Work(object p)
+        //{
+        //    lock(_lock)
+        //    {
+        //        for (int i = 1; i < 1000; i++)
+        //        {
+        //            Console.WriteLine((string)p);
+        //        }
+        //    }
+            
+        //}
+
         public static void Work(object p)
         {
-            for(int i=1; i < 1000; i++)
-            {
-                Console.WriteLine((string)p);
-            }
+            mutex1.WaitOne();
+                for (int i = 1; i < 1000; i++)
+                {
+                    Console.WriteLine((string)p);
+                }
+            mutex1.ReleaseMutex();
+
         }
 
         //public static void MailPromotion(decimal p)
