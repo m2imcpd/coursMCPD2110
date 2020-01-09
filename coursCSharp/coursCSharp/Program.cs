@@ -396,7 +396,7 @@ namespace coursCSharp
             //    Console.WriteLine(m.Value);
             //}
             #endregion
-
+            #region cours multithreading, task , mutex, semaphore
             //Cours multithreading
 
             //Création d'un thread
@@ -455,12 +455,14 @@ namespace coursCSharp
             //}
 
             //Exemple semaphore;
-            Console.OutputEncoding = Encoding.UTF8;
-            for(int i = 1; i <= 10; i++)
-            {
-                Thread t = new Thread(WorkingWithSemaphore);
-                t.Start(i.ToString());
-            }
+            //Console.OutputEncoding = Encoding.UTF8;
+            //for(int i = 1; i <= 10; i++)
+            //{
+            //    Thread t = new Thread(WorkingWithSemaphore);
+            //    t.Start(i.ToString());
+            //}
+#endregion
+
             Console.ReadLine();
         }
         public static void WorkingWithSemaphore(object o)
