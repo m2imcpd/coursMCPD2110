@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CorrectionMediatheque.Classes
 {
-    public abstract class Oeuvre
+    public class Oeuvre
     {
         private string titre;
         private string autheur;

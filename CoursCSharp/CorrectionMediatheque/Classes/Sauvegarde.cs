@@ -9,24 +9,34 @@ namespace CorrectionMediatheque.Classes
 {
     public class Sauvegarde
     {
+        private static object _lockRead = new object();
+        private static object _lockWrite = new object();
         public static void SaveAdherents(List<Adherent> Adherents)
         {
-            StreamWriter writer = new StreamWriter(File.Open(Configuration.PathAdherents, FileMode.Create));
-            string json = JsonConvert.SerializeObject(Adherents);
-            writer.WriteLine(json);
-            writer.Dispose();
+            lock(_lockWrite)
+            {
+                StreamWriter writer = new StreamWriter(File.Open(Configuration.PathAdherents, FileMode.Create));
+                string json = JsonConvert.SerializeObject(Adherents);
+                writer.WriteLine(json);
+                writer.Dispose();
+            }
+            
         }
 
         public static List<Adherent> ReadAdherents()
         {
-            List<Adherent> liste = new List<Adherent>();
-            if (File.Exists(Configuration.PathAdherents))
+            lock(_lockRead)
             {
-                StreamReader reader = new StreamReader(File.Open(Configuration.PathAdherents, FileMode.Open));
-                liste = JsonConvert.DeserializeObject<List<Adherent>>(reader.ReadToEnd());
-                reader.Dispose();
+                List<Adherent> liste = new List<Adherent>();
+                if (File.Exists(Configuration.PathAdherents))
+                {
+                    StreamReader reader = new StreamReader(File.Open(Configuration.PathAdherents, FileMode.Open));
+                    liste = JsonConvert.DeserializeObject<List<Adherent>>(reader.ReadToEnd());
+                    reader.Dispose();
+                }
+                return liste;
             }
-            return liste;
+            
         }
 
 
@@ -43,6 +53,39 @@ namespace CorrectionMediatheque.Classes
             Task t = new Task(() => SaveAdherents(Adherents));
             t.Start();
             return t;
+        }
+
+        public static List<Oeuvre> ReadOeuvres()
+        {
+            lock (_lockRead)
+            {
+                List<Oeuvre> liste = new List<Oeuvre>();
+                if (File.Exists(Configuration.PathBD))
+                {
+                    StreamReader reader = new StreamReader(File.Open(Configuration.PathBD, FileMode.Open));
+                    liste.AddRange(JsonConvert.DeserializeObject<List<Oeuvre>>(reader.ReadToEnd()));
+                    reader.Dispose();
+                }
+                if (File.Exists(Configuration.PathDVD))
+                {
+                    StreamReader reader = new StreamReader(File.Open(Configuration.PathDVD, FileMode.Open));
+                    liste.AddRange(JsonConvert.DeserializeObject<List<Oeuvre>>(reader.ReadToEnd()));
+                    reader.Dispose();
+                }
+                if (File.Exists(Configuration.PathCD))
+                {
+                    StreamReader reader = new StreamReader(File.Open(Configuration.PathCD, FileMode.Open));
+                    liste.AddRange(JsonConvert.DeserializeObject<List<Oeuvre>>(reader.ReadToEnd()));
+                    reader.Dispose();
+                }
+                if (File.Exists(Configuration.PathLivre))
+                {
+                    StreamReader reader = new StreamReader(File.Open(Configuration.PathLivre, FileMode.Open));
+                    liste.AddRange(JsonConvert.DeserializeObject<List<Oeuvre>>(reader.ReadToEnd()));
+                    reader.Dispose();
+                }
+                return liste;
+            }
         }
     }
 }
