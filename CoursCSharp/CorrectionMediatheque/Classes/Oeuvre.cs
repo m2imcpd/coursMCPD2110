@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CorrectionMediatheque.Classes
 {
-    public class Oeuvre
+    public abstract class Oeuvre
     {
         private string titre;
         private string autheur;
@@ -18,7 +18,7 @@ namespace CorrectionMediatheque.Classes
 
         public Oeuvre()
         {
-
+            Status = Statut.Disponible;
         }
     }
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CorrectionMediatheque.Classes
 {
-    public class Livre
+    public class Livre :Oeuvre
     {
         private int nombrePage;
 

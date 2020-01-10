@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CorrectionMediatheque.Classes
 {
-    public class DVD
+    public class DVD : Oeuvre
     {
         private double duree;
 

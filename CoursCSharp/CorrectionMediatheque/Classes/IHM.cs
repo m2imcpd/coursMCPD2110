@@ -25,12 +25,25 @@ namespace CorrectionMediatheque.Classes
                     case "1":
                         AddAdherent();
                         break;
+                    case "2":
+                        AddOeuvre();
+                        break;
                 }
             }while(choix != "0");
         }
         private void Menu()
         {
             Console.WriteLine("1--Ajouter un adherent");
+            Console.WriteLine("2--Ajouter une Oeuvre");
+            Console.WriteLine("3--Emprunter une Oeuvre");
+        }
+
+        private void MenuOeuvre()
+        {
+            Console.WriteLine("1---Livre");
+            Console.WriteLine("2---BD");
+            Console.WriteLine("3---DVD");
+            Console.WriteLine("4---CD");
         }
 
         private void AddAdherent()
@@ -92,6 +105,38 @@ namespace CorrectionMediatheque.Classes
                 Console.WriteLine("Adherent existe");
             }
             
+        }
+
+        private void AddOeuvre()
+        {
+            Oeuvre oeuvre;
+            Console.Write("Titre de l'oeuvre : ");
+            string titre = Console.ReadLine();
+            Console.Write("Autheur de l'oeuvre : ");
+            string autheur = Console.ReadLine();
+            Console.Write("Date de sortie (dd-mm-yyyy): ");
+            DateTime dateSortie;
+            DateTime.TryParse(Console.ReadLine(), out dateSortie);
+            Console.Write("Type de l'oeuvre");
+            MenuOeuvre();
+            string choix = Console.ReadLine();
+            switch(choix)
+            {
+                case "1":
+                    Console.Write("Nombre de page : ");
+                    int nombrePage;
+                    Int32.TryParse(Console.ReadLine(), out nombrePage);
+                    oeuvre = new Livre() { Titre = titre, Autheur= autheur, DateSortie =dateSortie, NombrePage = nombrePage};
+                    mediatheque.AddOeuvre(oeuvre);
+                    break;
+                case "2":
+                    Console.Write("Nombre de dessin : ");
+                    int nombreDeDessin;
+                    Int32.TryParse(Console.ReadLine(), out nombreDeDessin);
+                    oeuvre = new BD { Titre = titre, Autheur = autheur, DateSortie = dateSortie, NombreDessin = nombreDeDessin };
+                    mediatheque.AddOeuvre(oeuvre);
+                    break;
+            }
         }
     }
 }

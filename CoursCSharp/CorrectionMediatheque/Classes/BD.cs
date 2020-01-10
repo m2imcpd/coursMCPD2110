@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CorrectionMediatheque.Classes
 {
-    public class BD
+    public class BD : Oeuvre
     {
         private int nombreDessin;
 

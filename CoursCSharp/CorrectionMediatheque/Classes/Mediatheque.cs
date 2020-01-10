@@ -17,7 +17,11 @@ namespace CorrectionMediatheque.Classes
         {
             //Adherents = Sauvegarde.ReadAdherents();
             Adherents = Sauvegarde.TaskReadAdherents().Result;
-
+            Oeuvres = Sauvegarde.ReadOeuvres();
+            foreach(Adherent a in Adherents)
+            {
+                a.maxEmprunt += MaxEmprunt;
+            }
         }
         public bool AddAdherent(Adherent adherent)
         {
@@ -26,6 +30,19 @@ namespace CorrectionMediatheque.Classes
             //Sauvegarde.SaveAdherents(Adherents);
             Sauvegarde.TaskSaveAdherents(Adherents);
             return result;
+        }
+
+        public bool AddOeuvre(Oeuvre oeuvre)
+        {
+            bool result = true;
+            Oeuvres.Add(oeuvre);
+            Sauvegarde.SaveOeuvres<Oeuvre>(Oeuvres, "oeuvres.json");
+            return result;
+        }
+
+        private void MaxEmprunt(Adherent adherent)
+        {
+            Console.WriteLine("Max emrrunt pour adherent " + adherent.Nom);
         }
     }
 }

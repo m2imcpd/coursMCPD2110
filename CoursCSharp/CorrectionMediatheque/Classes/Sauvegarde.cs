@@ -60,32 +60,51 @@ namespace CorrectionMediatheque.Classes
             lock (_lockRead)
             {
                 List<Oeuvre> liste = new List<Oeuvre>();
-                if (File.Exists(Configuration.PathBD))
+                if (File.Exists("oeuvres.json"))
                 {
-                    StreamReader reader = new StreamReader(File.Open(Configuration.PathBD, FileMode.Open));
+                    StreamReader reader = new StreamReader(File.Open("oeuvres.json", FileMode.Open));
                     liste.AddRange(JsonConvert.DeserializeObject<List<Oeuvre>>(reader.ReadToEnd()));
                     reader.Dispose();
                 }
-                if (File.Exists(Configuration.PathDVD))
-                {
-                    StreamReader reader = new StreamReader(File.Open(Configuration.PathDVD, FileMode.Open));
-                    liste.AddRange(JsonConvert.DeserializeObject<List<Oeuvre>>(reader.ReadToEnd()));
-                    reader.Dispose();
-                }
-                if (File.Exists(Configuration.PathCD))
-                {
-                    StreamReader reader = new StreamReader(File.Open(Configuration.PathCD, FileMode.Open));
-                    liste.AddRange(JsonConvert.DeserializeObject<List<Oeuvre>>(reader.ReadToEnd()));
-                    reader.Dispose();
-                }
-                if (File.Exists(Configuration.PathLivre))
-                {
-                    StreamReader reader = new StreamReader(File.Open(Configuration.PathLivre, FileMode.Open));
-                    liste.AddRange(JsonConvert.DeserializeObject<List<Oeuvre>>(reader.ReadToEnd()));
-                    reader.Dispose();
-                }
+                //if (File.Exists(Configuration.PathBD))
+                //{
+                //    StreamReader reader = new StreamReader(File.Open(Configuration.PathBD, FileMode.Open));
+                //    liste.AddRange(JsonConvert.DeserializeObject<List<Oeuvre>>(reader.ReadToEnd()));
+                //    reader.Dispose();
+                //}
+                //if (File.Exists(Configuration.PathDVD))
+                //{
+                //    StreamReader reader = new StreamReader(File.Open(Configuration.PathDVD, FileMode.Open));
+                //    liste.AddRange(JsonConvert.DeserializeObject<List<Oeuvre>>(reader.ReadToEnd()));
+                //    reader.Dispose();
+                //}
+                //if (File.Exists(Configuration.PathCD))
+                //{
+                //    StreamReader reader = new StreamReader(File.Open(Configuration.PathCD, FileMode.Open));
+                //    liste.AddRange(JsonConvert.DeserializeObject<List<Oeuvre>>(reader.ReadToEnd()));
+                //    reader.Dispose();
+                //}
+                //if (File.Exists(Configuration.PathLivre))
+                //{
+                //    StreamReader reader = new StreamReader(File.Open(Configuration.PathLivre, FileMode.Open));
+                //    liste.AddRange(JsonConvert.DeserializeObject<List<Oeuvre>>(reader.ReadToEnd()));
+                //    reader.Dispose();
+                //}
                 return liste;
             }
         }
+
+        public static void SaveOeuvres<T>(List<T> oeuvres, string path)
+        {
+            lock (_lockWrite)
+            {
+                StreamWriter writer = new StreamWriter(File.Open(path, FileMode.Create));
+                string json = JsonConvert.SerializeObject(oeuvres);
+                writer.WriteLine(json);
+                writer.Dispose();
+            }
+        }
+        
+        
     }
 }
