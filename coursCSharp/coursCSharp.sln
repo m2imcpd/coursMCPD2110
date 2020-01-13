@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "coursCSharp", "coursCSharp\coursCSharp.csproj", "{41F9B6DF-9EE9-423D-8EF6-704AC93372F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionMediatheque", "CorrectionMediatheque\CorrectionMediatheque.csproj", "{215D08F3-8628-4575-97EA-52E252FAF5FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionMediatheque", "CorrectionMediatheque\CorrectionMediatheque.csproj", "{215D08F3-8628-4575-97EA-52E252FAF5FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAdoNet", "CoursAdoNet\CoursAdoNet.csproj", "{954AF050-BCD6-4AB7-A71D-EA1C5F9F2D25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{215D08F3-8628-4575-97EA-52E252FAF5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{215D08F3-8628-4575-97EA-52E252FAF5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{215D08F3-8628-4575-97EA-52E252FAF5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{954AF050-BCD6-4AB7-A71D-EA1C5F9F2D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{954AF050-BCD6-4AB7-A71D-EA1C5F9F2D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{954AF050-BCD6-4AB7-A71D-EA1C5F9F2D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{954AF050-BCD6-4AB7-A71D-EA1C5F9F2D25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
