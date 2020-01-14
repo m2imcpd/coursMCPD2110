@@ -21,6 +21,7 @@ namespace CorrectionAnnuaire.Classes
                         AjouterContact();
                         break;
                     case "2":
+                        UpdateContact();
                         break;
                     case "3":
                         RechercherContact();
@@ -96,16 +97,45 @@ namespace CorrectionAnnuaire.Classes
             Console.Write("Téléphone contact ? ");
             string telephone = Console.ReadLine();
             Contact contact = Contact.GetContactByTelephone(telephone);
+            contact.Emails = Email.GetEmailContact(contact.Id);
             if (contact == null)
             {
                 Console.WriteLine("aucun contact avec ce numéro");
             }
             else
             {
+                foreach(Email e in contact.Emails)
+                {
+                    e.Delete();
+                }
                if(contact.Delete())
                {
                     Console.WriteLine("Contact supprimé");
                }
+            }
+        }
+
+        private void UpdateContact()
+        {
+            Console.Write("Téléphone contact ? ");
+            string telephone = Console.ReadLine();
+            Contact contact = Contact.GetContactByTelephone(telephone);
+            if (contact == null)
+            {
+                Console.WriteLine("aucun contact avec ce numéro");
+            }
+            else
+            {
+                Console.Write("Le nouveau Nom : ");
+                contact.Nom = Console.ReadLine();
+                Console.Write("Le nouveau Prénom : ");
+                contact.Prenom = Console.ReadLine();
+                Console.Write("Le nouveau téléphone : ");
+                contact.Telephone = Console.ReadLine();
+                if(contact.Update())
+                {
+                    Console.WriteLine("Contact modifé");
+                }
             }
         }
     }

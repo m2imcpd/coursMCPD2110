@@ -56,5 +56,16 @@ namespace CorrectionAnnuaire.Classes
             Configuration.Connection.Close();
             return liste;
         }
+
+        public void Delete()
+        {
+            string request = "DELETE FROM email where id=@id";
+            command = new SqlCommand(request, Configuration.Connection);
+            command.Parameters.Add(new SqlParameter("@id", Id));
+            Configuration.Connection.Open();
+            command.ExecuteNonQuery();
+            command.Dispose();
+            Configuration.Connection.Close();
+        }
     }
 }
