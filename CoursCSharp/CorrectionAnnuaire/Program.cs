@@ -10,6 +10,7 @@ namespace CorrectionAnnuaire
             IHM ihm = new IHM();
             ihm.Start();
             Console.ReadLine();
+            
         }
     }
 }

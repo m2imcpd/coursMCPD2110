@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 
@@ -9,6 +10,8 @@ namespace CoursAdoNet
         static SqlConnection connection = new SqlConnection(@"Data Source=(LocalDb)\coursSql;Integrated Security=True");
         static SqlCommand command;
         static SqlDataReader reader;
+        static SqlDataAdapter dataAdapter;
+        static DataSet dataSet = new DataSet(); 
         static void Main(string[] args)
         {
             #region cours AdoNet partie 1
@@ -41,29 +44,106 @@ namespace CoursAdoNet
             //command.Dispose();
             //connection.Close();
             #endregion
-            Console.OutputEncoding = Encoding.UTF8;
+            #region correction ex1 ADONET
+            //Console.OutputEncoding = Encoding.UTF8;
+            //string choix;
+            //do
+            //{
+            //    Menu();
+            //    choix = Console.ReadLine();
+            //    Console.Clear();
+            //    switch (choix)
+            //    {
+            //        case "3":
+            //            Question3();
+            //            break;
+            //        case "4":
+            //            Question4();
+            //            break;
+            //        case "10":
+            //            Question10();
+            //            break;
+            //    }
+            //} while (choix != "0");
+            #endregion
+            //cours AdoNet partie 2
+            dataAdapter = new SqlDataAdapter("SELECT * FROM client", connection);
+            connection.Open();
+            dataAdapter.Fill(dataSet, "client");
+            connection.Close();
+            dataAdapter.InsertCommand = new SqlCommand("Insert into client (nom, prenom, dateNaissance) values(@nom, @prenom, @dateNaissance)", connection);
+            dataAdapter.InsertCommand.Parameters.Add("@nom", SqlDbType.VarChar, 50, "nom");
+            dataAdapter.InsertCommand.Parameters.Add("@prenom", SqlDbType.VarChar, 50, "prenom");
+            dataAdapter.InsertCommand.Parameters.Add("@dateNaissance", SqlDbType.DateTime, 0, "dateNaissance");
+
+            dataAdapter.UpdateCommand = new SqlCommand("UPDATE client set nom=@nom, prenom=@prenom, dateNaissance=@dateNaissance where id=@id", connection);
+            dataAdapter.UpdateCommand.Parameters.Add("@nom", SqlDbType.VarChar, 50, "nom");
+            dataAdapter.UpdateCommand.Parameters.Add("@prenom", SqlDbType.VarChar, 50, "prenom");
+            dataAdapter.UpdateCommand.Parameters.Add("@dateNaissance", SqlDbType.DateTime, 0, "dateNaissance");
+            dataAdapter.UpdateCommand.Parameters.Add("@id", SqlDbType.Int, 11, "id");
+
+            dataAdapter.DeleteCommand = new SqlCommand("DELETE from client where id=@id", connection);
+            dataAdapter.DeleteCommand.Parameters.Add("@id", SqlDbType.Int, 11, "id");
+
             string choix;
             do
             {
-                Menu();
+                MenuAdoDeconnecte();
                 choix = Console.ReadLine();
                 Console.Clear();
-                switch (choix)
+                switch(choix)
                 {
+                    case "1":
+                        foreach (DataRow row in dataSet.Tables["client"].Rows)
+                        {
+                            if(row.RowState != DataRowState.Deleted)
+                                Console.WriteLine($"nom : {row["nom"]}, prénom : {row["prenom"]}");
+                        }
+                        break;
+                    case "2":
+                        DataTable tableClient = dataSet.Tables["client"];
+                        DataRow r = tableClient.NewRow();
+                        Console.Write("Le nom : ");
+                        r["nom"] = Console.ReadLine();
+                        Console.Write("Le prénom : ");
+                        r["prenom"] = Console.ReadLine();
+                        Console.Write("Date de naissance : ");
+                        r["dateNaissance"] = Convert.ToDateTime(Console.ReadLine());
+                        tableClient.Rows.Add(r);
+                        break;
                     case "3":
-                        Question3();
+                        foreach (DataRow row in dataSet.Tables["client"].Rows)
+                        {
+                            if((row["nom"] as string).Contains('t'))
+                            {
+                                row.Delete();
+                            }
+                        }
                         break;
                     case "4":
-                        Question4();
+                        foreach(DataRow row in dataSet.Tables["client"].Rows)
+                        {
+                            row["prenom"] = "new Prénom";
+                        }
                         break;
-                    case "10":
-                        Question10();
+                    case "5":
+                        connection.Open();
+                        dataAdapter.Update(dataSet.Tables["client"]);
+                        connection.Close();
                         break;
                 }
             } while (choix != "0");
+            
             Console.ReadLine();
         }
-
+        static void MenuAdoDeconnecte()
+        {
+            Console.WriteLine("1--Afficher les clients");
+            Console.WriteLine("2--Ajouter un client");
+            Console.WriteLine("3--Supprimer un client");
+            Console.WriteLine("4--Modifier un client");
+            Console.WriteLine("5--Sauvegarder");
+        }
         static void Menu()
         {
             Console.WriteLine("3--- Question 3");
