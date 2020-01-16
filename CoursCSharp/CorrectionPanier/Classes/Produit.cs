@@ -44,6 +44,20 @@ namespace CorrectionPanier.Classes
             }
         }
 
+        public static Produit GetProduitById(int id)
+        {
+            Produit produit = null;
+            foreach(DataRow row in Configuration.DataSet.Tables["produit"].Rows)
+            {
+                if(row.RowState != DataRowState.Deleted && (int)row["id"] == id)
+                {
+                    produit = new Produit { Id = id, Label = (string)row["label"], Prix = (decimal)row["prix"] };
+                    break;
+                }
+            }
+            return produit;
+        }
+
         public override string ToString()
         {
             return $"Id : {Id}, Label : {Label}, Prix : {Prix}";

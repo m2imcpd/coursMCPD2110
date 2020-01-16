@@ -20,6 +20,9 @@ namespace CorrectionPanier.Classes
                     case "1":
                         GestionProduit();
                         break;
+                    case "2":
+                        GestionPanier();
+                        break;
                 }
             } while (choix != "0");
         }
@@ -35,6 +38,12 @@ namespace CorrectionPanier.Classes
             Console.WriteLine("2---Supprimer un produit");
             Console.WriteLine("3---Afficher les produits");
             Console.WriteLine("4---sauvegarde");
+        }
+
+        private void MenuPanier()
+        {
+            Console.WriteLine("1---Ajouter un panier");
+            Console.WriteLine("2---Afficher un panier");
         }
 
         private void GestionProduit()
@@ -100,6 +109,77 @@ namespace CorrectionPanier.Classes
                     Console.WriteLine($"Id : {row["id"]}, Label : {row["label"]}, Prix : {row["prix"]}");
                 }
             }
+        }
+
+        private void GestionPanier()
+        {
+            Produit.Load();
+            string choix;
+            do
+            {
+                MenuPanier();
+                choix = Console.ReadLine();
+                Console.Clear();
+                switch(choix)
+                {
+                    case "1":
+                        AjouterPanier();
+                        break;
+                    case "2":
+                        AfficherPanier();
+                        break;
+                }
+            } while (choix != "0");
+        }
+        
+        private void AjouterPanier()
+        {
+            Panier panier = new Panier();
+            Console.Write("Nom du client : ");
+            panier.NomClient = Console.ReadLine();
+            Console.Write("Téléphone du client : ");
+            panier.TelClient = Console.ReadLine();
+            Console.WriteLine("---Liste des produits---");
+            int id;
+            do
+            {
+                Console.Write("Id Produit : ");
+                Int32.TryParse(Console.ReadLine(), out id);
+                if(id > 0)
+                {
+                    Produit p = Produit.GetProduitById(id);
+                    if(p == null)
+                    {
+                        Console.WriteLine("Produit n'existe pas");
+                    }
+                    else
+                    {
+                        panier.Produits.Add(p);
+                    }
+                }
+            } while (id != 0);
+            panier.Save();
+            Console.WriteLine("Panier ajouté");
+        }
+
+        private void AfficherPanier()
+        {
+            Console.Write("Id Panier : ");
+            int idPanier;
+            Int32.TryParse(Console.ReadLine(), out idPanier);
+            Panier panier = Panier.GetPanierById(idPanier);
+            if(panier == null)
+            {
+                Console.WriteLine("Aucun panier avec cet id");
+            }
+            else
+            {
+                Console.WriteLine(panier);
+                foreach(Produit p in panier.Produits) {
+                    Console.WriteLine(p);
+                }
+            }
+
         }
     }
 }

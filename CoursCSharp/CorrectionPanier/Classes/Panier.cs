@@ -57,11 +57,12 @@ namespace CorrectionPanier.Classes
         {
             Panier panier = null;
             string request = "SELECT p.id as panier_id, p.nom_client, p.tel_client, p.total, pr.id as produit_id, pr.label, pr.prix " +
-                            "FROM panier as p" +
-                            "left join panier_produit as pp on p.id = pp.panier_id" +
-                            "left join produit as pr on pr.id = pp.produit_id" +
+                            "FROM panier as p " +
+                            "left join panier_produit as pp on p.id = pp.panier_id " +
+                            "left join produit as pr on pr.id = pp.produit_id " +
                             "where p.id = @id";
             command = new SqlCommand(request, Configuration.Connection);
+            command.Parameters.Add(new SqlParameter("@id", id));
             Configuration.Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             panier = new Panier();
@@ -76,6 +77,11 @@ namespace CorrectionPanier.Classes
             command.Dispose();
             Configuration.Connection.Close();
             return panier;
-        } 
+        }
+
+        public override string ToString()
+        {
+            return $"Client : {NomClient}, Téléphone : {TelClient}, Total : {Total}";
+        }
     }
 }
