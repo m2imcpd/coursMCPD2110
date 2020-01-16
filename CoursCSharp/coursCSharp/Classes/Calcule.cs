@@ -48,7 +48,40 @@ namespace coursCSharp.Classes
             }
             return s;
         }
+        public double Multiplication(params int[] parametre)
+        {
+            double result = 1;
+            foreach(int i in parametre)
+            {
+                result *= i;
+            }
+            return result;
+        }
 
+        public double Division(params double[] parametre)
+        {
+            double result;
+            if(parametre.Length == 0)
+            {
+                result = 1;
+            }
+            else
+            {
+                result = parametre[0];
+                for(int i= 1; i < parametre.Length; i++)
+                {
+                    if(parametre[i] == 0)
+                    {
+                        throw new Exception("Division par zero interdite");
+                    }
+                    else
+                    {
+                        result /= parametre[i];
+                    }
+                }
+            }
+            return result;
+        } 
         public double Soustraction(string message, params int[] parametre)
         {
             Console.WriteLine(message);
