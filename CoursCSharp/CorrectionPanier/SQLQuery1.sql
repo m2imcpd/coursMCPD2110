@@ -15,3 +15,9 @@ CREATE TABLE panier_produit(
 	produit_id INT NOT NULL,
 	panier_id INT NOT NULL
 )
+
+SELECT p.id as panier_id, p.nom_client, p.tel_client, p.total, pr.id as produit_id, pr.label, pr.prix 
+FROM panier as p 
+left join panier_produit as pp on p.id = pp.panier_id 
+left join produit as pr on pr.id = pp.produit_id 
+where p.id = 1
