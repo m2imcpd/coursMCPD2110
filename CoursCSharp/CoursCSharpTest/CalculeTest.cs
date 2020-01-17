@@ -45,6 +45,9 @@ namespace CoursCSharpTest
             Calcule calcule = new Calcule();
             double result = calcule.Division();
             Assert.AreEqual(1, result);
+            //Assert.AreNotEqual(notExpected, value);
+            //Assert.IsFalse(resut);
+            //Assert.IsInstanceOfType(result, typeof(double));
         }
 
         [TestMethod]
