@@ -11,13 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAdoNet", "CoursAdoNet\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionAnnuaire", "CorrectionAnnuaire\CorrectionAnnuaire.csproj", "{02131F64-D4D9-4333-8365-42A3EC7C1012}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionPanier", "CorrectionPanier\CorrectionPanier.csproj", "{6C4625A2-8A31-4656-81A2-E906D5B9EAE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionPanier", "CorrectionPanier\CorrectionPanier.csproj", "{6C4625A2-8A31-4656-81A2-E906D5B9EAE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursCSharpTest", "CoursCSharpTest\CoursCSharpTest.csproj", "{B8FD50E1-5287-4151-A851-034D3A14D1F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursCSharpTest", "CoursCSharpTest\CoursCSharpTest.csproj", "{B8FD50E1-5287-4151-A851-034D3A14D1F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionBataille", "CorrectionBataille\CorrectionBataille.csproj", "{61F80965-83EF-42E5-8B52-63803BE12971}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionBataille", "CorrectionBataille\CorrectionBataille.csproj", "{61F80965-83EF-42E5-8B52-63803BE12971}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatailleTest", "BatailleTest\BatailleTest.csproj", "{8DFD140C-9391-456D-8E3F-F1908F4B3AF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BatailleTest", "BatailleTest\BatailleTest.csproj", "{8DFD140C-9391-456D-8E3F-F1908F4B3AF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursWPF", "CoursWPF\CoursWPF.csproj", "{ECE6BC7D-CF20-4FD1-BCDD-1DEBCAFAE39E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{8DFD140C-9391-456D-8E3F-F1908F4B3AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DFD140C-9391-456D-8E3F-F1908F4B3AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DFD140C-9391-456D-8E3F-F1908F4B3AF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECE6BC7D-CF20-4FD1-BCDD-1DEBCAFAE39E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECE6BC7D-CF20-4FD1-BCDD-1DEBCAFAE39E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECE6BC7D-CF20-4FD1-BCDD-1DEBCAFAE39E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECE6BC7D-CF20-4FD1-BCDD-1DEBCAFAE39E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
