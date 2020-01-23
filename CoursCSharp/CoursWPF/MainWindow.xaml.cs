@@ -29,9 +29,16 @@ namespace CoursWPF
             maGrille.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             maGrille.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             Button b = new Button { Content = "je suis un bouton" };
+            b.Click += B1_Click;
             maGrille.Children.Add(b);
             Grid.SetRow(b, 0);
             Grid.SetColumn(b, 1);
+        }
+
+        private void B1_Click(object sender, RoutedEventArgs e)
+        {
+            Button bClick = sender as Button;
+            MessageBox.Show(bClick.Content.ToString());
         }
     }
 }

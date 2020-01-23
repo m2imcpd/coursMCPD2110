@@ -17,10 +17,10 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button x:Name="b1" Content="Bonjour" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"></Button>
-        <Label Content="Bonjour tout le monde" Grid.Column="0" Grid.Row="1" FontFamily="Papyrus"></Label>-->
-        <!--<Button Content="Button" HorizontalAlignment="Left" Margin="276,105,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="145,57,0,0" VerticalAlignment="Top"/>
-        <Label Content="test"></Label>-->
+        <Button  x:Name="b1" Content="Bonjour" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Click="B1_Click"></Button>
+        <Label Content="Bonjour tout le monde" Grid.Column="0" Grid.Row="1" FontFamily="Papyrus"></Label>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="276,105,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Label"  HorizontalAlignment="Left" Margin="145,57,0,0" VerticalAlignment="Top"/>
+        <Button Content="test" Click="B1_Click"></Button>-->
     </Grid>
 </Window>
