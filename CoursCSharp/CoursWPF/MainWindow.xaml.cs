@@ -23,6 +23,15 @@ namespace CoursWPF
         public MainWindow()
         {
             InitializeComponent();
+            maGrille.RowDefinitions.Add(new RowDefinition { Height = new GridLength(100) });
+            maGrille.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+            maGrille.RowDefinitions.Add(new RowDefinition { Height = new GridLength(2, GridUnitType.Star) });
+            maGrille.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            maGrille.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            Button b = new Button { Content = "je suis un bouton" };
+            maGrille.Children.Add(b);
+            Grid.SetRow(b, 0);
+            Grid.SetColumn(b, 1);
         }
     }
 }
