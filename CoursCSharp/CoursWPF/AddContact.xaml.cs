@@ -20,6 +20,7 @@ namespace CoursWPF
     /// </summary>
     public partial class AddContact : Window
     {
+        private Contact EditContact = null;
         public AddContact()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace CoursWPF
 
         public AddContact(Contact c) : this()
         {
+            EditContact = c;
             nom.Text = c.Nom;
             prenom.Text = c.Prenom;
             telephone.Text = c.Telephone;
@@ -34,19 +36,40 @@ namespace CoursWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Contact c = new Contact { Nom = nom.Text, Prenom = prenom.Text, Telephone = telephone.Text };
-            c.Save();
-            if(c.Id > 0)
+            if(EditContact == null)
             {
-                MessageBox.Show("Contact ajouté ");
-                ListeContacts window = new ListeContacts();
-                window.Show();
-                Close();
+                Contact c = new Contact { Nom = nom.Text, Prenom = prenom.Text, Telephone = telephone.Text };
+                c.Save();
+                if (c.Id > 0)
+                {
+                    MessageBox.Show("Contact ajouté ");
+                    ListeContacts window = new ListeContacts();
+                    window.Show();
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur serveur");
+                }
             }
             else
             {
-                MessageBox.Show("Erreur serveur");
+                EditContact.Nom = nom.Text;
+                EditContact.Prenom = prenom.Text;
+                EditContact.Telephone = prenom.Text;
+                if(EditContact.Update())
+                {
+                    MessageBox.Show("Contact modifé ");
+                    ListeContacts window = new ListeContacts();
+                    window.Show();
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur serveur");
+                }
             }
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

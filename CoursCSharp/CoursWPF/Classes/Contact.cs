@@ -33,6 +33,24 @@ namespace CoursWPF.Classes
             Configuration.connection.Close();
         }
 
+        public bool Update()
+        {
+            bool result = false;
+            command = new SqlCommand("UPDATE contact  set nom = @nom, prenom= @prenom, telephone = @telephone where id=@id", Configuration.connection);
+            command.Parameters.Add(new SqlParameter("@nom", Nom));
+            command.Parameters.Add(new SqlParameter("@prenom", Prenom));
+            command.Parameters.Add(new SqlParameter("@telephone", Telephone));
+            command.Parameters.Add(new SqlParameter("@id", Id));
+            Configuration.connection.Open();
+            if(command.ExecuteNonQuery() > 0)
+            {
+                result = true;
+            }
+            command.Dispose();
+            Configuration.connection.Close();
+            return result;
+        }
+
         public static List<Contact> GetContacts()
         {
             List<Contact> liste = new List<Contact>();
