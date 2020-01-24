@@ -8,8 +8,10 @@
         Title="ListePersonnes" Height="433.209" Width="326.493">
     <Grid>
         <Label Content="Liste Personnes : " HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Height="25" Width="140"/>
-        <Label x:Name="nom" Content="Label" HorizontalAlignment="Left" Margin="39,61,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="prenom" Content="Label" HorizontalAlignment="Left" Margin="39,92,0,0" VerticalAlignment="Top"/>
-
+        <!--<Label x:Name="nom" Content="Label" HorizontalAlignment="Left" Margin="39,61,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="prenom" Content="Label" HorizontalAlignment="Left" Margin="39,92,0,0" VerticalAlignment="Top"/>-->
+        <ListBox x:Name="maListePersonne">
+            
+        </ListBox>
     </Grid>
 </Window>

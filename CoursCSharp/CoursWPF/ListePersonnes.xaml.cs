@@ -27,8 +27,10 @@ namespace CoursWPF
 
         public ListePersonnes(Personne  personne) : this()
         {
-            nom.Content = personne.Nom;
-            prenom.Content = personne.Prenom;
+            Personne.listes.Add(personne);
+            maListePersonne.ItemsSource = Personne.listes;
+            //nom.Content = personne.Nom;
+            //prenom.Content = personne.Prenom;
         }
     }
 }

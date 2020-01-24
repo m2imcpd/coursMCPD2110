@@ -31,6 +31,7 @@ namespace CoursWPF
 
             ListePersonnes window = new ListePersonnes(p);
             window.Show();
+            Close();
             //MessageBox.Show(firstName.Text + " " + lastName.Text);
         }
     }

@@ -13,5 +13,12 @@ namespace CoursWPF.Classes
 
         public string Nom { get => nom; set => nom = value; }
         public string Prenom { get => prenom; set => prenom = value; }
+
+        public static List<Personne> listes = new List<Personne>();
+
+        public override string ToString()
+        {
+            return $"{Nom} {Prenom}";
+        }
     }
 }
