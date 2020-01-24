@@ -1,0 +1,17 @@
+﻿<Window x:Class="CoursWPF.AddPersonne"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoursWPF"
+        mc:Ignorable="d"
+        Title="Ajouter une personne" Height="179.358" Width="351.428">
+    <Grid>
+        <Label Content="Nom : " HorizontalAlignment="Left" Margin="32,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.044,-0.012" Height="23" Width="46"/>
+        <TextBox x:Name="firstName" HorizontalAlignment="Left" Height="23" Margin="96,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230"/>
+        <Label Content="Prénom : " HorizontalAlignment="Left" Margin="15,60,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.044,-0.012" Height="23" Width="63"/>
+        <TextBox x:Name="lastName" HorizontalAlignment="Left" Height="23" Margin="96,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230"/>
+        <Button Click="Valider_Click" Content="Valider" HorizontalAlignment="Left" Margin="15,101,0,0" VerticalAlignment="Top" Width="311" Height="28"/>
+
+    </Grid>
+</Window>
