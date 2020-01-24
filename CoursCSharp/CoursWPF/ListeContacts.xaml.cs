@@ -34,5 +34,22 @@ namespace CoursWPF
             w.Show();
             Close();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Contact c = (Contact)listeContacts.SelectedItem;
+            if(c != null)
+            {
+                if (c.Delete())
+                {
+                    MessageBox.Show("Contact supprimé");
+                    listeContacts.ItemsSource = Contact.GetContacts();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur serveur");
+                }
+            }
+        }
     }
 }

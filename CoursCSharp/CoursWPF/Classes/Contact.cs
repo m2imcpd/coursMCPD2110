@@ -51,6 +51,21 @@ namespace CoursWPF.Classes
             return result;
         }
 
+        public bool Delete()
+        {
+            bool result = false;
+            command = new SqlCommand("DELETE from contact where id=@id", Configuration.connection);
+            command.Parameters.Add(new SqlParameter("@id", Id));
+            Configuration.connection.Open();
+            if (command.ExecuteNonQuery() > 0)
+            {
+                result = true;
+            }
+            command.Dispose();
+            Configuration.connection.Close();
+            return result;
+        }
+
         public static List<Contact> GetContacts()
         {
             List<Contact> liste = new List<Contact>();
