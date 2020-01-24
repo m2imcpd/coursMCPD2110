@@ -25,6 +25,13 @@ namespace CoursWPF
             InitializeComponent();
         }
 
+        public AddContact(Contact c) : this()
+        {
+            nom.Text = c.Nom;
+            prenom.Text = c.Prenom;
+            telephone.Text = c.Telephone;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Contact c = new Contact { Nom = nom.Text, Prenom = prenom.Text, Telephone = telephone.Text };
@@ -34,11 +41,19 @@ namespace CoursWPF
                 MessageBox.Show("Contact ajouté ");
                 ListeContacts window = new ListeContacts();
                 window.Show();
+                Close();
             }
             else
             {
                 MessageBox.Show("Erreur serveur");
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ListeContacts w = new ListeContacts();
+            w.Show();
+            Close();
         }
     }
 }

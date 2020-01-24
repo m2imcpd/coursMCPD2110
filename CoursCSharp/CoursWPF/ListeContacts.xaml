@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoursWPF"
         mc:Ignorable="d"
-        Title="ListeContacts" Height="334.475" Width="339.925">
+        Title="ListeContacts" Height="362.475" Width="339.925">
     <Grid Margin="0,0,-0.4,14.8">
         <Label Content="Liste des contacts" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="28" Width="314"/>
         <ListBox x:Name="listeContacts" HorizontalAlignment="Left" Height="237" Margin="10,43,0,0" VerticalAlignment="Top" Width="314"/>
+        <Button Content="Detail" HorizontalAlignment="Left" Margin="10,293,0,0" VerticalAlignment="Top" Width="314" Click="Button_Click"/>
 
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoursWPF"
         mc:Ignorable="d"
-        Title="AddContact" Height="187.434" Width="355.037">
+        Title="AddContact" Height="208.767" Width="355.037">
     <Grid>
         <Label Content="Votre nom : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="nom" HorizontalAlignment="Left" Height="23" Margin="99,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
@@ -14,6 +14,7 @@
         <Label Content="Votre Tél : " HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="telephone" HorizontalAlignment="Left" Height="23" Margin="99,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
         <Button Content="Valider" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="329" Click="Button_Click"/>
+        <Button Content="Liste contacts" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" Width="329" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

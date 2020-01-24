@@ -25,5 +25,14 @@ namespace CoursWPF
             InitializeComponent();
             listeContacts.ItemsSource = Contact.GetContacts();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Contact c = (Contact)listeContacts.SelectedItem;
+            //MessageBox.Show(c.Id.ToString());
+            AddContact w = new AddContact(c);
+            w.Show();
+            Close();
+        }
     }
 }
