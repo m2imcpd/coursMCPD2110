@@ -13,7 +13,7 @@
         <!--<ListBox x:Name="maListePersonne">
             
         </ListBox>-->
-        <ListView x:Name="listeView" Margin="10,40,10,0.4" >
+        <!--<ListView x:Name="listeView" Margin="10,40,10,0.4" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nom" Width="100" DisplayMemberBinding="{Binding Nom}"></GridViewColumn>
@@ -26,7 +26,13 @@
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
-        </ListView>
+        </ListView>-->
+        <DataGrid x:Name="maDataGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Width="100" Binding="{Binding Nom}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Prénom" Width="100" Binding="{Binding Prenom}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

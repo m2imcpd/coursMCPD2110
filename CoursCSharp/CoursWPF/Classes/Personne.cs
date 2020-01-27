@@ -12,7 +12,13 @@ namespace CoursWPF.Classes
         private string prenom;
 
         public string Nom { get => nom; set => nom = value; }
-        public string Prenom { get => prenom; set => prenom = value; }
+        public string Prenom { get => prenom; set {
+                if (value.Length > 4)
+                    prenom = value;
+                else
+                    throw new Exception("Erreur prenom");
+            }
+        }
 
         public static List<Personne> listes = new List<Personne>();
 

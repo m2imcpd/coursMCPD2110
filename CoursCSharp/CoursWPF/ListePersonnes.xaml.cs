@@ -28,7 +28,7 @@ namespace CoursWPF
         public ListePersonnes(Personne  personne) : this()
         {
             Personne.listes.Add(personne);
-            listeView.ItemsSource = Personne.listes;
+            maDataGrid.ItemsSource = Personne.listes;
             //nom.Content = personne.Nom;
             //prenom.Content = personne.Prenom;
         }
