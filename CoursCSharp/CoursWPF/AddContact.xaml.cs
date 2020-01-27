@@ -21,9 +21,11 @@ namespace CoursWPF
     public partial class AddContact : Window
     {
         private Contact EditContact = null;
+        private List<Email> listeEmails = new List<Email>();
         public AddContact()
         {
             InitializeComponent();
+            listeEmailsListBox.ItemsSource = listeEmails;
         }
 
         public AddContact(Contact c) : this()
@@ -42,6 +44,11 @@ namespace CoursWPF
                 c.Save();
                 if (c.Id > 0)
                 {
+                    foreach(Email mail in listeEmails)
+                    {
+                        mail.ContactId = c.Id;
+                        mail.Save();
+                    }
                     MessageBox.Show("Contact ajouté ");
                     ListeContacts window = new ListeContacts();
                     window.Show();
@@ -77,6 +84,14 @@ namespace CoursWPF
             ListeContacts w = new ListeContacts();
             w.Show();
             Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Email mail = new Email() { Mail = email.Text };
+            listeEmails.Add(mail);
+            listeEmailsListBox.ItemsSource = null;
+            listeEmailsListBox.ItemsSource = listeEmails;
         }
     }
 }

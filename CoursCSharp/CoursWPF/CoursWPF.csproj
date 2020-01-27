@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Classes\Configuration.cs" />
     <Compile Include="Classes\Contact.cs" />
+    <Compile Include="Classes\Email.cs" />
     <Compile Include="Classes\Personne.cs" />
     <Compile Include="ListeContacts.xaml.cs">
       <DependentUpon>ListeContacts.xaml</DependentUpon>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoursWPF"
         mc:Ignorable="d"
-        Title="AddContact" Height="208.767" Width="355.037">
+        Title="AddContact" Height="312.767" Width="355.037">
     <Grid>
         <Label Content="Votre nom : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="nom" HorizontalAlignment="Left" Height="23" Margin="99,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
@@ -13,8 +13,12 @@
         <TextBox x:Name="prenom" HorizontalAlignment="Left" Height="23" Margin="99,43,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
         <Label Content="Votre Tél : " HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="telephone" HorizontalAlignment="Left" Height="23" Margin="99,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
-        <Button Content="Valider" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="329" Click="Button_Click"/>
-        <Button Content="Liste contacts" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" Width="329" Click="Button_Click_1"/>
+        <Button Content="Valider" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Width="329" Click="Button_Click"/>
+        <Button Content="Liste contacts" HorizontalAlignment="Left" Margin="10,254,0,0" VerticalAlignment="Top" Width="329" Click="Button_Click_1"/>
+        <Label Content="Email : " HorizontalAlignment="Left" Margin="20,112,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="email" HorizontalAlignment="Left" Height="23" Margin="99,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
+        <Button Content="Ajouter" HorizontalAlignment="Left" Margin="267,112,0,0" VerticalAlignment="Top" Width="72" Height="23" Click="Button_Click_2"/>
+        <ListBox x:Name="listeEmailsListBox" HorizontalAlignment="Left" Height="87" Margin="10,138,0,0" VerticalAlignment="Top" Width="329"/>
 
     </Grid>
 </Window>
