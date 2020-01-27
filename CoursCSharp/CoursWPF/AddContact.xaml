@@ -15,10 +15,14 @@
         <TextBox x:Name="telephone" HorizontalAlignment="Left" Height="23" Margin="99,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
         <Button Content="Valider" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Width="329" Click="Button_Click"/>
         <Button Content="Liste contacts" HorizontalAlignment="Left" Margin="10,254,0,0" VerticalAlignment="Top" Width="329" Click="Button_Click_1"/>
-        <Label Content="Email : " HorizontalAlignment="Left" Margin="20,112,0,0" VerticalAlignment="Top"/>
+        <!--<Label Content="Email : " HorizontalAlignment="Left" Margin="20,112,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="email" HorizontalAlignment="Left" Height="23" Margin="99,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
-        <Button Content="Ajouter" HorizontalAlignment="Left" Margin="267,112,0,0" VerticalAlignment="Top" Width="72" Height="23" Click="Button_Click_2"/>
-        <ListBox x:Name="listeEmailsListBox" HorizontalAlignment="Left" Height="87" Margin="10,138,0,0" VerticalAlignment="Top" Width="329"/>
+        <Button Content="Ajouter" HorizontalAlignment="Left" Margin="267,112,0,0" VerticalAlignment="Top" Width="72" Height="23" Click="Button_Click_2"/>-->
+        <DataGrid AutoGenerateColumns="False" x:Name="listeEmailsListBox" HorizontalAlignment="Left" Height="87" Margin="10,138,0,0" VerticalAlignment="Top" Width="329">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="325" Header="Email" Binding="{Binding Mail}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

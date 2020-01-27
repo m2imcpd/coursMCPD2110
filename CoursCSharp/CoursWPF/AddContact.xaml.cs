@@ -86,12 +86,12 @@ namespace CoursWPF
             Close();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            Email mail = new Email() { Mail = email.Text };
-            listeEmails.Add(mail);
-            listeEmailsListBox.ItemsSource = null;
-            listeEmailsListBox.ItemsSource = listeEmails;
-        }
+        //private void Button_Click_2(object sender, RoutedEventArgs e)
+        //{
+        //    Email mail = new Email() { Mail = email.Text };
+        //    listeEmails.Add(mail);
+        //    listeEmailsListBox.ItemsSource = null;
+        //    listeEmailsListBox.ItemsSource = listeEmails;
+        //}
     }
 }
