@@ -1,0 +1,16 @@
+﻿<Window x:Class="CorrectionBanque.Operation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CorrectionBanque"
+        mc:Ignorable="d"
+        Title="Operation" Height="202.855" Width="578.276">
+    <Grid>
+        <Label x:Name="infoCompte" Content="" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.089,0.363"/>
+        <Label x:Name="type" Content="" HorizontalAlignment="Left" Margin="30,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="montant" HorizontalAlignment="Left" Height="23" Margin="30,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="518"/>
+        <Button Content="Valider" HorizontalAlignment="Left" Margin="30,116,0,0" VerticalAlignment="Top" Width="518"/>
+
+    </Grid>
+</Window>

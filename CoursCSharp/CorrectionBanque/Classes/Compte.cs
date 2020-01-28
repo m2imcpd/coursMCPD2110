@@ -72,9 +72,9 @@ namespace CorrectionBanque.Classes
                 " cc.id as compteId, cc.solde," +
                 "o.id, o.montant, o.dateOperation " +
                 "FROM client as c " +
-                "left join compte as cc " +
+                "inner join compte as cc " +
                 "on cc.clientId = c.Id " +
-                "left join operation as o " +
+                "inner join operation as o " +
                 "on cc.Id = o.compteId " +
                 "where c.Id = @id";
             command = new SqlCommand(request, Configuration.connection);
@@ -118,6 +118,69 @@ namespace CorrectionBanque.Classes
                 };
                 compte.Operations.Add(o);
             }
+            reader.Close();
+            command.Dispose();
+            Configuration.connection.Close();
+            return compte;
+        }
+
+        public static Compte SearchByClientPhone(string phone)
+        {
+            Compte compte = null;
+            string request = "SELECT c.id as clientId, c.nom, c.prenom, c.telephone," +
+                " cc.id as compteId, cc.solde," +
+                "o.id, o.montant, o.dateOperation " +
+                "FROM client as c " +
+                "inner join compte as cc " +
+                "on cc.clientId = c.id " +
+                "inner join operation as o " +
+                "on cc.Id = o.compteId " +
+                " where c.telephone = @phone";
+            command = new SqlCommand(request, Configuration.connection);
+            command.Parameters.Add(new SqlParameter("@phone", phone));
+            Configuration.connection.Open();
+            reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                compte = new Compte()
+                {
+                    Numero = reader.GetInt32(4),
+                    solde = reader.GetDecimal(5),
+                    Client = new Client
+                    {
+                        Id = reader.GetInt32(0),
+                        Nom = reader.GetString(1),
+                        Prenom = reader.GetString(2),
+                        Telephone = reader.GetString(3),
+                    }
+                };
+                if ((reader.GetValue(6) as int?) > 0)
+                {
+                    Operation o = new Operation
+                    {
+                        Numero = reader.GetInt32(6),
+                        Montant = reader.GetDecimal(7),
+                        Date = reader.GetDateTime(8)
+                    };
+                    compte.Operations.Add(o);
+                }
+
+
+            }
+            while (reader.Read())
+            {
+                Operation o = new Operation
+                {
+                    Numero = reader.GetInt32(6),
+                    Montant = reader.GetDecimal(7),
+                    Date = reader.GetDateTime(8)
+                };
+                compte.Operations.Add(o);
+            }
+
+            reader.Close();
+            command.Dispose();
+            Configuration.connection.Close();
             return compte;
         }
 

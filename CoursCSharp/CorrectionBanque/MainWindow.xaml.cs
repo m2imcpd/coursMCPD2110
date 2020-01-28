@@ -21,6 +21,7 @@ namespace CorrectionBanque
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Compte compte;
         public MainWindow()
         {
             InitializeComponent();
@@ -51,14 +52,19 @@ namespace CorrectionBanque
         {
             if(searchById.Text != "")
             {
-                Compte compte = SearchCustomerById();
+                compte = SearchCustomerById();
                 searchResult.Content = compte.ToString();
                 listeOperations.ItemsSource = null;
                 listeOperations.ItemsSource = compte.Operations;
+                searchById.Text = "";
             }
             else if(searchByPhone.Text != "")
             {
-
+                compte = SearchCustomerByPhone();
+                searchResult.Content = compte.ToString();
+                listeOperations.ItemsSource = null;
+                listeOperations.ItemsSource = compte.Operations;
+                searchByPhone.Text = "";
             }
             else
             {
@@ -70,6 +76,22 @@ namespace CorrectionBanque
         {
             Compte compte = Compte.SearchByClientId(Convert.ToInt32(searchById.Text));
             return compte;
+        }
+        private Compte SearchCustomerByPhone()
+        {
+            Compte compte = Compte.SearchByClientPhone(searchByPhone.Text);
+            return compte;
+        }
+
+        private void Depot_Click(object sender, RoutedEventArgs e)
+        {
+            Operation windowOperation = new Operation(compte, "depot");
+            windowOperation.Show();
+        }
+        private void Retrait_Click(object sender, RoutedEventArgs e)
+        {
+            Operation windowOperation = new Operation(compte, "retrait");
+            windowOperation.Show();
         }
     }
 }
