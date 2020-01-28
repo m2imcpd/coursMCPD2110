@@ -34,5 +34,25 @@ namespace CorrectionBanque
             infoCompte.Content = c.ToString();
             type.Content = t;
         }
+
+        private void Valider_Click(object sender, RoutedEventArgs e)
+        {
+            if(typeOperation == "depot")
+            {
+                compte.Deposer(Convert.ToDecimal(montant.Text));
+                MessageBox.Show("Depot effectué");
+            }
+            else if(typeOperation == "retrait")
+            {
+                if(compte.Retirer(Convert.ToDecimal(montant.Text)))
+                {
+                    MessageBox.Show("Retrait effectué");
+                }
+                else
+                {
+                    MessageBox.Show("erreur retrait");
+                }
+            }
+        }
     }
 }

@@ -37,10 +37,11 @@ namespace CorrectionBanque.Classes
 
         public virtual void Deposer(decimal montant)
         {
-            Operation o = new Operation(montant, DateTime.Now);
+            Operation o = new Operation(montant, DateTime.Now) { NumeroCompte = Numero };
             Operations.Add(o);
-            cle++;
+            o.Save();
             solde += montant;
+            Update();
         }
 
         public virtual bool Retirer(decimal montant)
@@ -48,10 +49,11 @@ namespace CorrectionBanque.Classes
             bool result = false;
             if(solde >= montant)
             {
-                Operation o = new Operation(montant*-1, DateTime.Now);
-                Operations[cle] = o;
-                cle++;
+                Operation o = new Operation(montant * -1, DateTime.Now) { NumeroCompte = Numero};
+                Operations.Add(o);
+                o.Save();
                 solde -= montant;
+                Update();
                 result = true;
             }else
             {
@@ -74,7 +76,7 @@ namespace CorrectionBanque.Classes
                 "FROM client as c " +
                 "inner join compte as cc " +
                 "on cc.clientId = c.Id " +
-                "inner join operation as o " +
+                "left join operation as o " +
                 "on cc.Id = o.compteId " +
                 "where c.Id = @id";
             command = new SqlCommand(request, Configuration.connection);
@@ -133,7 +135,7 @@ namespace CorrectionBanque.Classes
                 "FROM client as c " +
                 "inner join compte as cc " +
                 "on cc.clientId = c.id " +
-                "inner join operation as o " +
+                "left join operation as o " +
                 "on cc.Id = o.compteId " +
                 " where c.telephone = @phone";
             command = new SqlCommand(request, Configuration.connection);
@@ -198,6 +200,18 @@ namespace CorrectionBanque.Classes
             command.Dispose();
             Configuration.connection.Close();
             return Numero > 0;
+        }
+
+        public void Update()
+        {
+            string request = "UPDATE compte set solde = @solde where id=@id";
+            command = new SqlCommand(request, Configuration.connection);
+            command.Parameters.Add(new SqlParameter("@solde", Solde));
+            command.Parameters.Add(new SqlParameter("@id", Numero));
+            Configuration.connection.Open();
+            command.ExecuteNonQuery();
+            command.Dispose();
+            Configuration.connection.Close();
         }
     }
 }

@@ -10,7 +10,7 @@
         <Label x:Name="infoCompte" Content="" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.089,0.363"/>
         <Label x:Name="type" Content="" HorizontalAlignment="Left" Margin="30,41,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="montant" HorizontalAlignment="Left" Height="23" Margin="30,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="518"/>
-        <Button Content="Valider" HorizontalAlignment="Left" Margin="30,116,0,0" VerticalAlignment="Top" Width="518"/>
+        <Button Content="Valider" HorizontalAlignment="Left" Margin="30,116,0,0" VerticalAlignment="Top" Width="518" Click="Valider_Click"/>
 
     </Grid>
 </Window>
