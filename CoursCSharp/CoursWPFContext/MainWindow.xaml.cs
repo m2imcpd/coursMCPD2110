@@ -1,4 +1,5 @@
 ﻿using CoursWPFContext.Classes;
+using CoursWPFContext.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,15 @@ namespace CoursWPFContext
         public MainWindow()
         {
             InitializeComponent();
-            Personne p = new Personne();
-            DataContext = p;
+            //Personne p = new Personne();
+            //DataContext = p;
+            DataContext = new MainViewModel();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel v = DataContext as MainViewModel;
+            MessageBox.Show(v.Personne.Nom + " " + v.Adresse.Ville);
         }
     }
 }
