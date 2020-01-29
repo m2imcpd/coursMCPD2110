@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionBanque", "Correct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursWPFContext", "CoursWPFContext\CoursWPFContext.csproj", "{270AF429-AA4B-47D1-B8FB-34815AF1F208}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PenduMVVM", "PenduMVVM\PenduMVVM.csproj", "{58A4192C-0135-4DE5-9D49-A2B848D8BFB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{270AF429-AA4B-47D1-B8FB-34815AF1F208}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{270AF429-AA4B-47D1-B8FB-34815AF1F208}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{270AF429-AA4B-47D1-B8FB-34815AF1F208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58A4192C-0135-4DE5-9D49-A2B848D8BFB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A4192C-0135-4DE5-9D49-A2B848D8BFB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A4192C-0135-4DE5-9D49-A2B848D8BFB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A4192C-0135-4DE5-9D49-A2B848D8BFB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
