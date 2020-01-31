@@ -22,7 +22,7 @@
         <Label Content="Code Postal" HorizontalAlignment="Left" Margin="31,170,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.265,0.204"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="108,170,0,0" TextWrapping="Wrap" Text="{Binding CodePostal}" VerticalAlignment="Top" Width="168"/>
         <Label Content="{Binding CodePostal}" HorizontalAlignment="Left" Margin="336,170,0,0" VerticalAlignment="Top"/>
-        <Button Content="Valider" HorizontalAlignment="Left" Margin="43,218,0,0" VerticalAlignment="Top" Width="303" Click="Button_Click"/>
+        <Button Content="Valider" HorizontalAlignment="Left" Margin="43,218,0,0" VerticalAlignment="Top" Width="303" Command="{Binding SaveCommand}"/>
 
     </Grid>
 </Window>
