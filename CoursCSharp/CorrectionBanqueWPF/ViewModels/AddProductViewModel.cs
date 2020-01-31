@@ -20,7 +20,7 @@ namespace CorrectionBanqueWPF.ViewModels
         public decimal Price
         {
             get => product.Price;
-            set => product.Price = value;
+            set => product.Price = Convert.ToDecimal(value);
         }
 
         public string Result
@@ -42,6 +42,11 @@ namespace CorrectionBanqueWPF.ViewModels
                 result = "server Error";
             }
             RaisePropertyChanged("Result");
+            //Reset du produit
+            product = new Product();
+            //Reset des champs
+            RaisePropertyChanged("Title");
+            RaisePropertyChanged("Price");
         }
     }
 }

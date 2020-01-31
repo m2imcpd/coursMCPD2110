@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CorrectionBanqueWPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,13 @@ namespace CorrectionBanqueWPF.Views
         public AddProduct()
         {
             InitializeComponent();
+            DataContext = new AddProductViewModel();
+        }
+
+        private void SaveProduct_Click(object sender, RoutedEventArgs e)
+        {
+            AddProductViewModel v = DataContext as AddProductViewModel;
+            v.Save();
         }
     }
 }

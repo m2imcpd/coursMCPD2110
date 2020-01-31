@@ -32,10 +32,11 @@ namespace CorrectionBanqueWPF.ViewModels
             get => customer.Phone;
             set => customer.Phone = value;
         }
+        private string searchTitle;
         //Propriété avec attribut
         public string ResultCustomer { get; set; }
         public string ResultCart { get; set; }
-        public string SearchTitle { get; set; }
+        
 
         public ObservableCollection<Product> SearchProducts { get; set; }
         public Product SearchProduct { get => searchProduct; set => searchProduct = value; }
@@ -44,6 +45,7 @@ namespace CorrectionBanqueWPF.ViewModels
         {
             get => Cart.Total;
         }
+        public string SearchTitle { get => searchTitle; set => searchTitle = value; }
 
         public MainViewModel()
         {
@@ -80,6 +82,7 @@ namespace CorrectionBanqueWPF.ViewModels
             SearchProducts = Product.GetProductsByTitle(SearchTitle);
             SearchTitle = "";
             RaisePropertyChanged("SearchTitle");
+            RaisePropertyChanged("SearchProducts");
         }
 
         public void AddProductToCart()
@@ -105,7 +108,7 @@ namespace CorrectionBanqueWPF.ViewModels
             {
                 ResultCart = "Server Error";
             }
-
+            RaisePropertyChanged("ResultCart");
         }
 
     }

@@ -9,7 +9,7 @@ namespace CorrectionBanqueWPF.Tools
 {
     public class Configuration
     {
-        private static string stringConnection = @"";
+        private static string stringConnection = @"Data Source=(LocalDb)\CoursSql;Integrated Security=True";
         public static SqlConnection connection = new SqlConnection(stringConnection); 
     }
 }

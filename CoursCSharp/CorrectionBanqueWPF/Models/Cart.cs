@@ -85,7 +85,7 @@ namespace CorrectionBanqueWPF.Models
             {
                 request = "INSERT INTO " +
                     "cart (customerId, total) " +
-                    "OUTPUT INSERTED.ID (@customerId, @total)";
+                    "OUTPUT INSERTED.ID values(@customerId, @total)";
                 command = new SqlCommand(request, Configuration.connection);
                 command.Parameters.Add(new SqlParameter("@customerId", Customer.Id));
                 command.Parameters.Add(new SqlParameter("@total", Total));
