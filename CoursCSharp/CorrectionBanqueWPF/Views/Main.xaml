@@ -15,7 +15,7 @@
         <Label Content="Téléphone : " HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="77"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="92,113,0,0" TextWrapping="Wrap" Text="{Binding Phone}" VerticalAlignment="Top" Width="237"/>
         <Label Content="{Binding ResultCustomer}" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Width="228"/>
-        <Button Content="Valider" HorizontalAlignment="Left" Margin="12,176,0,0" VerticalAlignment="Top" Width="317" Click="SaveCustomer_Click"/>
+        <Button Content="Valider" HorizontalAlignment="Left" Margin="12,176,0,0" VerticalAlignment="Top" Width="317" Command="{Binding SaveCustomerCommand}"/>
         <Separator HorizontalAlignment="Left" Height="100" Margin="137,159,0,0" VerticalAlignment="Top" Width="417" RenderTransformOrigin="0.5,0.5">
             <Separator.RenderTransform>
                 <TransformGroup>
@@ -29,8 +29,8 @@
         <Label Content="Gestion de produit" HorizontalAlignment="Left" Margin="357,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.099,-0.156" Width="186"/>
         <Label Content="Titre produit : " HorizontalAlignment="Left" Margin="357,41,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="447,41,0,0" TextWrapping="Wrap" Text="{Binding SearchTitle}" VerticalAlignment="Top" Width="140"/>
-        <Button Content="Rechercher" HorizontalAlignment="Left" Margin="592,39,0,0" VerticalAlignment="Top" Width="93" Height="25" Click="SearchProducts_Click"/>
-        <Button Content="Ajouter" HorizontalAlignment="Left" Margin="691,39,0,0" VerticalAlignment="Top" Width="93" Height="25" Click="AddProduct_Click"/>
+        <Button Content="Rechercher" HorizontalAlignment="Left" Margin="592,39,0,0" VerticalAlignment="Top" Width="93" Height="25" Command="{Binding GetProductsCommand}"/>
+        <Button Content="Ajouter" HorizontalAlignment="Left" Margin="691,39,0,0" VerticalAlignment="Top" Width="93" Height="25" Command="{Binding OpenAddProductWindowCommand}"/>
         <ListView SelectedItem="{Binding SearchProduct}" ItemsSource="{Binding SearchProducts}" HorizontalAlignment="Left" Height="98" Margin="357,72,0,0" VerticalAlignment="Top" Width="427">
             <ListView.View>
                 <GridView>
@@ -40,7 +40,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Ajouter au Panier" HorizontalAlignment="Left" Margin="357,181,0,0" VerticalAlignment="Top" Width="427" Click="AddProductToCart_Click"/>
+        <Button Content="Ajouter au Panier" HorizontalAlignment="Left" Margin="357,181,0,0" VerticalAlignment="Top" Width="427" Command="{Binding AddProductToCartCommand}"/>
         <ListView ItemsSource="{Binding Cart.Products}" HorizontalAlignment="Left" Height="115" Margin="357,227,0,0" VerticalAlignment="Top" Width="427">
             <ListView.View>
                 <GridView>
@@ -51,7 +51,7 @@
         </ListView>
         <Label Content="Panier : " HorizontalAlignment="Left" Margin="357,200,0,0" VerticalAlignment="Top"/>
         <Label Content="{Binding Total}" HorizontalAlignment="Left" Margin="691,347,0,0" VerticalAlignment="Top" Height="25" Width="93"/>
-        <Button Content="Enregistrer Panier" HorizontalAlignment="Left" Margin="357,377,0,0" VerticalAlignment="Top" Width="427" Height="24" Click="SaveCart_Click"/>
+        <Button Content="Enregistrer Panier" HorizontalAlignment="Left" Margin="357,377,0,0" VerticalAlignment="Top" Width="427" Height="24" Command="{Binding SaveCartCommand}"/>
         <Label Content="{Binding ResultCart}" HorizontalAlignment="Left" Margin="357,406,0,0" VerticalAlignment="Top"/>
 
     </Grid>

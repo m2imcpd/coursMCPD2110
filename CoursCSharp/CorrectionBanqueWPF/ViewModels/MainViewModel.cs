@@ -1,11 +1,14 @@
 ﻿using CorrectionBanqueWPF.Models;
+using CorrectionBanqueWPF.Views;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CorrectionBanqueWPF.ViewModels
 {
@@ -46,13 +49,26 @@ namespace CorrectionBanqueWPF.ViewModels
             get => Cart.Total;
         }
         public string SearchTitle { get => searchTitle; set => searchTitle = value; }
-
+        public ICommand SaveCustomerCommand { get; set; }
+        public ICommand GetProductsCommand { get; set; }
+        public ICommand AddProductToCartCommand { get; set; }
+        public ICommand SaveCartCommand { get; set; }
+        public ICommand OpenAddProductWindowCommand { get; set; }
         public MainViewModel()
         {
             customer = new Customer();
             Cart = new Cart();
             SearchProduct = new Product();
             SearchProducts = new ObservableCollection<Product>();
+            SaveCustomerCommand = new RelayCommand(SaveCustomer);
+            GetProductsCommand = new RelayCommand(GetProducts);
+            AddProductToCartCommand = new RelayCommand(AddProductToCart);
+            SaveCartCommand = new RelayCommand(SaveCart);
+            OpenAddProductWindowCommand = new RelayCommand(() =>
+            {
+                AddProduct w = new AddProduct();
+                w.Show();
+            });
         }
 
         public void SaveCustomer()
@@ -91,6 +107,7 @@ namespace CorrectionBanqueWPF.ViewModels
             SearchProduct = null;
             RaisePropertyChanged("SearchProduct");
             RaisePropertyChanged("Total");
+            
         }
 
         public void SaveCart()

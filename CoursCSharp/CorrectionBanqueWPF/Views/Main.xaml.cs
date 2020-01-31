@@ -26,34 +26,34 @@ namespace CorrectionBanqueWPF.Views
             DataContext = new MainViewModel();
         }
 
-        private void AddProduct_Click(object sender, RoutedEventArgs e)
-        {
-            AddProduct w = new AddProduct();
-            w.Show();
-        }
+        //private void AddProduct_Click(object sender, RoutedEventArgs e)
+        //{
+        //    AddProduct w = new AddProduct();
+        //    w.Show();
+        //}
 
-        private void SaveCustomer_Click(object sender, RoutedEventArgs e)
-        {
-            MainViewModel v = DataContext as MainViewModel;
-            v.SaveCustomer();
-        }
+        //private void SaveCustomer_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainViewModel v = DataContext as MainViewModel;
+        //    v.SaveCustomer();
+        //}
 
-        private void SearchProducts_Click(object sender, RoutedEventArgs e)
-        {
-            MainViewModel v = DataContext as MainViewModel;
-            v.GetProducts();
-        }
+        //private void SearchProducts_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainViewModel v = DataContext as MainViewModel;
+        //    v.GetProducts();
+        //}
 
-        private void AddProductToCart_Click(object sender, RoutedEventArgs e)
-        {
-            MainViewModel v = DataContext as MainViewModel;
-            v.AddProductToCart();
-        }
+        //private void AddProductToCart_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainViewModel v = DataContext as MainViewModel;
+        //    v.AddProductToCart();
+        //}
 
-        private void SaveCart_Click(object sender, RoutedEventArgs e)
-        {
-            MainViewModel v = DataContext as MainViewModel;
-            v.SaveCart();
-        }
+        //private void SaveCart_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainViewModel v = DataContext as MainViewModel;
+        //    v.SaveCart();
+        //}
     }
 }
