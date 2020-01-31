@@ -1,10 +1,12 @@
 ﻿using CorrectionBanqueWPF.Models;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CorrectionBanqueWPF.ViewModels
 {
@@ -12,6 +14,8 @@ namespace CorrectionBanqueWPF.ViewModels
     {
         private Product product;
         private string result;
+
+        public ICommand AddProductCommand { get; set; }
         public string Title
         {
             get => product.Title;
@@ -30,6 +34,7 @@ namespace CorrectionBanqueWPF.ViewModels
         public AddProductViewModel()
         {
             product = new Product();
+            AddProductCommand = new RelayCommand(Save);
         }
         public void Save()
         {

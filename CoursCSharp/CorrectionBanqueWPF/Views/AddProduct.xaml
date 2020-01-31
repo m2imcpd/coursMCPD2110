@@ -12,7 +12,7 @@
         <Label Content="Prix : " HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="26" Margin="72,49,0,0" TextWrapping="Wrap" Text="{Binding Price}" VerticalAlignment="Top" Width="280"/>
         <Label Content="{Binding Result}" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Width="342"/>
-        <Button Content="Ajouter produit" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="342" Height="25" Click="SaveProduct_Click"/>
+        <Button Content="Ajouter produit" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Width="342" Height="25" Command="{Binding AddProductCommand}"/>
 
     </Grid>
 </Window>

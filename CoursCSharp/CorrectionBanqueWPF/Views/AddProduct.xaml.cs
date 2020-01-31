@@ -26,10 +26,10 @@ namespace CorrectionBanqueWPF.Views
             DataContext = new AddProductViewModel();
         }
 
-        private void SaveProduct_Click(object sender, RoutedEventArgs e)
-        {
-            AddProductViewModel v = DataContext as AddProductViewModel;
-            v.Save();
-        }
+        //private void SaveProduct_Click(object sender, RoutedEventArgs e)
+        //{
+        //    AddProductViewModel v = DataContext as AddProductViewModel;
+        //    v.Save();
+        //}
     }
 }
