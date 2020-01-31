@@ -13,7 +13,7 @@ namespace PenduMVVM.ViewModels
         private Pendu pendu;
         public string Masque
         {
-            get => pendu.Masque;
+            get => Pendu.Masque;
         }
 
         private string lettre;
@@ -22,7 +22,7 @@ namespace PenduMVVM.ViewModels
         {
             get => lettre;
             set  {
-                if(pendu.TesterLettre(value))
+                if(Pendu.TesterLettre(value))
                 {
                     RaisePropertyChanged("Masque");
                 }
@@ -34,11 +34,18 @@ namespace PenduMVVM.ViewModels
             }
         }
 
-        public int Compteur { get => pendu.Compteur; }
+        public int Compteur { get => Pendu.Compteur; }
+        public Pendu Pendu { get => pendu; set => pendu = value; }
 
         public PenduViewModel()
         {
+            Pendu = new Pendu();
+        }
+        public void Start()
+        {
             pendu = new Pendu();
+            RaisePropertyChanged("Masque");
+            RaisePropertyChanged("Compteur");
         }
     }
 }

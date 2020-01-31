@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Pendu" Height="474.138" Width="458.621">
     <Grid>
-        <Button Content="Start" HorizontalAlignment="Left" Margin="37,10,0,0" VerticalAlignment="Top" Width="385" Height="24"/>
+        <Button Content="Start" HorizontalAlignment="Left" Margin="37,10,0,0" VerticalAlignment="Top" Width="385" Height="24" Click="Button_Click"/>
         <Label Content="{Binding Masque}" HorizontalAlignment="Left" Margin="37,57,0,0" VerticalAlignment="Top" Height="29" Width="385"/>
         <TextBox HorizontalAlignment="Left" Height="42" Margin="37,91,0,0" TextWrapping="Wrap" Text="{Binding Lettre}" VerticalAlignment="Top" Width="385"/>
         <Label Content="{Binding Compteur}" HorizontalAlignment="Left" Margin="37,165,0,0" VerticalAlignment="Top" Height="48" Width="385"/>

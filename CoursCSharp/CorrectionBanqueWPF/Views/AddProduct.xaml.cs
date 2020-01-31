@@ -1,5 +1,4 @@
-﻿using PenduMVVM.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,23 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PenduMVVM.Views
+namespace CorrectionBanqueWPF.Views
 {
     /// <summary>
-    /// Logique d'interaction pour Pendu.xaml
+    /// Logique d'interaction pour AddProduct.xaml
     /// </summary>
-    public partial class Pendu : Window
+    public partial class AddProduct : Window
     {
-        public Pendu()
+        public AddProduct()
         {
             InitializeComponent();
-            DataContext = new PenduViewModel();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PenduViewModel v = DataContext as PenduViewModel;
-            v.Start();
         }
     }
 }
