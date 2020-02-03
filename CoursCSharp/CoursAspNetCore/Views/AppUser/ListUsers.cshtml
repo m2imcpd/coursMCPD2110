@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = "_Master";
+}
+
+<h1>Liste des utilisateurs</h1>
+@*<section class="row">
+    <div class="col">
+        Nom user 1
+    </div>
+    <div class="col">
+        Prénom user 1
+    </div>
+</section>
+
+<section class="row">
+    <div class="col">
+        Nom user 2
+    </div>
+    <div class="col">
+        Prénom user 2
+    </div>
+</section>*@
+
+@foreach(AppUserModel user in ViewData["listeUsers"] as List<AppUserModel>)
+{
+    <section class="row">
+        <div class="col">@user.Nom</div>
+        <div class="col">@user.Prenom</div>
+    </section>
+}
+
