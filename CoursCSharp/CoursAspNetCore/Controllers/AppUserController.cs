@@ -11,15 +11,17 @@ namespace CoursAspNetCore.Controllers
     {
         public IActionResult Index()
         {
-            return View("ListUsers");
+            //return View("ListUsers");
+            return RedirectToAction("ListUsers");
         }
 
         public IActionResult ListUsers()
         {
             List<AppUserModel> liste = AppUserModel.GetAllUsers();
             //Passage en utilisant le ViewData
-            ViewData["listeUsers"] = liste;
-            return View();
+            //ViewData["listeUsers"] = liste;
+            //ViewBag.listeUsers = liste;
+            return View(liste);
         }
     }
 }
