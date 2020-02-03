@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Notre site internet</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css"/>
+</head>
+<body>
+    <header class="container-fluid">
+        <nav class="row">
+            @*Accueil*@
+            @*utilisation des helpers*@
+            @Html.ActionLink("Accueil", "Index", "Home", null, new { @class = "col" })
+            @*Utilisation des tags helpers*@
+            <a asp-controller="Home" asp-action="DireBonjour" class="col">Dire Bonjour</a>
+            <a asp-controller="Home" asp-action="ListUsers" class="col">Liste des utilisateurs</a>
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+</body>
+</html>
+

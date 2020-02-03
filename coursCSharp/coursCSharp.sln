@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PenduMVVM", "PenduMVVM\Pend
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionPanierWPF", "CorrectionBanqueWPF\CorrectionPanierWPF.csproj", "{4CE33D61-154E-4B45-A2FF-8E4B2DB7A0B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAspNetCore", "CoursAspNetCore\CoursAspNetCore.csproj", "{4354974F-2557-4EA9-8BC5-6C3312ED95E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{4CE33D61-154E-4B45-A2FF-8E4B2DB7A0B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CE33D61-154E-4B45-A2FF-8E4B2DB7A0B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CE33D61-154E-4B45-A2FF-8E4B2DB7A0B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4354974F-2557-4EA9-8BC5-6C3312ED95E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4354974F-2557-4EA9-8BC5-6C3312ED95E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4354974F-2557-4EA9-8BC5-6C3312ED95E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4354974F-2557-4EA9-8BC5-6C3312ED95E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
