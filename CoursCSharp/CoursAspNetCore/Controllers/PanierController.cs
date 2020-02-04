@@ -13,5 +13,10 @@ namespace CoursAspNetCore.Controllers
         {
             return View(Cart.GetAllCarts());
         }
+
+        public IActionResult Detail(int id)
+        {
+            return View(Cart.GetCartById(id));
+        }
     }
 }

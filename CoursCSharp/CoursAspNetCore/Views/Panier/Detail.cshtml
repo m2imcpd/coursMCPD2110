@@ -1,0 +1,67 @@
+﻿@model Cart
+@{
+    ViewData["Title"] = "Detail";
+}
+
+@if (Model != null)
+{
+    <h1>Detail de la commande N° @Model.Id</h1>
+    <div class="row">
+        <div class="col-2">
+            Information client
+        </div>
+        <div class="col">
+            @Model.Customer.FirstName @Model.Customer.LastName
+        </div>
+    </div>
+    <div class="row">
+        <h2 class="col text-dark">Liste produits Panier </h2>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th scope="col">Titre Produit</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Prix UT</th>
+                <th scope="col">Prix Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CartProduct pc in Model.Products)
+            {
+                <tr>
+
+                    <th class="col">
+                        @pc.Product.Title
+                    </th>
+                    <th class="col">
+                        @pc.Qty
+                    </th>
+                    <th class="col">
+                        @pc.Product.Price €
+                    </th>
+                    <th class="col">
+                        @(pc.Product.Price * pc.Qty) €
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col">
+            Total :
+        </div>
+        <div class="col">
+            @Model.Total €
+        </div>
+    </div>
+
+}
+else
+{
+    <h1>Aucune commande avec cet id</h1>
+}
+
+
+

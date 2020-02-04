@@ -181,5 +181,38 @@ namespace CoursAspNetCore.Models
             command.Dispose();
             Configuration.connection.Close();
         }
+
+        public static Cart GetCartById(int id)
+        {
+            Cart cart = null;
+            request = "SELECT c.id as cartId, c.total," +
+                " cu.id as customerId, cu.firstname, cu.lastname" +
+                " from cart as c " +
+                "inner join customer as cu " +
+                "on c.customerId = cu.id where c.id = @id";
+            command = new SqlCommand(request, Configuration.connection);
+            command.Parameters.Add(new SqlParameter("@id", id));
+            Configuration.connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            if(reader.Read())
+            {
+                cart = new Cart
+                {
+                    Id = reader.GetInt32(0),
+                    total = reader.GetDecimal(1),
+                    Customer = new Customer
+                    {
+                        Id = reader.GetInt32(2),
+                        FirstName = reader.GetString(3),
+                        LastName = reader.GetString(4)
+                    }
+                };   
+            }
+            reader.Close();
+            command.Dispose();
+            Configuration.connection.Close();
+            cart?.GetProducts();
+            return cart;
+        }
     }
 }
