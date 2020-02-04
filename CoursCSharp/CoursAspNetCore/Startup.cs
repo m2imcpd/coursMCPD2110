@@ -60,6 +60,15 @@ namespace CoursAspNetCore
                         action = "Index"
                     }
                     );
+                routes.MapRoute(
+                    name: "user",
+                    template: "Detail/{nom}/{prenom}",
+                    defaults: new
+                    {
+                        controller = "AppUser",
+                        action = "DetailMore"
+                    }
+                    );
 
                 routes.MapRoute(
                     name : "maRoute",

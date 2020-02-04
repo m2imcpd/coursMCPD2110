@@ -18,8 +18,8 @@ namespace CoursAspNetCore.Models
         public static List<AppUserModel> GetAllUsers()
         {
             List<AppUserModel> liste = new List<AppUserModel>();
-            liste.Add(new AppUserModel { Nom = "toto", Prenom = "tata" });
-            liste.Add(new AppUserModel { Nom = "titi", Prenom = "minet" });
+            liste.Add(new AppUserModel { Id=0, Nom = "toto", Prenom = "tata" });
+            liste.Add(new AppUserModel { Id=1, Nom = "titi", Prenom = "minet" });
 
             return liste;
         }

@@ -23,5 +23,15 @@ namespace CoursAspNetCore.Controllers
             //ViewBag.listeUsers = liste;
             return View(liste);
         }
+
+        public IActionResult Detail(int id)
+        {
+            return View(id);
+        }
+
+        public IActionResult DetailMore(string nom, string prenom)
+        {
+            return View(new AppUserModel { Nom = nom, Prenom = prenom });
+        }
     }
 }
