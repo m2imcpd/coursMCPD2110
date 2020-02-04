@@ -18,8 +18,25 @@ namespace CoursAspNetCore.Models
         private static SqlCommand command;
 
         public int Id { get => id; set => id = value; }
-        public string Title { get => title; set => title = value; }
-        public decimal Price { get => price; set => price = value; }
+        public string Title { get => title; set {
+                if (value.Length > 3)
+                    title = value;
+                else
+                    throw new Exception("Error title");
+            }
+        }
+        public string Price { get => price.ToString(); set  {
+                try
+                {
+                    price = Convert.ToDecimal(value);
+                }
+                catch(Exception e)
+                {
+                    throw new Exception("Error price");
+                }
+                
+            }
+        }
 
         public bool Save()
         {
@@ -52,7 +69,32 @@ namespace CoursAspNetCore.Models
                 {
                     Id = reader.GetInt32(0),
                     Title = reader.GetString(1),
-                    Price = reader.GetDecimal(2)
+                    Price = reader.GetString(2)
+                };
+                products.Add(p);
+            }
+            reader.Close();
+            command.Dispose();
+            Configuration.connection.Close();
+            return products;
+        }
+
+        public static List<Product> GetProducts()
+        {
+            List<Product> products = new List<Product>();
+            request = "SELECT id, title, price " +
+                "FROM product " +
+                "order by id desc";
+            command = new SqlCommand(request, Configuration.connection);
+            Configuration.connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Product p = new Product
+                {
+                    Id = reader.GetInt32(0),
+                    Title = reader.GetString(1),
+                    Price = reader.GetDecimal(2).ToString()
                 };
                 products.Add(p);
             }

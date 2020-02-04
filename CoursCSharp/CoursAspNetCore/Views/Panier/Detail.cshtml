@@ -42,7 +42,7 @@
                         @pc.Product.Price €
                     </th>
                     <th class="col">
-                        @(pc.Product.Price * pc.Qty) €
+                        @(Convert.ToDecimal(pc.Product.Price) * pc.Qty) €
                     </th>
                 </tr>
             }

@@ -74,7 +74,7 @@ namespace CoursAspNetCore.Models
             total = 0;
             foreach(CartProduct p  in Products)
             {
-                total += p.Product.Price * p.Qty;
+                total += Convert.ToDecimal(p.Product.Price) * p.Qty;
             }
         }
 
@@ -173,7 +173,7 @@ namespace CoursAspNetCore.Models
                     {
                         Id = reader.GetInt32(1),
                         Title = reader.GetString(2),
-                        Price = reader.GetDecimal(3)
+                        Price = reader.GetString(3)
                     }
                 });
             }
