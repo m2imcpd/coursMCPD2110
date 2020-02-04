@@ -146,7 +146,40 @@ namespace CoursAspNetCore.Models
             reader.Close();
             command.Dispose();
             Configuration.connection.Close();
+            foreach(Cart c in liste)
+            {
+                c.GetProducts();
+            }
             return liste;
+        }
+
+        public void GetProducts()
+        {
+            request = "SELECT cp.qty, p.Id, p.title, p.price " +
+                "FROM CartProduct as cp " +
+                "inner join product as p " +
+                "on p.Id = cp.productId " +
+                "where cp.cartId = @cartid";
+            command = new SqlCommand(request, Configuration.connection);
+            command.Parameters.Add(new SqlParameter("@cartid", Id));
+            Configuration.connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while(reader.Read())
+            {
+                Products.Add(new CartProduct
+                {
+                    Qty = reader.GetInt32(0),
+                    Product = new Product
+                    {
+                        Id = reader.GetInt32(1),
+                        Title = reader.GetString(2),
+                        Price = reader.GetDecimal(3)
+                    }
+                });
+            }
+            reader.Close();
+            command.Dispose();
+            Configuration.connection.Close();
         }
     }
 }

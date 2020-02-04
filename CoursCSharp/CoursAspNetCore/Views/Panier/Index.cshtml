@@ -17,6 +17,14 @@
             <th scope="col">@c.Customer.LastName</th>
             <th scope="col">@c.Total €</th>
         </tr>
+          @foreach(CartProduct cp in c.Products)
+          {
+        <tr>
+            <th scope="col">@cp.Product.Title</th>
+            <th scope="col">@cp.Product.Price €</th>
+            <th scope="col">@cp.Qty</th>
+        </tr>
+          }
         }
     </tbody>
 </table>
