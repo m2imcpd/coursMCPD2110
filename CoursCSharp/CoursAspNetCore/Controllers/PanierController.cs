@@ -18,5 +18,7 @@ namespace CoursAspNetCore.Controllers
         {
             return View(Cart.GetCartById(id));
         }
+
+        
     }
 }

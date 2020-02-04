@@ -33,5 +33,21 @@ namespace CoursAspNetCore.Controllers
         {
             return View(new AppUserModel { Nom = nom, Prenom = prenom });
         }
+
+        public IActionResult Formulaire()
+        {
+            return View();
+        }
+
+        //public IActionResult PostFormulaire(string nom, string prenom)
+        //{
+        //    AppUserModel u = new AppUserModel { Nom = nom, Prenom = prenom };
+        //    return View(u);
+        //}
+
+        public IActionResult PostFormulaire(AppUserModel user)
+        {
+            return View(user);
+        }
     }
 }
