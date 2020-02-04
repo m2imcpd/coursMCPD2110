@@ -59,7 +59,16 @@ namespace CoursAspNetCore
                         controller = "Home",
                         action = "Index"
                     }
-                    );
+                );
+                routes.MapRoute(
+                    name: "formProduct",
+                    template: "formProduct/{type?}/{message?}",
+                    defaults: new
+                    {
+                        controller = "Panier",
+                        action = "FormProduct"
+                    }
+                );
                 routes.MapRoute(
                     name: "user",
                     template: "Detail/{nom}/{prenom}",

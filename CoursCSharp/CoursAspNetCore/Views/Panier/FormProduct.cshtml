@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "FormProduct";
+}
+
+<h1>Formulaire produit</h1>
+@if (ViewBag.message != null)
+{
+<div class="row">
+    @if (ViewBag.type == false)
+    {
+        <div class="col alert alert-success">
+            @ViewBag.message
+        </div>
+    }
+    else
+    {
+        <div class="col alert alert-danger">
+            @ViewBag.message
+        </div>
+    }
+
+</div>
+}
+
+<form asp-controller="Panier" asp-action="AddProduct">
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" name="Title" placeholder="Titre du produit" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" name="Price" placeholder="Prix du produit" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-block form-control">Valider</button>
+        </div>
+    </div>
+</form>
+
