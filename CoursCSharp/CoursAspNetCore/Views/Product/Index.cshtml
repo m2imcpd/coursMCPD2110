@@ -13,15 +13,17 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Price</th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
         @foreach(Product p in Model)
         {
         <tr>
-            <th><img width="50px" src="@p.UrlImage"/></th>
+            <th><img width="50px" src="@p.UrlImage" /></th>
             <th>@p.Title</th>
             <th>@p.Price €</th>
+            <th><a asp-action="AddProduct" asp-controller="Panier" asp-route-id="@p.Id" class="btn btn-dark">Ajouter au Panier</a></th>
         </tr>
         }
     </tbody>

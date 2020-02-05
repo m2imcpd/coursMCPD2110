@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoursAspNetCore.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace CoursAspNetCore.Controllers
 {
@@ -19,22 +21,31 @@ namespace CoursAspNetCore.Controllers
             return View(Cart.GetCartById(id));
         }
 
-        public IActionResult FormProduct(string message, bool? type)
+        public IActionResult AddProduct(int id)
         {
-            if(message != null)
-            {
-                ViewBag.message = message;
-                ViewBag.type = type;
-            }
-            return View();
+            //Cart cart;
+            string jsonCart = HttpContext.Session.GetString("panier");
+            //if(jsonCart == null)
+            //{
+            //    cart = new Cart();
+
+            //}
+            //else
+            //{
+            //    cart = JsonConvert.DeserializeObject<Cart>(jsonCart);
+            //}
+            Cart cart = (jsonCart == null) ? new Cart() : JsonConvert.DeserializeObject<Cart>(jsonCart);
+            cart.AddProductToCart(Product.GetProductById(id));
+            HttpContext.Session.SetString("panier", JsonConvert.SerializeObject(cart));
+            return RedirectToAction("Panier");
         }
 
-        public IActionResult AddProduct(Product product)
+        public IActionResult Panier()
         {
-            if(product.Save())
-                return RedirectToAction("FormProduct", new { message="Produit ajouté", type=false});
-            else
-                return RedirectToAction("FormProduct", new { message="error serveur", type=true});
+            string jsonCart = HttpContext.Session.GetString("panier");
+            Cart cart = (jsonCart == null) ? new Cart() : JsonConvert.DeserializeObject<Cart>(jsonCart);
+            cart.UpdateTotal();
+            return View(cart);
         }
     }
 }

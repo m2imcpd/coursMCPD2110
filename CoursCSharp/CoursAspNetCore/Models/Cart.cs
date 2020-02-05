@@ -69,7 +69,7 @@ namespace CoursAspNetCore.Models
             UpdateTotal();
         }
 
-        private void UpdateTotal()
+        public void UpdateTotal()
         {
             total = 0;
             foreach(CartProduct p  in Products)

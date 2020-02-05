@@ -114,5 +114,38 @@ namespace CoursAspNetCore.Models
             Configuration.connection.Close();
             return products;
         }
+        public static Product GetProductById(int id)
+        {
+            Product p = null;
+            request = "SELECT id, title, price, urlImage " +
+                "FROM product " +
+                "where id = @id";
+            command = new SqlCommand(request, Configuration.connection);
+            command.Parameters.Add(new SqlParameter("@id", id));
+            Configuration.connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                p = new Product
+                {
+                    Id = reader.GetInt32(0),
+                    Title = reader.GetString(1),
+                    Price = reader.GetDecimal(2).ToString()
+                };
+                try
+                {
+                    p.UrlImage = reader.GetString(3);
+                }
+                catch (Exception e)
+                {
+                    p.UrlImage = "images/default.png";
+                }
+                
+            }
+            reader.Close();
+            command.Dispose();
+            Configuration.connection.Close();
+            return p;
+        }
     }
 }
