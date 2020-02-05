@@ -14,6 +14,7 @@ namespace CoursAspNetCore.Models
         private int id;
         private string title;
         private decimal price;
+        private string urlImage;
         private static string request;
         private static SqlCommand command;
 
@@ -38,14 +39,17 @@ namespace CoursAspNetCore.Models
             }
         }
 
+        public string UrlImage { get => urlImage; set => urlImage = value; }
+
         public bool Save()
         {
             request = "INSERT INTO " +
-                "product (title, price) " +
-                "OUTPUT INSERTED.ID values (@title, @price)";
+                "product (title, price, urlImage) " +
+                "OUTPUT INSERTED.ID values (@title, @price, @urlImage)";
             command = new SqlCommand(request, Configuration.connection);
             command.Parameters.Add(new SqlParameter("@title", Title));
             command.Parameters.Add(new SqlParameter("@price", Price));
+            command.Parameters.Add(new SqlParameter("@urlImage", urlImage));
             Configuration.connection.Open();
             Id = (int)command.ExecuteScalar();
             command.Dispose();
@@ -82,7 +86,7 @@ namespace CoursAspNetCore.Models
         public static List<Product> GetProducts()
         {
             List<Product> products = new List<Product>();
-            request = "SELECT id, title, price " +
+            request = "SELECT id, title, price, urlImage " +
                 "FROM product " +
                 "order by id desc";
             command = new SqlCommand(request, Configuration.connection);
@@ -96,6 +100,13 @@ namespace CoursAspNetCore.Models
                     Title = reader.GetString(1),
                     Price = reader.GetDecimal(2).ToString()
                 };
+                try
+                {
+                    p.UrlImage = reader.GetString(3);
+                }catch(Exception e)
+                {
+                    p.UrlImage = "images/default.png";
+                }
                 products.Add(p);
             }
             reader.Close();

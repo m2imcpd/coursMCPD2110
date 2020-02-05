@@ -23,7 +23,7 @@
 </div>
 }
 
-<form asp-controller="Product" asp-action="AddProduct">
+<form asp-controller="Product" asp-action="AddProduct" enctype="multipart/form-data">
     <div class="row">
         <div class="col">
             <input type="text" class="form-control" name="Title" placeholder="Titre du produit" />
@@ -32,6 +32,11 @@
     <div class="row">
         <div class="col">
             <input type="text" class="form-control" name="Price" placeholder="Prix du produit" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <input type="file" class="form-control" name="image" />
         </div>
     </div>
     <div class="row">
