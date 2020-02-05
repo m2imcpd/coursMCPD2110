@@ -1,14 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CoursAspNetCore.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursAspNetCore.Controllers
 {
     public class AppUserController : Controller
     {
+        //service hosting Environement
+
+        private IHostingEnvironment _env = null;
+
+        public AppUserController(IHostingEnvironment env)
+        {
+            _env = env;
+        }
         public IActionResult Index()
         {
             //return View("ListUsers");
@@ -45,8 +56,14 @@ namespace CoursAspNetCore.Controllers
         //    return View(u);
         //}
 
-        public IActionResult PostFormulaire(AppUserModel user)
+        public IActionResult PostFormulaire(AppUserModel user, IFormFile avatar)
         {
+            string pathFile = _env.WebRootPath + @"\images\"+avatar.FileName;
+            FileStream stream = System.IO.File.Create(pathFile);
+            avatar.CopyTo(stream);
+            stream.Close();
+            string pathBase = $"images/{avatar.FileName}";
+            ViewBag.chemin = $"{Request.Scheme}://{Request.Host.Value}/{pathBase}";
             return View(user);
         }
     }
