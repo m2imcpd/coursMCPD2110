@@ -30,7 +30,12 @@ namespace CoursAspNetCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddSession(options=> {
+                //Durée en seconde de sauvegarde des données
+                options.IdleTimeout = TimeSpan.FromDays(2);
+                //enregistrer le sessionId dans les cookies
+                options.Cookie.IsEssential = true;
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -48,7 +53,7 @@ namespace CoursAspNetCore
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

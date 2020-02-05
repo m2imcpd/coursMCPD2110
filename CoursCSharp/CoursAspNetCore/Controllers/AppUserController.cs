@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using CoursAspNetCore.Models;
 using Microsoft.AspNetCore.Hosting;
@@ -15,10 +16,13 @@ namespace CoursAspNetCore.Controllers
         //service hosting Environement
 
         private IHostingEnvironment _env = null;
+        private ISession _session;
+        //private IHttpContextAccessor _context;
 
         public AppUserController(IHostingEnvironment env)
         {
             _env = env;
+            
         }
         public IActionResult Index()
         {
@@ -28,6 +32,8 @@ namespace CoursAspNetCore.Controllers
 
         public IActionResult ListUsers()
         {
+            ViewBag.contenuCookie = Request.Cookies["nomCookie"];
+            ViewBag.contenuSession = HttpContext.Session.GetString("nomSession");
             List<AppUserModel> liste = AppUserModel.GetAllUsers();
             //Passage en utilisant le ViewData
             //ViewData["listeUsers"] = liste;
@@ -66,5 +72,26 @@ namespace CoursAspNetCore.Controllers
             ViewBag.chemin = $"{Request.Scheme}://{Request.Host.Value}/{pathBase}";
             return View(user);
         }
+
+        public IActionResult SaveCookie()
+        {
+            CookieOptions options = new CookieOptions
+            {
+                Expires = DateTime.Now.AddHours(-1)
+            };
+            Response.Cookies.Append("nomCookie", "Value of cookie", options);
+            return Content("Cookie crée");
+        }
+
+
+        public IActionResult SaveDataSession()
+        {
+            //ajouter une valeur dans une session
+            HttpContext.Session.SetString("nomSession", "value session");
+            //supprimer une session
+            HttpContext.Session.Remove("nomSession");
+            return Content("Session ajouté");
+        }
+        
     }
 }

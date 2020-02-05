@@ -3,7 +3,8 @@
     Layout = "_Master";
     ViewData["title"] = "Liste des utilisateurs";
 }
-
+<div>@ViewBag.contenuCookie</div>
+<div>@ViewBag.contenuSession</div>
 <h1>Liste des utilisateurs</h1>
 @*<section class="row">
         <div class="col">
@@ -41,15 +42,15 @@
 
 <div class="row">
     <div class="col">
-       Nombre d'utilisateur : @Model.Count
+        Nombre d'utilisateur : @Model.Count
     </div>
 </div>
 @foreach (AppUserModel user in Model)
 {
-<section class="row">
-    <div class="col">@user.Nom</div>
-    <div class="col">@user.Prenom</div>
-    <div class="col"><a asp-controller="AppUser" asp-action="Detail" asp-route-id="@user.Id" class="btn btn-dark">Detail</a></div>
-    <div class="col"><a asp-controller="AppUser" asp-action="DetailMore" asp-route-nom="@user.Nom" asp-route-prenom="@user.Prenom" class="btn btn-dark">Detail More</a></div>
-</section>
+    <section class="row">
+        <div class="col">@user.Nom</div>
+        <div class="col">@user.Prenom</div>
+        <div class="col"><a asp-controller="AppUser" asp-action="Detail" asp-route-id="@user.Id" class="btn btn-dark">Detail</a></div>
+        <div class="col"><a asp-controller="AppUser" asp-action="DetailMore" asp-route-nom="@user.Nom" asp-route-prenom="@user.Prenom" class="btn btn-dark">Detail More</a></div>
+    </section>
 }
