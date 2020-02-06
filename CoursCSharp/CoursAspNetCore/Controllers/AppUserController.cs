@@ -50,7 +50,8 @@ namespace CoursAspNetCore.Controllers
         {
             return View(new AppUserModel { Nom = nom, Prenom = prenom });
         }
-
+        //Limite l'accès à l'action au seul verb Get
+        [HttpGet]
         public IActionResult Formulaire()
         {
             return View();
@@ -61,7 +62,8 @@ namespace CoursAspNetCore.Controllers
         //    AppUserModel u = new AppUserModel { Nom = nom, Prenom = prenom };
         //    return View(u);
         //}
-
+        //Limite l'accès à l'action au seul verb POST
+        [HttpPost]
         public IActionResult PostFormulaire(AppUserModel user, IFormFile avatar)
         {
             string pathFile = _env.WebRootPath + @"\images\"+avatar.FileName;
@@ -89,9 +91,16 @@ namespace CoursAspNetCore.Controllers
             //ajouter une valeur dans une session
             HttpContext.Session.SetString("nomSession", "value session");
             //supprimer une session
-            HttpContext.Session.Remove("nomSession");
+            //HttpContext.Session.Remove("nomSession");
             return Content("Session ajouté");
         }
-        
+
+        [HttpPost]
+        public IActionResult AddUserAjax([FromBody] AppUserModel user)
+        {
+            return Ok(new { Nom = user.Nom, Prenom = user.Prenom});
+        }
+
+
     }
 }

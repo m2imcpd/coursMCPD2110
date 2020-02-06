@@ -36,6 +36,7 @@ namespace CoursAspNetCore
                 //enregistrer le sessionId dans les cookies
                 options.Cookie.IsEssential = true;
             });
+            services.AddHttpContextAccessor();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -54,6 +55,7 @@ namespace CoursAspNetCore
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

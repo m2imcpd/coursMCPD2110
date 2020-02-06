@@ -1,6 +1,5 @@
 ﻿@model List<AppUserModel>
 @{
-    Layout = "_Master";
     ViewData["title"] = "Liste des utilisateurs";
 }
 <div>@ViewBag.contenuCookie</div>
@@ -45,12 +44,21 @@
         Nombre d'utilisateur : @Model.Count
     </div>
 </div>
-@foreach (AppUserModel user in Model)
-{
-    <section class="row">
-        <div class="col">@user.Nom</div>
-        <div class="col">@user.Prenom</div>
-        <div class="col"><a asp-controller="AppUser" asp-action="Detail" asp-route-id="@user.Id" class="btn btn-dark">Detail</a></div>
-        <div class="col"><a asp-controller="AppUser" asp-action="DetailMore" asp-route-nom="@user.Nom" asp-route-prenom="@user.Prenom" class="btn btn-dark">Detail More</a></div>
-    </section>
-}
+<form asp-controller="AppUser" asp-action="AddUserAjax" id="monForm">
+    <div class="row">
+        <input type="text" name="nom" class="col form-control" placeholder="Votre nom" />
+        <input type="text" name="prenom" class="col form-control" placeholder="Votre prénom" />
+        <button class="col btn btn-danger" type="submit">Valider</button>
+    </div>
+</form>
+<section id="content">
+    @foreach (AppUserModel user in Model)
+    {
+        <section class="row">
+            <div class="col">@user.Nom</div>
+            <div class="col">@user.Prenom</div>
+            <div class="col"><a asp-controller="AppUser" asp-action="Detail" asp-route-id="@user.Id" class="btn btn-dark">Detail</a></div>
+            <div class="col"><a asp-controller="AppUser" asp-action="DetailMore" asp-route-nom="@user.Nom" asp-route-prenom="@user.Prenom" class="btn btn-dark">Detail More</a></div>
+        </section>
+    }
+</section>
