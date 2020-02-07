@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CorrectionAnnonce.Controllers
@@ -25,9 +26,10 @@ namespace CorrectionAnnonce.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetAnnonces()
+        public IActionResult GetAnnonces([FromBody] dynamic request)
         {
-            return View();
+            Thread.Sleep(1000);
+            return Ok(Annonce.GetAnnonces(request));
         }
 
         public IActionResult Favoris()

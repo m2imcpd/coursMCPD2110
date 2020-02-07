@@ -15,7 +15,7 @@ namespace CorrectionAnnonce.Models
         private string image;
         private decimal prix;
         private Categorie categorie;
-        private SqlCommand command;
+        private static SqlCommand command;
 
         public int Id { get => id; set => id = value; }
         public string Titre { get => titre; set => titre = value; }
@@ -41,6 +41,37 @@ namespace CorrectionAnnonce.Models
             command.Dispose();
             DataBase.connection.Close();
             return Id > 0;
+        }
+
+        public static List<Annonce> GetAnnonces(dynamic request)
+        {
+            List<Annonce> liste = new List<Annonce>();
+            string stringRequest = "SELECT * FROM " +
+                "annonce " +
+                "where categorie = @categorie and titre like @title";
+            command = new SqlCommand(stringRequest, DataBase.connection);
+            command.Parameters.Add(new SqlParameter("@title", "%"+request.search+"%"));
+            Categorie c = (Categorie)request.categorie;
+            command.Parameters.Add(new SqlParameter("@categorie", c));
+            DataBase.connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while(reader.Read())
+            {
+                Annonce a = new Annonce
+                {
+                    Id = reader.GetInt32(0),
+                    Titre = reader.GetString(1),
+                    Description = reader.GetString(2),
+                    Image = reader.GetString(4),
+                    Prix = reader.GetDecimal(5),
+                    Categorie = c
+                };
+                liste.Add(a);
+            }
+            reader.Close();
+            command.Dispose();
+            DataBase.connection.Close();
+            return liste;
         }
     }
 

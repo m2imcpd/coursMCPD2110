@@ -2,6 +2,7 @@
 const result = document.querySelector("#result");
 searchForm.addEventListener("submit", function (e) {
     e.preventDefault();
+    result.innerHTML = '<div class="spinner-border justify-content-center align-items-center" role="status"><span class="sr-only text-center" > Loading...</span ></div>';
     const data = {
         'categorie': document.querySelector("select[name='categorie']").value,
         'search': document.querySelector("input[name='search']").value
@@ -14,26 +15,43 @@ searchForm.addEventListener("submit", function (e) {
         },
         body: JSON.stringify(data)
     }).then(response => response.json()).then((res) => {
-        result.innerHtml = "";
+        result.innerHTML = "";
         for (let a of res) {
+            console.log(a);
             //creation de la ligne
             let element = document.createElement('div');
             element.classList.add('row');
+            element.classList.add('annonce');
             //creation de l'image
             let img = document.createElement('img');
-            img.attributes["src"] = a.image;
+            img.setAttribute("src", a.image);
             img.classList.add('col');
-            let titre = document.createElement('div').classList.add('col');
+            let bloc = document.createElement('div');
+            bloc.classList.add('col-8');
+
+            let titre = document.createElement('div');
+            titre.classList.add('row');
             titre.innerText = a.titre;
-            let categorie = document.createElement('div').classList.add('col');
+            let categorie = document.createElement('div');
+            categorie.classList.add('col');
             categorie.innerText = a.categorie;
-            let description = document.createElement('div').classList.add('col');
+            let description = document.createElement('div');
+            description.classList.add('row');
             description.innerText = a.description;
-            let prix = document.createElement('div').classList.add('col');
+            bloc.appendChild(titre);
+            bloc.appendChild(description);
+            let prix = document.createElement('div');
+            let detail = document.createElement('a');
+            detail.classList.add("row");
+            detail.classList.add("btn");
+            detail.classList.add("btn-default");
+            detail.setAttribute("href", "annonce/detail/" + a.id);
+            detail.innerHTML = "Detail";
+            bloc.appendChild(detail);
+            prix.classList.add('col');
             prix.innerText = a.prix;
             element.appendChild(img);
-            element.appendChild(titre);
-            element.appendChild(description);
+            element.appendChild(bloc);
             element.appendChild(prix);
             result.appendChild(element);
         }
