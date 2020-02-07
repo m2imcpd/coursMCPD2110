@@ -1,1 +1,15 @@
-﻿
+﻿<section>
+    <form class="form-inline" id="searchForm" asp-controller="Annonce" asp-action="GetAnnonces" method="post">
+        <select class="form-control mr-2 col-4"  name="categorie">
+            @foreach (Categorie c in ViewBag.Categorie)
+            {
+                <option>@c</option>
+            }
+         </select>
+        <input class="form-control mr-2 col-6" name="search" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0 col-1" type="submit">Search</button>
+    </form>
+</section>
+<section id="result">
+
+</section>

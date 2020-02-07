@@ -20,6 +20,13 @@ namespace CorrectionAnnonce.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.Categorie = Enum.GetValues(typeof(Categorie));
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult GetAnnonces()
+        {
             return View();
         }
 
