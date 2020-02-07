@@ -19,11 +19,11 @@
                 <div class="col-8">@Model.Prix €</div>
                 @if (!ViewBag.isFavoris)
                 {
-                    <a class="col-4 btn btn-secondary" id="detail" asp-action="AddToFavoris" asp-controller="Annonce" asp-route-id="@Model.Id">Ajouter au Favoris</a>
+                    <a class="col-4 btn btn-secondary" data-type="add" id="detail" asp-action="AddToFavoris" asp-controller="Annonce" asp-route-id="@Model.Id">Ajouter au Favoris</a>
                 }
                 else
                 {
-                    <a class="col-4 btn btn-danger" id="detail" asp-action="RemoveFromFavoris" asp-controller="Annonce" asp-route-id="@Model.Id">Retirer des Favoris</a>
+                    <a class="col-4 btn btn-danger" data-type="remove" id="detail" asp-action="RemoveFromFavoris" asp-controller="Annonce" asp-route-id="@Model.Id">Retirer des Favoris</a>
                 }
 
             </div>

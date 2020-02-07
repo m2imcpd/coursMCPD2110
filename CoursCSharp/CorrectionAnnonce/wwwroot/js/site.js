@@ -69,6 +69,23 @@ if (detail !== null) {
             'method': 'GET'
         }).then((response) => response.json()).then((res) => {
             alert(res.message);
+            const type = this.getAttribute('data-type');
+            if (type === 'add') {
+                const newUrl = url.replace("AddToFavoris", "RemoveFromFavoris");
+                this.setAttribute("href", newUrl);
+                this.setAttribute('data-type', 'remove');
+                this.classList.remove('btn-secondary');
+                this.classList.add('btn-danger');
+                this.innerText = "Retirer des Favoris";
+            }
+            else {
+                const newUrl = url.replace("RemoveFromFavoris", "AddToFavoris");
+                this.setAttribute("href", newUrl);
+                this.setAttribute('data-type', 'add');
+                this.classList.add('btn-secondary');
+                this.classList.remove('btn-danger');
+                this.innerText = "Ajouter des Favoris";
+            }
         });
     })
 }
