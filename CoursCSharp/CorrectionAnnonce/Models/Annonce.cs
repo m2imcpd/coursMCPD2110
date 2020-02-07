@@ -42,6 +42,22 @@ namespace CorrectionAnnonce.Models
             DataBase.connection.Close();
             return Id > 0;
         }
+        public bool Update()
+        {
+            string request = "Update annonce  set titre = @titre, description=@description, image=@image, categorie=@categorie, prix=@prix where id=@id";
+            command = new SqlCommand(request, DataBase.connection);
+            command.Parameters.Add(new SqlParameter("@titre", Titre));
+            command.Parameters.Add(new SqlParameter("@description", Description));
+            command.Parameters.Add(new SqlParameter("@image", Image));
+            command.Parameters.Add(new SqlParameter("@categorie", Categorie));
+            command.Parameters.Add(new SqlParameter("@prix", Prix));
+            command.Parameters.Add(new SqlParameter("@id", Id));
+            DataBase.connection.Open();
+            bool result = command.ExecuteNonQuery() > 0;
+            command.Dispose();
+            DataBase.connection.Close();
+            return result;
+        }
 
         public static List<Annonce> GetAnnonces(dynamic request)
         {
@@ -102,6 +118,8 @@ namespace CorrectionAnnonce.Models
             DataBase.connection.Close();
             return annonce;
         }
+
+        
     }
 
     public enum Categorie

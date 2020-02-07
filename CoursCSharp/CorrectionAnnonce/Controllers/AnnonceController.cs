@@ -60,35 +60,75 @@ namespace CorrectionAnnonce.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult PostAnnonce(Annonce annonce, IFormFile imageAnnonce)
+        [HttpGet]
+        public IActionResult EditAnnonce(int id)
         {
-            if(imageAnnonce != null)
+            ViewBag.Categorie = Enum.GetValues(typeof(Categorie));
+            return View("FormulaireAnnonce", Annonce.GetAnnonceById(id));
+        }
+
+        [HttpPost]
+        public IActionResult PostAnnonce(Annonce annonce, IFormFile imageAnnonce, int? idAnnonce)
+        {
+            if(idAnnonce == null)
             {
-                //Chaine unique pour avoir un nom unique pour chaque image 
-                string img = Guid.NewGuid().ToString() + "-" + imageAnnonce.FileName;
-                //string pathToUpload = _env.WebRootPath + @"\images\" + random + "-" + imageAnnonce.FileName;
-                string pathToUpload = Path.Combine(_env.WebRootPath, "images", img);
-                FileStream stream = System.IO.File.Create(pathToUpload);
-                imageAnnonce.CopyTo(stream);
-                stream.Close();
-                annonce.Image = "images/" + img;
+                if (imageAnnonce != null)
+                {
+                    //Chaine unique pour avoir un nom unique pour chaque image 
+                    string img = Guid.NewGuid().ToString() + "-" + imageAnnonce.FileName;
+                    //string pathToUpload = _env.WebRootPath + @"\images\" + random + "-" + imageAnnonce.FileName;
+                    string pathToUpload = Path.Combine(_env.WebRootPath, "images", img);
+                    FileStream stream = System.IO.File.Create(pathToUpload);
+                    imageAnnonce.CopyTo(stream);
+                    stream.Close();
+                    annonce.Image = "images/" + img;
+                }
+                else
+                {
+                    annonce.Image = "images/default.png";
+                }
+
+                if (annonce.Save())
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.message = "Erreur serveur";
+                    ViewBag.Categorie = Enum.GetValues(typeof(Categorie));
+                    return View("FormulaireAnnonce");
+                }
             }
             else
             {
-                annonce.Image = "images/default.png";
+                Annonce annonceEdit = Annonce.GetAnnonceById((int)idAnnonce);
+                if (imageAnnonce != null)
+                {
+                    //Chaine unique pour avoir un nom unique pour chaque image 
+                    string img = Guid.NewGuid().ToString() + "-" + imageAnnonce.FileName;
+                    //string pathToUpload = _env.WebRootPath + @"\images\" + random + "-" + imageAnnonce.FileName;
+                    string pathToUpload = Path.Combine(_env.WebRootPath, "images", img);
+                    FileStream stream = System.IO.File.Create(pathToUpload);
+                    imageAnnonce.CopyTo(stream);
+                    stream.Close();
+                    annonceEdit.Image = "images/" + img;
+                }
+                annonceEdit.Titre = annonce.Titre;
+                annonceEdit.Description = annonce.Description;
+                annonceEdit.Prix = annonce.Prix;
+                annonceEdit.Categorie = annonce.Categorie;
+                if (annonceEdit.Update())
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.message = "Erreur serveur";
+                    ViewBag.Categorie = Enum.GetValues(typeof(Categorie));
+                    return View("FormulaireAnnonce");
+                }
             }
             
-            if(annonce.Save())
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ViewBag.message = "Erreur serveur";
-                ViewBag.Categorie = Enum.GetValues(typeof(Categorie));
-                return View("FormulaireAnnonce");
-            }
             
         }
         [HttpGet]

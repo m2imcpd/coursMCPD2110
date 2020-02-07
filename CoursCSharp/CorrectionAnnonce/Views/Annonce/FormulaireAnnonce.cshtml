@@ -1,5 +1,5 @@
-﻿
-@if(ViewBag.message != null)
+﻿@model Annonce;
+@if (ViewBag.message != null)
 {
     <div class="row">
         <div class="col m-1 alert alert-danger">
@@ -8,19 +8,23 @@
     </div>
 }
 <form asp-controller="Annonce" asp-action="PostAnnonce" method="POST" enctype="multipart/form-data">
+    @if (Model != null)
+    {
+        <input type="hidden" name="idAnnonce" value="@Model.Id" />
+    }
     <div class="row">
-        <input type="text" class="form-control m-1 col" name="Titre" placeholder="Titre de l'annonce" />
+        <input type="text" value="@if(Model != null) { @Model.Titre }" class="form-control m-1 col" name="Titre" placeholder="Titre de l'annonce" />
     </div>
     <div class="row">
         <div class="input-group m-1">
-            <input type="text" name="Prix" class="form-control" placeholder="Prix" aria-label="Prix" aria-describedby="basic-addon2">
+            <input value="@if(Model != null) { @Model.Prix }"  type="text" name="Prix" class="form-control" placeholder="Prix" aria-label="Prix" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <span class="input-group-text" id="basic-addon2">€</span>
             </div>
         </div>
     </div>
     <div class="row">
-        <select name="categorie" class="form-control col m-1">
+        <select value="@if(Model != null) { @Model.Categorie }"  name="categorie" class="form-control col m-1">
             @foreach(Categorie c in ViewBag.Categorie)
             {
                 <option>@c</option>
@@ -32,7 +36,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">Description</span>
             </div>
-            <textarea class="form-control " name="Description" aria-label="Description"></textarea>
+            <textarea class="form-control " name="Description" aria-label="Description">@if(Model != null) { @Model.Description }</textarea>
         </div>
     </div>
     <div class="row">
