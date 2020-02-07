@@ -1,0 +1,32 @@
+﻿@model Annonce;
+
+<section class="annonce">
+    <div class="row">
+        <div class="col-3">
+            <img src="@Model.Image" />
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <h1 class="col-9">@Model.Titre</h1>
+                <h1 class="col-3">@Model.Categorie</h1>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Model.Description
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">@Model.Prix €</div>
+                @if (!ViewBag.isFavoris)
+                {
+                    <a class="col-4 btn btn-secondary" id="detail" asp-action="AddToFavoris" asp-controller="Annonce" asp-route-id="@Model.Id">Ajouter au Favoris</a>
+                }
+                else
+                {
+                    <a class="col-4 btn btn-danger" id="detail" asp-action="RemoveFromFavoris" asp-controller="Annonce" asp-route-id="@Model.Id">Retirer des Favoris</a>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

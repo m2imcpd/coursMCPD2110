@@ -1,6 +1,7 @@
 ﻿const searchForm = document.querySelector("#searchForm");
 const result = document.querySelector("#result");
-searchForm.addEventListener("submit", function (e) {
+if (searchForm !== null) {
+    searchForm.addEventListener("submit", function (e) {
     e.preventDefault();
     result.innerHTML = '<div class="spinner-border justify-content-center align-items-center" role="status"><span class="sr-only text-center" > Loading...</span ></div>';
     const data = {
@@ -56,4 +57,18 @@ searchForm.addEventListener("submit", function (e) {
             result.appendChild(element);
         }
     });
-})
+});
+}
+
+const detail = document.querySelector("#detail");
+if (detail !== null) {
+    detail.addEventListener('click', function (e) {
+        e.preventDefault();
+        const url = this.getAttribute("href");
+        fetch(url, {
+            'method': 'GET'
+        }).then((response) => response.json()).then((res) => {
+            alert(res.message);
+        });
+    })
+}

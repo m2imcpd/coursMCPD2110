@@ -73,6 +73,35 @@ namespace CorrectionAnnonce.Models
             DataBase.connection.Close();
             return liste;
         }
+
+        public static Annonce GetAnnonceById(int id)
+        {
+            Annonce annonce = null;
+            string stringRequest = "SELECT * FROM " +
+                "annonce " +
+                "where id = @id";
+            command = new SqlCommand(stringRequest, DataBase.connection);
+            command.Parameters.Add(new SqlParameter("@id", id));
+            DataBase.connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                annonce = new Annonce
+                {
+                    Id = reader.GetInt32(0),
+                    Titre = reader.GetString(1),
+                    Description = reader.GetString(2),
+                    Image = reader.GetString(4),
+                    Prix = reader.GetDecimal(5),
+                    Categorie = (Categorie)reader.GetInt32(3)
+                };
+                
+            }
+            reader.Close();
+            command.Dispose();
+            DataBase.connection.Close();
+            return annonce;
+        }
     }
 
     public enum Categorie
