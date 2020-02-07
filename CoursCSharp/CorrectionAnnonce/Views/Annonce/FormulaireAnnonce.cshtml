@@ -1,0 +1,50 @@
+﻿
+@if(ViewBag.message != null)
+{
+    <div class="row">
+        <div class="col m-1 alert alert-danger">
+            @ViewBag.message
+        </div>
+    </div>
+}
+<form asp-controller="Annonce" asp-action="PostAnnonce" method="POST" enctype="multipart/form-data">
+    <div class="row">
+        <input type="text" class="form-control m-1 col" name="Titre" placeholder="Titre de l'annonce" />
+    </div>
+    <div class="row">
+        <div class="input-group m-1">
+            <input type="text" name="Prix" class="form-control" placeholder="Prix" aria-label="Prix" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2">€</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <select name="categorie" class="form-control col m-1">
+            @foreach(Categorie c in ViewBag.Categorie)
+            {
+                <option>@c</option>
+            }
+        </select>
+    </div>
+    <div class="row">
+        <div class="input-group m-1">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Description</span>
+            </div>
+            <textarea class="form-control " name="Description" aria-label="Description"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group m-1">
+            <div class="custom-file">
+                <input type="file" name="imageAnnonce" class="custom-file-input" id="inputGroupFile01">
+                <label class="custom-file-label" for="inputGroupFile01">Choisir une image</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button class="col btn btn-dark m-1" type="submit">Valider</button>
+    </div>
+</form>
+
