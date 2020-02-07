@@ -44,7 +44,13 @@ namespace CorrectionAnnonce.Controllers
 
         public IActionResult Favoris()
         {
-            return View();
+            string jsonFavoris = HttpContext.Session.GetString("favoris");
+            List<Annonce> favoris = (jsonFavoris != null) ? JsonConvert.DeserializeObject<List<Annonce>>(jsonFavoris) : new List<Annonce>();
+            favoris.ForEach(annonce =>
+            {
+                annonce.Image = $"{Request.Scheme}://{Request.Host.Value}/{annonce.Image}";
+            });
+            return View(favoris);
         }
 
         [HttpGet]
