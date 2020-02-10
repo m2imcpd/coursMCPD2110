@@ -43,5 +43,55 @@ namespace CoursAspNetApi.Models
             DataBase.Connection.Close();
             return liste;
         }
+
+        public static List<Client> GetClientByName(string nom)
+        {
+            List<Client> liste = new List<Client>();
+            string request = "SELECT * FROM client where nom like @nom";
+            command = new SqlCommand(request, DataBase.Connection);
+            command.Parameters.Add(new SqlParameter("@nom", "%" + nom + "%"));
+            DataBase.Connection.Open();
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Client c = new Client
+                {
+                    Id = reader.GetInt32(0),
+                    Nom = reader.GetString(1),
+                    Prenom = reader.GetString(2),
+                    Telephone = reader.GetString(3),
+                };
+                liste.Add(c);
+            }
+            reader.Close();
+            command.Dispose();
+            DataBase.Connection.Close();
+            return liste;
+        }
+
+        public static Client GetClientById(int id)
+        {
+            Client client = null;
+            string request = "SELECT * FROM client where id=@id";
+            command = new SqlCommand(request, DataBase.Connection);
+            command.Parameters.Add(new SqlParameter("@id", id));
+            DataBase.Connection.Open();
+            reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                client = new Client
+                {
+                    Id = reader.GetInt32(0),
+                    Nom = reader.GetString(1),
+                    Prenom = reader.GetString(2),
+                    Telephone = reader.GetString(3),
+                };
+               
+            }
+            reader.Close();
+            command.Dispose();
+            DataBase.Connection.Close();
+            return client;
+        }
     }
 }

@@ -17,5 +17,16 @@ namespace CoursAspNetApi.Controllers
         {
             return Ok(Client.GetClients());
         }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            return Ok(Client.GetClientById(id));
+        }
+        [HttpGet("Search/{nom}")]
+        public IActionResult Get(string nom)
+        {
+            return Ok(Client.GetClientByName(nom));
+        }
     }
 }
