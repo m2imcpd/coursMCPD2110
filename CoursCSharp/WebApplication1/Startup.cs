@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
-namespace CoursAspNetApi
+namespace WebApplication1
 {
     public class Startup
     {
@@ -25,14 +20,11 @@ namespace CoursAspNetApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddCors(options =>
+
+            // In production, the React files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
             {
-                //Definition d'une stratégie pour le cross origin 
-                options.AddPolicy("allowsAll", builder =>
-                 {
-                     //builder.WithOrigins("domaine.com", "");
-                     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-                 });
+                configuration.RootPath = "ClientApp/build";
             });
         }
 
@@ -43,8 +35,30 @@ namespace CoursAspNetApi
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors();
-            app.UseMvc();
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
+
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action=Index}/{id?}");
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+            });
         }
     }
 }
