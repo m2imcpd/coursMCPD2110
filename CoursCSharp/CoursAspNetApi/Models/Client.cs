@@ -20,6 +20,33 @@ namespace CoursAspNetApi.Models
         public string Prenom { get => prenom; set => prenom = value; }
         public string Telephone { get => telephone; set => telephone = value; }
 
+        public bool Save()
+        {
+            command = new SqlCommand("INSERT INTO client (nom, prenom, telephone) OUTPUT INSERTED.ID values (@nom, @prenom, @telephone)", DataBase.Connection);
+            command.Parameters.Add(new SqlParameter("@nom", Nom));
+            command.Parameters.Add(new SqlParameter("@prenom", Prenom));
+            command.Parameters.Add(new SqlParameter("@telephone", Telephone));
+            DataBase.Connection.Open();
+            Id = (int)command.ExecuteScalar();
+            command.Dispose();
+            DataBase.Connection.Close();
+            return Id > 0;
+        }
+
+        public bool Update()
+        {
+            command = new SqlCommand("update client set nom=@nom, prenom = @prenom, telephone = @telephone where id = @id", DataBase.Connection);
+            command.Parameters.Add(new SqlParameter("@nom", Nom));
+            command.Parameters.Add(new SqlParameter("@prenom", Prenom));
+            command.Parameters.Add(new SqlParameter("@telephone", Telephone));
+            command.Parameters.Add(new SqlParameter("@id", Id));
+            DataBase.Connection.Open();
+            int nombreLigne = command.ExecuteNonQuery();
+            command.Dispose();
+            DataBase.Connection.Close();
+            return nombreLigne > 0;
+        }
+
         public static List<Client> GetClients()
         {
             List<Client> liste = new List<Client>();

@@ -23,10 +23,44 @@ namespace CoursAspNetApi.Controllers
         {
             return Ok(Client.GetClientById(id));
         }
+
         [HttpGet("Search/{nom}")]
         public IActionResult Get(string nom)
         {
             return Ok(Client.GetClientByName(nom));
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] Client client)
+        {
+            if (client.Save())
+                return Ok(new { Id = client.Id });
+            else
+                return StatusCode(500);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id,[FromBody] Client client)
+        {
+            Client oldClient = Client.GetClientById(id);
+            if(oldClient == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                oldClient.Nom = client.Nom != null ? client.Nom : oldClient.Nom;
+                oldClient.Prenom = client.Prenom != null ? client.Prenom : oldClient.Prenom;
+                oldClient.Telephone = client.Telephone != null ? client.Telephone : oldClient.Telephone;
+                if(oldClient.Update())
+                {
+                    return Ok(new { message = "Update Ok" });
+                }
+                else
+                {
+                    return StatusCode(500);
+                }
+            }
         }
     }
 }
