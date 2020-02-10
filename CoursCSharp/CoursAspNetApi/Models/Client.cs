@@ -120,5 +120,17 @@ namespace CoursAspNetApi.Models
             DataBase.Connection.Close();
             return client;
         }
+
+        public static bool DeleteClientById(int id)
+        {
+            string request = "DELETE FROM client where id = @id";
+            command = new SqlCommand(request, DataBase.Connection);
+            command.Parameters.Add(new SqlParameter("@id", id));
+            DataBase.Connection.Open();
+            int nombreLigne = command.ExecuteNonQuery();
+            command.Dispose();
+            DataBase.Connection.Close();
+            return nombreLigne > 0;
+        }
     }
 }

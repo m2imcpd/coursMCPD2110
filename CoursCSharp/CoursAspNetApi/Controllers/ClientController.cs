@@ -62,5 +62,18 @@ namespace CoursAspNetApi.Controllers
                 }
             }
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            if(Client.DeleteClientById(id))
+            {
+                return Ok(new { message = "Deleted" });
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }
