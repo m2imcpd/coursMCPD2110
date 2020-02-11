@@ -4,11 +4,13 @@ import './App.css';
 import './Clients'
 import { Clients } from './Clients';
 import { Contacts } from './Contacts';
+import { FormContact } from './FormContact';
 function App() {
   return (
     <div className="App">
       
       {/* <Clients></Clients> */}
+      <FormContact></FormContact>
       <Contacts></Contacts>
     </div>
   );
