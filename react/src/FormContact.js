@@ -24,6 +24,7 @@ export const FormContact = (props) => {
         }).then((res) => res.json()).then((response)=> {
             alert(response.contactId + " "+ response.message);
             setContact({ nom : "", prenom : "", telephone : ""})
+            props.updateNewData(true)
         })
     }
     return (

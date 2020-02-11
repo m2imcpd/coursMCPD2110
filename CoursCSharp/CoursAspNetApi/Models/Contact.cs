@@ -55,7 +55,7 @@ namespace CoursAspNetApi.Models
         public static List<Contact> GetContacts()
         {
             List<Contact> contacts = new List<Contact>();
-            string request = "SELECT id, nom, prenom, telephone FROM contact";
+            string request = "SELECT id, nom, prenom, telephone FROM contact order by id desc";
             command = new SqlCommand(request, DataBase.Connection);
             DataBase.Connection.Open();
             reader = command.ExecuteReader();
