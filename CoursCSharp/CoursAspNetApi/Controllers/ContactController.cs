@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoursAspNetApi.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursAspNetApi.Controllers
 {
+    [EnableCors("allowsAll")]
     [Route("[controller]")]
     [ApiController]
     public class ContactController : ControllerBase
