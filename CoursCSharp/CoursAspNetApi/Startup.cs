@@ -31,7 +31,7 @@ namespace CoursAspNetApi
                 options.AddPolicy("allowsAll", builder =>
                  {
                      //builder.WithOrigins("domaine.com", "");
-                     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials();
                  });
             });
         }
