@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CoursApiEntity.Classes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoursApiEntity.Controllers
 {
@@ -16,7 +17,7 @@ namespace CoursApiEntity.Controllers
         public IActionResult Get()
         {
             DataContext db = new DataContext();
-            return Ok(db.Client.ToList());
+            return Ok(db.Client.Include(c => c.Adresses).ToList());
         }
 
         [HttpGet("{id}")]
@@ -27,7 +28,7 @@ namespace CoursApiEntity.Controllers
             //ecriture historique
             //Client c = (from client in db.Client where client.Id == id select client).First();
             //ecriture avec expression lambda
-            Client c = db.Client.FirstOrDefault(x => x.Id == id);
+            Client c = db.Client.Include(x => x.Adresses).FirstOrDefault(x => x.Id == id);
             // <=> sans linq
             //Client cc = null;
             //foreach(Client ccc in db.Client)
