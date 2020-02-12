@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAspNetApi", "CoursAspN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursReactApi", "WebApplication1\CoursReactApi.csproj", "{5F794C12-8FAC-4DBF-B97C-EE205769A30E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursApiEntity", "CoursApiEntity\CoursApiEntity.csproj", "{0BA96E06-1765-4082-96AD-D0CBD3E71535}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{5F794C12-8FAC-4DBF-B97C-EE205769A30E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F794C12-8FAC-4DBF-B97C-EE205769A30E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F794C12-8FAC-4DBF-B97C-EE205769A30E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BA96E06-1765-4082-96AD-D0CBD3E71535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BA96E06-1765-4082-96AD-D0CBD3E71535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BA96E06-1765-4082-96AD-D0CBD3E71535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BA96E06-1765-4082-96AD-D0CBD3E71535}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
