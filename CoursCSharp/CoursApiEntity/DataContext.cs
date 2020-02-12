@@ -16,5 +16,8 @@ namespace CoursApiEntity
 
         public DbSet<Client> Client { get; set; }
         public DbSet<Adresse> Adresse { get; set; }
+
+        public DbSet<Contact> Contact { get; set; }
+        public DbSet<Email> Email { get; set; }
     }
 }
