@@ -48,5 +48,48 @@ namespace CoursApiEntity.Controllers
             List<Client> clients = db.Client.Where(c => c.Nom.Contains(nom)).ToList();
             return Ok(clients);
         }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] Client client)
+        {
+            DataContext db = new DataContext();
+            db.Client.Add(client);
+            db.SaveChanges();
+            return Ok(new { clientId = client.Id });
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Client client)
+        {
+            DataContext db = new DataContext();
+            Client c = db.Client.FirstOrDefault(x => x.Id == id);
+            if(c != null){
+                c.Nom = client.Nom;
+                c.Prenom = client.Prenom;
+                c.Telephone = client.Telephone;
+                db.SaveChanges();
+                return Ok(new { message = "Update Ok" });
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            DataContext db = new DataContext();
+            Client c = db.Client.FirstOrDefault(x => x.Id == id);
+            if(c != null)
+            {
+                db.Client.Remove(c);
+                db.SaveChanges();
+                return Ok(new { message = "delete ok" });
+            }else
+            {
+                return NotFound();
+            }
+        }
     }
 }
