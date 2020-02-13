@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursReactApi", "WebApplica
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursApiEntity", "CoursApiEntity\CoursApiEntity.csproj", "{0BA96E06-1765-4082-96AD-D0CBD3E71535}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionAnnonceApi", "CorrectionAnnonceApi\CorrectionAnnonceApi.csproj", "{940B2E19-74B1-40C8-81AF-314157BACC4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{0BA96E06-1765-4082-96AD-D0CBD3E71535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BA96E06-1765-4082-96AD-D0CBD3E71535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BA96E06-1765-4082-96AD-D0CBD3E71535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{940B2E19-74B1-40C8-81AF-314157BACC4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{940B2E19-74B1-40C8-81AF-314157BACC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{940B2E19-74B1-40C8-81AF-314157BACC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{940B2E19-74B1-40C8-81AF-314157BACC4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
