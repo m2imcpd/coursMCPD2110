@@ -27,7 +27,7 @@ namespace CorrectionAnnonceApi.Models
             Images = new List<Image>();
         }
 
-        [JsonIgnore]
+        
         public Categorie Categorie { get; set; }
         public decimal Prix { get => prix; set => prix = value; }
     }

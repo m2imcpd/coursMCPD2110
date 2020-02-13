@@ -8,6 +8,7 @@ using CorrectionAnnonceApi.Tools;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CorrectionAnnonceApi.Controllers
 {
@@ -26,13 +27,13 @@ namespace CorrectionAnnonceApi.Controllers
         public IActionResult Get()
         {
             DataContext db = new DataContext();
-            return Ok(db.Annonce.ToList());
+            return Ok(db.Annonce.Include(a => a.Categorie).Include(a=>a.Images).ToList());
         }
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             DataContext db = new DataContext();
-            return Ok(db.Annonce.FirstOrDefault(a => a.Id == id));
+            return Ok(db.Annonce.Include(a=>a.Categorie).Include(a => a.Images).FirstOrDefault(a => a.Id == id));
         }
 
         [HttpPost]
