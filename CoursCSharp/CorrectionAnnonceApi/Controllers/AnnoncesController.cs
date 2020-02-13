@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CorrectionAnnonceApi.Models;
 using CorrectionAnnonceApi.Tools;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CorrectionAnnonceApi.Controllers
 {
+    [EnableCors("allowsAll")]
     [Route("[controller]")]
     [ApiController]
     public class AnnoncesController : ControllerBase
